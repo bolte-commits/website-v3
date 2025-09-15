@@ -121,6 +121,161 @@
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/overview.built.css" type="text/css">
 	<script src="js/head.built.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		/* Gallery slider animation */
+		@keyframes scroll {
+			0% {
+				transform: translateX(0);
+			}
+
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+
+		.gallery-slider:hover .gallery-track {
+			animation-play-state: paused;
+		}
+
+		.gallery-item {
+			transition: none;
+		}
+
+		.gallery-item:hover {
+			transform: none;
+		}
+
+		/* Gallery controls */
+		.gallery-controls button:hover {
+			opacity: 0.8;
+			transform: translateY(-1px);
+		}
+
+		.gallery-controls button:active {
+			transform: translateY(0);
+		}
+
+		.gallery-track.paused {
+			animation-play-state: paused;
+		}
+	</style>
+
+	<script>
+		// Gallery controls functionality
+		document.addEventListener('DOMContentLoaded', function () {
+			const galleryTrack = document.getElementById('gallery-track');
+			const gallerySlider = document.querySelector('.gallery-slider');
+
+			let isManualControl = false;
+			let scrollPosition = 0;
+
+			// Function to disable animation and enable manual control
+			function enableManualControl() {
+				isManualControl = true;
+				galleryTrack.style.animation = 'none';
+				gallerySlider.scrollLeft = scrollPosition;
+			}
+
+			// Pause on hover
+			gallerySlider.addEventListener('mouseenter', function () {
+				if (!isManualControl) {
+					galleryTrack.style.animationPlayState = 'paused';
+				}
+			});
+
+			gallerySlider.addEventListener('mouseleave', function () {
+				if (!isManualControl) {
+					galleryTrack.style.animationPlayState = 'running';
+				}
+			});
+
+			// Enable manual scrolling by mouse/touch
+			gallerySlider.addEventListener('wheel', function (e) {
+				e.preventDefault();
+				enableManualControl();
+				scrollPosition += e.deltaY;
+				const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
+				scrollPosition = Math.max(0, Math.min(maxScroll, scrollPosition));
+				gallerySlider.scrollLeft = scrollPosition;
+			});
+
+			// Touch/swipe support with momentum
+			let startX = 0;
+			let startScrollLeft = 0;
+			let lastX = 0;
+			let lastTime = 0;
+			let velocity = 0;
+			let animationId = null;
+
+			gallerySlider.addEventListener('touchstart', function (e) {
+				enableManualControl();
+				startX = e.touches[0].clientX;
+				lastX = startX;
+				startScrollLeft = scrollPosition;
+				lastTime = Date.now();
+				velocity = 0;
+
+				// Cancel any ongoing momentum animation
+				if (animationId) {
+					cancelAnimationFrame(animationId);
+					animationId = null;
+				}
+			});
+
+			gallerySlider.addEventListener('touchmove', function (e) {
+				e.preventDefault();
+				const currentX = e.touches[0].clientX;
+				const currentTime = Date.now();
+				const diff = startX - currentX;
+				const newScrollLeft = startScrollLeft + diff;
+				const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
+				scrollPosition = Math.max(0, Math.min(maxScroll, newScrollLeft));
+				gallerySlider.scrollLeft = scrollPosition;
+
+				// Calculate velocity for momentum
+				if (currentTime - lastTime > 0) {
+					velocity = (lastX - currentX) / (currentTime - lastTime);
+					lastX = currentX;
+					lastTime = currentTime;
+				}
+			});
+
+			gallerySlider.addEventListener('touchend', function (e) {
+				// Apply momentum scrolling
+				if (Math.abs(velocity) > 0.1) {
+					applyMomentum();
+				}
+			});
+
+			function applyMomentum() {
+				const friction = 0.95; // Deceleration factor
+				const minVelocity = 0.1;
+
+				function animate() {
+					if (Math.abs(velocity) < minVelocity) {
+						animationId = null;
+						return;
+					}
+
+					// Apply velocity to position
+					scrollPosition += velocity * 16; // 16ms frame time
+					const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
+					scrollPosition = Math.max(0, Math.min(maxScroll, scrollPosition));
+
+					// Update scroll position
+					gallerySlider.scrollLeft = scrollPosition;
+
+					// Apply friction
+					velocity *= friction;
+
+					// Continue animation
+					animationId = requestAnimationFrame(animate);
+				}
+
+				animationId = requestAnimationFrame(animate);
+			}
+		});
+	</script>
 </head>
 
 <body class="page-overview globalheader-dark globalnav-scrim"
@@ -4088,26 +4243,27 @@
 									data-tour-media-id="colornav-gallery">
 									<span class="control-item-label typography-all-access-pass-pv-item-label"
 										style="opacity: 1;"><svg class="plus-icon" version="1.1" width="24px"
-										height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-										<circle cx="12" cy="12" r="11.3"
-											style="stroke: var(--app-pv-icon-fill); fill: none;"></circle>
-										<g transform="translate(7 7)"
-											style="stroke: none; fill: var(--app-pv-icon-fill);">
-											<path
-												d="m9 4h-3v-3c0-0.553-0.447-1-1-1s-1 0.447-1 1v3h-3c-0.553 0-1 0.447-1 1s0.447 1 1 1h3v3c0 0.553 0.447 1 1 1s1-0.447 1-1v-3h3c0.553 0 1-0.447 1-1s-0.447-1-1-1">
-											</path>
-										</g>
-									</svg><span
-											class="control-color-active-label">Body Composition</span></span>
+											height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+											<circle cx="12" cy="12" r="11.3"
+												style="stroke: var(--app-pv-icon-fill); fill: none;"></circle>
+											<g transform="translate(7 7)"
+												style="stroke: none; fill: var(--app-pv-icon-fill);">
+												<path
+													d="m9 4h-3v-3c0-0.553-0.447-1-1-1s-1 0.447-1 1v3h-3c-0.553 0-1 0.447-1 1s0.447 1 1 1h3v3c0 0.553 0.447 1 1 1s1-0.447 1-1v-3h3c0.553 0 1-0.447 1-1s-0.447-1-1-1">
+												</path>
+											</g>
+										</svg><span class="control-color-active-label">Body Composition</span></span>
 								</button>
 								<div tabindex="-1" class="control-item-content" aria-hidden="true"
 									aria-labelledby="control-color--button" style="">
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Body Composition.</strong>
-													Fat, muscle, and bone - broken down with gold-standard accuracy for your entire body and 6 areas individually.</p>
-											
+													class="typography-all-access-pass-pv-item-title">Body
+													Composition.</strong>
+												Fat, muscle, and bone - broken down with gold-standard accuracy for your
+												entire body and 6 areas individually.</p>
+
 										</div>
 									</div>
 									<div class="control-item-accessibility-container" style="top: -96px;">
@@ -4148,9 +4304,10 @@
 								</div>
 								<button id="control-tour-sleek-design--button" class="control-item-open"
 									aria-expanded="false" data-tour-media-id="sleek-design">
-									<span class="control-item-label typography-all-access-pass-pv-item-label" style="opacity: 1;">
-										<svg class="plus-icon" version="1.1" width="24px"
-											height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<span class="control-item-label typography-all-access-pass-pv-item-label"
+										style="opacity: 1;">
+										<svg class="plus-icon" version="1.1" width="24px" height="24px"
+											viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 											<circle cx="12" cy="12" r="11.3"
 												style="stroke: var(--app-pv-icon-fill); fill: none;"></circle>
 											<g transform="translate(7 7)"
@@ -4167,9 +4324,11 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Visceral Fat.</strong>
-													The dangerous hidden fat around your organs that drives long-term risk like diabetes and heart disease.
-													</p>
+													class="typography-all-access-pass-pv-item-title">Visceral
+													Fat.</strong>
+												The dangerous hidden fat around your organs that drives long-term risk
+												like diabetes and heart disease.
+											</p>
 										</div>
 									</div>
 									<div class="control-item-accessibility-container" style="top: -96px;">
@@ -4230,8 +4389,10 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Bone Health.</strong> 
-													Fracture risk and Bone density scores to develop a stronger frame and protect against osteoporosis, fractures.</p>
+													class="typography-all-access-pass-pv-item-title">Bone
+													Health.</strong>
+												Fracture risk and Bone density scores to develop a stronger frame and
+												protect against osteoporosis, fractures.</p>
 										</div>
 									</div>
 									<div class="control-item-accessibility-container" style="top: -96px;">
@@ -4290,7 +4451,8 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Aerobic Capacity (VO₂max).</strong> 
+													class="typography-all-access-pass-pv-item-title">Aerobic Capacity
+													(VO₂max).</strong>
 												The gold standard for endurance and cardiovascular fitness.</p>
 										</div>
 									</div>
@@ -4350,7 +4512,8 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Breathing Efficiency.</strong> 
+													class="typography-all-access-pass-pv-item-title">Breathing
+													Efficiency.</strong>
 												How well your lungs and muscles use oxygen during activity.</p>
 										</div>
 									</div>
@@ -4413,8 +4576,10 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Thresholds & Training Zones.</strong> 
-												Pinpoint exactly where your body shifts from aerobic to anaerobic — and tailor training to it.</p>
+													class="typography-all-access-pass-pv-item-title">Thresholds &
+													Training Zones.</strong>
+												Pinpoint exactly where your body shifts from aerobic to anaerobic — and
+												tailor training to it.</p>
 										</div>
 									</div>
 									<div class="control-item-accessibility-container" style="top: -96px;">
@@ -4475,7 +4640,8 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Resting Metabolism (RMR).</strong>
+													class="typography-all-access-pass-pv-item-title">Resting Metabolism
+													(RMR).</strong>
 												Discover how many calories your body burns at rest.</p>
 										</div>
 									</div>
@@ -4535,7 +4701,8 @@
 									<div class="control-item-content-mask">
 										<div class="control-item-content-inner">
 											<p class="typography-all-access-pass-pv-item-body"><strong
-													class="typography-all-access-pass-pv-item-title">Fuel Utilization.</strong>
+													class="typography-all-access-pass-pv-item-title">Fuel
+													Utilization.</strong>
 												See whether your body is burning carbs or fat for energy.</p>
 										</div>
 									</div>
@@ -4622,7 +4789,10 @@
 						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">Know your body, with clarity.</p>
 					<div class="section-intro-copy typography-section-intro-copy" data-staggered-item=""
 						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">
-						<p>Our AI-powered scans go beyond collecting endless numbers — they highlight what truly matters for your health. Instead of overwhelming you with metrics, Body Insight distills them into insights you can act on. Because when it comes to your body, more isn’t always better — better is better.</p>
+						<p>Our AI-powered scans go beyond collecting endless numbers — they highlight what truly matters
+							for your health. Instead of overwhelming you with metrics, Body Insight distills them into
+							insights you can act on. Because when it comes to your body, more isn’t always better —
+							better is better.</p>
 					</div>
 				</div>
 			</div>
@@ -4662,13 +4832,18 @@
 			<div class="static-blur" data-blur-anchor="" data-anim-lazy-image="">
 				<div class="viewport-content row" data-analytics-section-engagement="name:blood pressure">
 					<div data-component-list="StaggeredFadeIn" class="staggered-start">
-						
+
 						<div class="section-subheadline">
 							<h3 class="section-subheadline-header typography-section-subheadline column large-7 medium-8 small-12"
-								data-staggered-item="" style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">Reports delivered instantly on our app</h3>
+								data-staggered-item="" style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">Reports
+								delivered instantly on our app</h3>
 							<div class="section-subheadline-copy typography-section-intro-copy column large-8 medium-8 small-12"
 								data-staggered-item="" style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">
-								<p>The Body Insight app delivers your results the moment your test is complete — no waiting, no delays. From a single dashboard, you can explore every detail: body composition, visceral fat, bone health, metabolism, and VO₂max performance. Track changes over time, compare past scans, and keep all your health data secure and accessible anytime.</p>
+								<p>The Body Insight app delivers your results the moment your test is complete — no
+									waiting, no delays. From a single dashboard, you can explore every detail: body
+									composition, visceral fat, bone health, metabolism, and VO₂max performance. Track
+									changes over time, compare past scans, and keep all your health data secure and
+									accessible anytime.</p>
 							</div>
 						</div>
 					</div>
@@ -6392,120 +6567,14 @@
 				<div class="section-intro large-8 large-centered small-12 small-uncentered staggered-start"
 					data-component-list="StaggeredFadeIn">
 					<h2 class="section-intro-eyebrow typography-eyebrow-super" data-staggered-item=""
-						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">Safety</h2>
+						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">Trusted by the best</h2>
 					<p class="section-intro-headline typography-section-intro-headline" data-staggered-item=""
-						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">A real lifeline.</p>
+						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">From Indian Cricket to Bollywood.</p>
 					<div class="section-intro-copy typography-section-intro-copy" data-staggered-item=""
 						style="transform: matrix(1, 0, 0, 1, 0, 30); opacity: 0;">
-						<p>Packed with innovative safety firsts, Apple&nbsp;Watch Series&nbsp;11 has your back.
-							It’s&nbsp;designed to summon help when you need it most — even if you can’t reach
-							your&nbsp;iPhone.</p>
-					</div>
-				</div>
-				<div class="inline-media-component-container with-media-ui-button">
-					<div class="video-wrapper" data-video-id="safety-media" data-component-list="InlineMediaDefault">
-						<video id="safety-media"
-							aria-label="Apple Watch Series 11 devices intertwine, aluminum cases, rose gold and polished jet black colors, safety features: medical ID, compass backtrack, emergency call, animation, Sport Bands, light blush and black colors"
-							preload="none" role="img" muted="" playsinline="" data-inline-media=""
-							data-inline-media-basepath="/105/media/us/apple-watch-series-11/2025/cb7dae4b-d675-49db-8fe3-d4f635c1a345/anim/safety/"
-							data-inline-media-pause-on-exit="false"
-							data-inline-media-play-keyframe="{ &quot;start&quot;: &quot;t - 60vh&quot;, &quot;end&quot;: &quot;b&quot; }"
-							data-inline-media-unload-at-end="true"></video>
-						<picture id="overview-safety-safety-endframe-1"
-							class="overview-safety-safety-endframe fallback-frame" data-lazy=""
-							data-download-area-keyframe="{&quot;start&quot;: &quot;t - 150vh&quot;, &quot;end&quot;: &quot;b&quot;, &quot;disabledWhen&quot;: [&quot;inline-media&quot;]}">
-							<source data-empty=""
-								srcset="data:image/gif;base64,R0lGODlhAQABAHAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-								media="(min-width:0px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(max-width:734px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(max-width:1068px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(min-width:0px)"><img src="images/safety_endframe__d9y9nlydlfiq_large.jpg"
-								onload="window.__lp?.(event)"
-								alt="Apple Watch Series 11 devices, aluminum cases, rose gold and polished jet black colors, safety features onscreen: medical ID, compass backtrack, emergency call, Sport Bands, light blush and black colors">
-						</picture>
-						<noscript>
-							<picture class="overview-safety-safety-endframe fallback-frame">
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(max-width:734px)" />
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(max-width:1068px)" />
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(min-width:0px)" />
-								<img src="images/safety_endframe__d9y9nlydlfiq_large.jpg"
-									alt="Apple Watch Series 11 devices, aluminum cases, rose gold and polished jet black colors, safety features onscreen: medical ID, compass backtrack, emergency call, Sport Bands, light blush and black colors">
-							</picture>
-						</noscript>
-						<picture id="overview-safety-safety-endframe-2"
-							class="overview-safety-safety-endframe end-frame" data-lazy=""
-							data-download-area-keyframe="{&quot;start&quot;: &quot;t - 150vh&quot;, &quot;end&quot;: &quot;b&quot;, &quot;disabledWhen&quot;: [&quot;no-inline-media&quot;, &quot;reduced-motion&quot;]}">
-							<source data-empty=""
-								srcset="data:image/gif;base64,R0lGODlhAQABAHAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-								media="(min-width:0px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(max-width:734px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(max-width:1068px)">
-							<source
-								srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-								media="(min-width:0px)"><img src="images/safety_endframe__d9y9nlydlfiq_large.jpg"
-								onload="window.__lp?.(event)" alt="">
-						</picture>
-						<noscript>
-							<picture class="overview-safety-safety-endframe end-frame">
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(max-width:734px)" />
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(max-width:1068px)" />
-								<source
-									srcset="images/safety_endframe__d9y9nlydlfiq_large.jpg, images/safety_endframe__d9y9nlydlfiq_large.jpg 2x"
-									media="(min-width:0px)" />
-								<img src="images/safety_endframe__d9y9nlydlfiq_large.jpg" alt>
-							</picture>
-						</noscript>
-						<picture id="overview-safety-safety-startframe-1"
-							class="overview-safety-safety-startframe start-frame" data-lazy=""
-							data-download-area-keyframe="{&quot;start&quot;: &quot;t - 150vh&quot;, &quot;end&quot;: &quot;b&quot;, &quot;disabledWhen&quot;: [&quot;no-inline-media&quot;, &quot;reduced-motion&quot;]}">
-							<source data-empty=""
-								srcset="data:image/gif;base64,R0lGODlhAQABAHAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
-								media="(min-width:0px)">
-							<source
-								srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-								media="(max-width:734px)">
-							<source
-								srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-								media="(max-width:1068px)">
-							<source
-								srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-								media="(min-width:0px)"><img src="images/safety_startframe__ctwcagxug0ae_large.jpg"
-								onload="window.__lp?.(event)" alt="">
-						</picture>
-						<noscript>
-							<picture class="overview-safety-safety-startframe start-frame">
-								<source
-									srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-									media="(max-width:734px)" />
-								<source
-									srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-									media="(max-width:1068px)" />
-								<source
-									srcset="safety_startframe__ctwcagxug0ae_large.png, safety_startframe__ctwcagxug0ae_large.png 2x"
-									media="(min-width:0px)" />
-								<img src="safety_startframe__ctwcagxug0ae_large.png" alt>
-							</picture>
-						</noscript>
+						<p>From the Indian Cricket Team to Hockey India, from IPL franchises to Bollywood stars — the
+							best rely on Body Insight. With more full-body scans completed than anyone else in India, we
+							bring the same gold-standard testing to you.</p>
 					</div>
 				</div>
 				<div class="large-10 large-centered medium-12 staggered-start" data-component-list="StaggeredFadeIn">
@@ -6708,6 +6777,58 @@
 				</div>
 			</div>
 		</section>
+		<div class="gallery-container" style="margin-top: 60px; position: relative;">
+			<div class="gallery-slider"
+				style="overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 20px 0;">
+				<div class="gallery-track" id="gallery-track"
+					style="display: inline-flex; gap: 20px; animation: scroll 30s linear infinite; width: max-content; padding-left: 20px; padding-right: 20px;">
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/faf.jpeg" alt="Indian Cricket Team using Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/virat.jpeg" alt="Hockey India athletes with Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/surya.jpg" alt="IPL franchises using Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/hardik.jpeg" alt="Bollywood stars with Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/gill.jpeg" alt="Body Insight results dashboard"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/s_patil.jpeg" alt="Professional athletes using Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/wpl.jpeg" alt="Health enthusiasts with Body Insight"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+					<div class="gallery-item"
+						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+						<img src="images/clients/trio.jpg" alt="Body composition scanning process"
+							style="width: auto; height: 100%; object-fit: cover;">
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
 		<section class="section section-incentive background-alt no-pad-bottom staggered-start"
 			data-anim-scroll-group="Incentive" data-analytics-section-engagement="name:why apple"
 			data-component-list="StaggeredFadeIn">
@@ -8509,7 +8630,7 @@
 		role="contentinfo" aria-labelledby="ac-gf-label">
 		<div class="ac-gf-content" data-nosnippet="">
 			<h2 class="ac-gf-label" id="ac-gf-label">Apple Footer</h2>
-			
+
 			<nav class="ac-gf-breadcrumbs" aria-label="Breadcrumbs" role="navigation">
 				<a href="https://www.apple.com/" class="home ac-gf-breadcrumbs-home">
 					<span class="ac-gf-breadcrumbs-home-icon" aria-hidden="true"></span>
