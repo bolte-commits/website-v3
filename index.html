@@ -122,21 +122,6 @@
 	<link rel="stylesheet" href="css/overview.built.css" type="text/css">
 	<script src="js/head.built.js" type="text/javascript" charset="utf-8"></script>
 	<style>
-		/* Gallery slider animation */
-		@keyframes scroll {
-			0% {
-				transform: translateX(0);
-			}
-
-			100% {
-				transform: translateX(-50%);
-			}
-		}
-
-		.gallery-slider:hover .gallery-track {
-			animation-play-state: paused;
-		}
-
 		.gallery-item {
 			transition: none;
 		}
@@ -144,138 +129,8 @@
 		.gallery-item:hover {
 			transform: none;
 		}
-
-		/* Gallery controls */
-		.gallery-controls button:hover {
-			opacity: 0.8;
-			transform: translateY(-1px);
-		}
-
-		.gallery-controls button:active {
-			transform: translateY(0);
-		}
-
-		.gallery-track.paused {
-			animation-play-state: paused;
-		}
 	</style>
 
-	<script>
-		// Gallery controls functionality
-		document.addEventListener('DOMContentLoaded', function () {
-			const galleryTrack = document.getElementById('gallery-track');
-			const gallerySlider = document.querySelector('.gallery-slider');
-
-			let isManualControl = false;
-			let scrollPosition = 0;
-
-			// Function to disable animation and enable manual control
-			function enableManualControl() {
-				isManualControl = true;
-				galleryTrack.style.animation = 'none';
-				gallerySlider.scrollLeft = scrollPosition;
-			}
-
-			// Pause on hover
-			gallerySlider.addEventListener('mouseenter', function () {
-				if (!isManualControl) {
-					galleryTrack.style.animationPlayState = 'paused';
-				}
-			});
-
-			gallerySlider.addEventListener('mouseleave', function () {
-				if (!isManualControl) {
-					galleryTrack.style.animationPlayState = 'running';
-				}
-			});
-
-			// Enable manual scrolling by mouse/touch
-			gallerySlider.addEventListener('wheel', function (e) {
-				e.preventDefault();
-				enableManualControl();
-				scrollPosition += e.deltaY;
-				const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
-				scrollPosition = Math.max(0, Math.min(maxScroll, scrollPosition));
-				gallerySlider.scrollLeft = scrollPosition;
-			});
-
-			// Touch/swipe support with momentum
-			let startX = 0;
-			let startScrollLeft = 0;
-			let lastX = 0;
-			let lastTime = 0;
-			let velocity = 0;
-			let animationId = null;
-
-			gallerySlider.addEventListener('touchstart', function (e) {
-				enableManualControl();
-				startX = e.touches[0].clientX;
-				lastX = startX;
-				startScrollLeft = scrollPosition;
-				lastTime = Date.now();
-				velocity = 0;
-
-				// Cancel any ongoing momentum animation
-				if (animationId) {
-					cancelAnimationFrame(animationId);
-					animationId = null;
-				}
-			});
-
-			gallerySlider.addEventListener('touchmove', function (e) {
-				e.preventDefault();
-				const currentX = e.touches[0].clientX;
-				const currentTime = Date.now();
-				const diff = startX - currentX;
-				const newScrollLeft = startScrollLeft + diff;
-				const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
-				scrollPosition = Math.max(0, Math.min(maxScroll, newScrollLeft));
-				gallerySlider.scrollLeft = scrollPosition;
-
-				// Calculate velocity for momentum
-				if (currentTime - lastTime > 0) {
-					velocity = (lastX - currentX) / (currentTime - lastTime);
-					lastX = currentX;
-					lastTime = currentTime;
-				}
-			});
-
-			gallerySlider.addEventListener('touchend', function (e) {
-				// Apply momentum scrolling
-				if (Math.abs(velocity) > 0.1) {
-					applyMomentum();
-				}
-			});
-
-			function applyMomentum() {
-				const friction = 0.95; // Deceleration factor
-				const minVelocity = 0.1;
-
-				function animate() {
-					if (Math.abs(velocity) < minVelocity) {
-						animationId = null;
-						return;
-					}
-
-					// Apply velocity to position
-					scrollPosition += velocity * 16; // 16ms frame time
-					const maxScroll = galleryTrack.scrollWidth - gallerySlider.clientWidth;
-					scrollPosition = Math.max(0, Math.min(maxScroll, scrollPosition));
-
-					// Update scroll position
-					gallerySlider.scrollLeft = scrollPosition;
-
-					// Apply friction
-					velocity *= friction;
-
-					// Continue animation
-					animationId = requestAnimationFrame(animate);
-				}
-
-				animationId = requestAnimationFrame(animate);
-			}
-		});
-	</script>
 </head>
 
 <body class="page-overview globalheader-dark globalnav-scrim"
@@ -6777,11 +6632,9 @@
 				</div>
 			</div>
 		</section>
-		<div class="gallery-container" style="margin-top: 60px; position: relative;">
-			<div class="gallery-slider"
-				style="overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 20px 0;">
-				<div class="gallery-track" id="gallery-track"
-					style="display: inline-flex; gap: 20px; animation: scroll 30s linear infinite; width: max-content; padding-left: 20px; padding-right: 20px;">
+		<div class="gallery-container" style="margin-top: 60px;">
+			<div class="gallery-slider" style="overflow-x: auto; overflow-y: hidden; padding: 20px 0;">
+				<div class="gallery-track" style="display: flex; gap: 20px; padding: 0 20px;">
 					<div class="gallery-item"
 						style="flex-shrink: 0; height: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
 						<img src="images/clients/faf.jpeg" alt="Indian Cricket Team using Body Insight"
