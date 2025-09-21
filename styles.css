@@ -806,7 +806,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Slider Section */
 .slider-section {
-    padding: 60px 0;
+    padding: 0px 0;
     background: #fff;
     overflow: hidden;
 }
@@ -815,7 +815,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 0px;
 }
 
 /* Swiper customization */
