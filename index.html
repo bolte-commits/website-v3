@@ -895,7 +895,7 @@
                     <!-- Live in luxe content -->
                     <div class="luxe-content">
                         <div class="luxe-image">
-                            <img src="https://placehold.co/600x400" alt="Premium leather accessories" class="luxe-img">
+                            <img src="images/truck-inside.jpg" alt="Premium leather accessories" class="luxe-img">
 						</div>
                         <div class="luxe-text">
                             <!-- Category Pills Slider -->
@@ -906,7 +906,7 @@
                                             <div class="category-pill active">Fitness Centers</div>
 					</div>
                                         <div class="swiper-slide">
-                                            <div class="category-pill">Sports Clubs</div>
+                                            <div class="category-pill">Sports Academies</div>
 						</div>
                                         <div class="swiper-slide">
                                             <div class="category-pill">Apartments</div>
@@ -918,10 +918,8 @@
 			</div>
 		</div>
 
-                            <h3 class="luxe-title" id="category-title">Fitness Centers</h3>
-                            <p class="luxe-description" id="category-description">
-                                Partner with us to offer members medical-grade health testing, boosting retention, differentiation, and premium fitness value.
-                            </p>
+                            <h3 class="luxe-title" id="category-title"></h3>
+                            <p class="luxe-description" id="category-description"></p>
 	</div>
 						</div>
 
@@ -1225,23 +1223,35 @@
 
             // Category content data
             const categoryContent = {
-                'LEATHERLUXE': {
-                    title: 'Live in luxe',
-                    description: 'Crafted from premium Italian leather and precious metals, LeatherLuxe elevates your look with timeless sophistication and style.'
+                'Fitness Centers': {
+                    title: 'Fitness Centers',
+                    description: 'Partner with us to offer members medical-grade health testing, boosting retention, differentiation, and premium fitness value - all on site'
                 },
-                'SPORTFLEX': {
-                    title: 'Move with freedom',
-                    description: 'Engineered with advanced moisture-wicking technology and flexible materials, SportFlex keeps you comfortable during any activity.'
+                'Sports Academies': {
+                    title: 'Sports Academies',
+                    description: 'Enhance your academy\'s training programs with precise health analytics that help young athletes optimize performance, track progress, and prevent injuries.'
                 },
-                'CLOUDKNIT': {
-                    title: 'Ultimate comfort',
-                    description: 'Soft as clouds with breathable knit fabric, CloudKnit provides all-day comfort with a lightweight, airy feel.'
+                'Apartments': {
+                    title: 'Apartments',
+                    description: 'Provide residents with convenient access to advanced health testing, adding premium wellness services to your amenities while engaging the community'
                 },
-                'SUPERKNIT': {
-                    title: 'Performance redefined',
-                    description: 'Advanced knit technology meets superior durability, SuperKnit delivers exceptional performance and long-lasting quality.'
+                'Corporates': {
+                    title: 'Corporates',
+                    description: 'Boost employee wellness and productivity with comprehensive health insights that drive better workplace health outcomes and reduce healthcare costs.'
                 }
             };
+
+            // Initialize content with default active pill (Fitness Centers)
+            function updateContent(categoryName) {
+                const content = categoryContent[categoryName];
+                if (content) {
+                    document.getElementById('category-title').textContent = content.title;
+                    document.getElementById('category-description').textContent = content.description;
+                }
+            }
+
+            // Set initial content for the active pill
+            updateContent('Fitness Centers');
 
             // Handle pill clicks
             document.querySelectorAll('.category-pill').forEach(pill => {
@@ -1252,15 +1262,9 @@
                     // Add active class to clicked pill
                     this.classList.add('active');
 
-                    // Get category name
+                    // Get category name and update content
                     const categoryName = this.textContent.trim();
-
-                    // Update content
-                    const content = categoryContent[categoryName];
-                    if (content) {
-                        document.getElementById('category-title').textContent = content.title;
-                        document.getElementById('category-description').textContent = content.description;
-                    }
+                    updateContent(categoryName);
                 });
             });
 		});
