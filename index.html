@@ -8,47 +8,47 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+
 	<style>
         /* Responsive Hero Images */
         .mobile-hero {
             display: none;
         }
-        
+
         .desktop-hero {
             display: block;
         }
-        
+
         @media (max-width: 768px) {
             .mobile-hero {
                 display: block;
             }
-            
+
             .desktop-hero {
                 display: none;
             }
         }
-        
+
         /* Mobile Slide Image Styling */
         .mobile-slide-image {
             width: 100%;
             margin-bottom: 20px;
         }
-        
+
         .slide-image {
             width: 100%;
 			height: auto;
 			object-fit: contain;
             display: block;
         }
-        
+
         /* Testimonial Large Card Overlay */
         .testimonial-card.large,
         .testimonial-card.overlay {
             position: relative;
             overflow: hidden;
         }
-        
+
         .testimonial-card.large .testimonial-image,
         .testimonial-card.overlay .testimonial-image {
             position: absolute;
@@ -58,19 +58,19 @@
             height: 100%;
             z-index: 1;
         }
-        
+
         .testimonial-card.large .testimonial-image img,
         .testimonial-card.overlay .testimonial-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .testimonial-card.large .testimonial-content,
         .testimonial-card.overlay .testimonial-content {
             position: relative;
             z-index: 2;
-            background: linear-gradient(transparent 60%, rgba(0,0,0,0.8) 100%);
+            background: linear-gradient(transparent 60%, rgba(0, 0, 0, 0.8) 100%);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -78,20 +78,33 @@
             padding: 20px;
             color: white;
         }
-        
+
         .testimonial-card.large .testimonial-name,
         .testimonial-card.large .testimonial-title,
         .testimonial-card.overlay .testimonial-name,
         .testimonial-card.overlay .testimonial-title {
             color: white;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Square images for "Our values drive us" section */
+        .built-device img {
+            width: 80%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .built-device img {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
     <!-- HSA/FSA Banner -->
-     <!--
+    <!--
     <div class="hsa-banner">
         <span>Pay for WHOOP with HSA/FSA — Select Truemed at Checkout.</span>
         <a href="#" class="join-link">Join Now</a>
@@ -140,7 +153,8 @@
                 </h1>
 
                 <p class="hero-description">
-                    We pioneered advanced testing in India - taking DEXA, RMR, and VO₂ max out of hospitals and into fitness, homes, and workplaces, with over 20,000 customers served.
+                    We pioneered advanced testing in India - taking DEXA, RMR, and VO₂ max out of hospitals and into
+                    fitness, homes, and workplaces, with over 20,000 customers served.
                 </p>
 
                 <a href="#" class="cta-button">BOOK APPOINTMENT</a>
@@ -159,19 +173,19 @@
                         </h1>
 
                         <p class="section-description">
-                            Our privacy-first AI turns complex measurements into clear, actionable insights - showing you where to focus and how to move forward with confidence.
+                            Our privacy-first AI turns complex measurements into clear, actionable insights - showing
+                            you where to focus and how to move forward with confidence.
                         </p>
 							</div>
 
                     <div class="wear-image-container">
-                        <img src="images/ai.jpg"
-                            alt="Person running in desert" class="wear-image">
+                        <img src="images/ai.jpg" alt="Person running in desert" class="wear-image">
 				</div>
 			</div>
 		</section>
 
-              <!-- Fourth Section - Our Services -->
-              <section class="" style="background-color: black; padding: 80px 0;">
+            <!-- Fourth Section - Our Services -->
+            <section class="" style="background-color: black; padding: 80px 0;">
                 <div class="padded-content">
                     <div class="section-text">
                         <h1 class="section-title" style="color: white !important;">
@@ -188,8 +202,9 @@
                         <div class="service-card">
                             <div class="service-header">
                                 <h3 class="service-name">DEXA+</h3>
-                                <p class="service-description">Clear insights on fat, muscle, visceral fat, bone, and metabolism - measured with clinical accuracy.
-                                    </p>
+                                <p class="service-description">Clear insights on fat, muscle, visceral fat, bone, and
+                                    metabolism - measured with clinical accuracy.
+                                </p>
 								</div>
 
                             <div class="service-image">
@@ -233,7 +248,8 @@
                         <div class="service-card">
                             <div class="service-header">
                                 <h3 class="service-name">RMR</h3>
-                                <p class="service-description">Discover your true metabolism and learn exactly how to fuel for weight loss, performance, or maintenance.</p>
+                                <p class="service-description">Discover your true metabolism and learn exactly how to
+                                    fuel for weight loss, performance, or maintenance.</p>
 									</div>
 
                             <div class="service-image">
@@ -277,7 +293,8 @@
                         <div class="service-card">
                             <div class="service-header">
                                 <h3 class="service-name">VO2 MAX</h3>
-                                <p class="service-description">See how efficiently your body uses oxygen — and get zones to train smarter, improve stamina, recover faster.</p>
+                                <p class="service-description">See how efficiently your body uses oxygen — and get zones
+                                    to train smarter, improve stamina, recover faster.</p>
 							</div>
 
                             <div class="service-image">
@@ -328,7 +345,8 @@
                                     <div class="service-card mobile">
                                         <div class="service-header">
                                             <h3 class="service-name">DEXA+</h3>
-                                            <p class="service-description">Clear insights on fat, muscle, visceral fat, bone, and metabolism - measured with clinical accuracy.
+                                            <p class="service-description">Clear insights on fat, muscle, visceral fat,
+                                                bone, and metabolism - measured with clinical accuracy.
 											</p>
 										</div>
 
@@ -375,8 +393,9 @@
                                     <div class="service-card mobile">
                                         <div class="service-header">
                                             <h3 class="service-name">RMR</h3>
-                                            <p class="service-description">Discover your true metabolism and learn exactly how to fuel for weight loss, performance, or maintenance.
-                                                </p>
+                                            <p class="service-description">Discover your true metabolism and learn
+                                                exactly how to fuel for weight loss, performance, or maintenance.
+                                            </p>
 								</div>
 
                                         <div class="service-image">
@@ -422,8 +441,9 @@
                                     <div class="service-card mobile">
                                         <div class="service-header">
                                             <h3 class="service-name">VO2 MAX</h3>
-                                            <p class="service-description">See how efficiently your body uses oxygen — and get zones to train smarter, improve stamina, recover faster.
-                                                </p>
+                                            <p class="service-description">See how efficiently your body uses oxygen —
+                                                and get zones to train smarter, improve stamina, recover faster.
+                                            </p>
 								</div>
 
                                         <div class="service-image">
@@ -472,12 +492,12 @@
                     <div class="membership-card mobile">
                         <div class="membership-content mobile">
                             <div class="membership-image">
-                                <img src="images/confused.jpg"
-                                    alt="WHOOP members in kitchen" />
+                                <img src="images/confused.jpg" alt="WHOOP members in kitchen" />
 										</div>
                             <div class="membership-text">
                                 <h1 class="membership-title">Find the right test for you</h1>
-                                <p class="membership-description">Not everyone needs all the tests. Let us help you find the best package for you</p>
+                                <p class="membership-description">Not everyone needs all the tests. Let us help you find
+                                    the best package for you</p>
                                 <button class="membership-cta">TALK TO US</button>
 									</div>
 					</div>
@@ -487,7 +507,7 @@
 
 
             <!-- Third Section - Unlock the full picture of your health -->
-            <section class="" style="padding: 80px; padding-bottom: 40px;">
+            <section class="" style="padding-top: 80px; padding-bottom: 40px;">
                 <div class="padded-content">
                     <div class="section-text">
                         <h1 class="section-title">
@@ -495,7 +515,8 @@
                         </h1>
 
                         <p class="section-description">
-                            The Body Insight app breaks down every metric — what it means, why it matters, and how you can improve it - so you never get lost in the numbers.
+                            The Body Insight app breaks down every metric — what it means, why it matters, and how you
+                            can improve it - so you never get lost in the numbers.
 										</p>
 									</div>
 										</div>
@@ -578,13 +599,13 @@
                         <div class="swiper-button-next" id="main-slider-next"></div>
                         <div class="swiper-button-prev" id="main-slider-prev"></div>
 									</div>
-                    
+
                     <!-- Pagination dots outside swiper -->
                     <div class="swiper-pagination" id="main-slider-pagination"></div>
 			</div>
 		</section>
 
-          
+
 
             <!-- Clients Section -->
             <section class="clients-section">
@@ -636,7 +657,8 @@
 
                         <div class="testimonial-card quote large">
                             <div class="testimonial-quote">
-                                <h3>"With Body Insight, performance is measured, not guessed - and that keeps our players ready."</h3>
+                                <h3>"With Body Insight, performance is measured, not guessed - and that keeps our
+                                    players ready."</h3>
                                 <div class="testimonial-author">
                                     <h4 class="author-name">Basu Shankar</h4>
                                     <h4 class="author-title">S&C Coach, RCB & Team India</h4>
@@ -679,7 +701,8 @@
 
                         <div class="testimonial-card quote">
                             <div class="testimonial-quote">
-                                <h3>"Every superstar I train wants results. Body Insight gives me the roadmap to deliver them."</h3>
+                                <h3>"Every superstar I train wants results. Body Insight gives me the roadmap to deliver
+                                    them."</h3>
                                 <div class="testimonial-author">
                                     <h4 class="author-name">Arun Bhattacharya</h4>
                                     <h4 class="author-title">Celebrity Trainer</h4>
@@ -721,12 +744,13 @@
 
                         <div class="testimonial-card quote">
                             <div class="testimonial-quote">
-                                <h3>"It’s the ultimate add-on for a gym: members see real results, and we build real trust."</p>
-                                <div class="testimonial-author">
-                                    <span class="author-name">Sai Prasanna.</span>
-                                    <span class="author-title">Owner, A3 Performance</span>
+                                <h3>"It’s the ultimate add-on for a gym: members see real results, and we build real
+                                    trust."</p>
+                                    <div class="testimonial-author">
+                                        <span class="author-name">Sai Prasanna.</span>
+                                        <span class="author-title">Owner, A3 Performance</span>
 											</div>
-                                <button class="testimonial-expand">+</button>
+                                    <button class="testimonial-expand">+</button>
 										</div>
 									</div>
 										</div>
@@ -749,50 +773,46 @@
                             <div class="built-features-desktop">
                                 <div class="feature-item">
                                     <div class="feature-content-inline">
-                                        <h1 class="feature-text">Zero distractions</h1>
+                                        <h1 class="feature-text">Accurate</h1>
                                         <div class="feature-description">
-                                            <p>A screen-free design means no pings, distractions, or unnecessary bells &
-                                                whistles.</p>
+                                            <p>Clinical-grade precision that turns complex health data into clear truth.
+                                            </p>
 										</div>
 				</div>
 			</div>
                                 <div class="feature-item">
                                     <div class="feature-content-inline">
-                                        <h1 class="feature-text">Always on sensors</h1>
+                                        <h1 class="feature-text">Accessible</h1>
                                         <div class="feature-description">
-                                            <p>Continuous monitoring with advanced sensors that work 24/7 without
-                                                interruption.</p>
+                                            <p>Advanced testing brought outside hospitals, into gyms, homes, offices.
+                                            </p>
 			</div>
 											</div>
 												</div>
                                 <div class="feature-item active">
                                     <div class="feature-content-inline">
-                                        <h1 class="feature-text">14+ day battery life</h1>
+                                        <h1 class="feature-text">Affordable</h1>
                                         <div class="feature-description">
-                                            <p>Power up on-the-go and stay charged with the waterproof Wireless
-                                                PowerPack.</p>
+                                            <p>World-class scans and insights at prices that everyone can afford.</p>
 											</div>
 										</div>
 									</div>
                                 <div class="feature-item">
                                     <div class="feature-content-inline">
-                                        <h1 class="feature-text">Completely customizable</h1>
+                                        <h1 class="feature-text">Actionable</h1>
                                         <div class="feature-description">
-                                            <p>Create a look that's uniquely you, or wear WHOOP off-wrist with all-new
-                                                WHOOP Body Smart Apparel.</p>
+                                            <p>Every number explained with clear steps to improve and progress.</p>
 										</div>
 								</div>
 											</div>
 												</div>
 
-                            <button class="built-cta">JOIN NOW</button>
+                            <button class="built-cta">BOOK APPOINTMENT</button>
 											</div>
 
                         <div class="built-device">
                             <div class="device-container">
-                                <img src="https://placehold.co/400x500" alt="WHOOP Device" class="device-image">
-                                <div class="device-light"></div>
-                                <button class="device-pause">⏸</button>
+                                <img src="images/icon.png" alt="WHOOP Device" class="device-image">
 										</div>
 									</div>
 										</div>
@@ -803,36 +823,34 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide bg-black">
                                     <div class="mobile-slide-content">
-                                        <h3 class="mobile-slide-title">Always on sensors</h3>
+                                        <h3 class="mobile-slide-title">Accurate</h3>
                                         <p class="mobile-slide-description">
-                                            For unmatched precision and insights, heart rate sensors collect data points
-                                            every second—24/7.
+                                            Clinical-grade precision that turns complex health data into clear truth.
                                         </p>
 								</div>
 											</div>
                                 <div class="swiper-slide bg-black">
                                     <div class="mobile-slide-content">
-                                        <h3 class="mobile-slide-title">14+ day battery life</h3>
+                                        <h3 class="mobile-slide-title">Accessible</h3>
                                         <p class="mobile-slide-description">
-                                            Power up on-the-go and stay charged with the waterproof Wireless PowerPack.
+                                            Advanced testing brought outside hospitals, into gyms, homes, and
+                                            workplaces.
                                         </p>
 												</div>
 											</div>
                                 <div class="swiper-slide bg-black">
                                     <div class="mobile-slide-content">
-                                        <h3 class="mobile-slide-title">Zero distractions</h3>
+                                        <h3 class="mobile-slide-title">Affordable</h3>
                                         <p class="mobile-slide-description">
-                                            A screen-free design means no pings, distractions, or unnecessary bells &
-                                            whistles.
+                                            World-class scans and insights at prices which everyone can afford.
                                         </p>
 										</div>
 									</div>
                                 <div class="swiper-slide bg-black">
                                     <div class="mobile-slide-content">
-                                        <h3 class="mobile-slide-title">Completely customizable</h3>
+                                        <h3 class="mobile-slide-title">Actionable</h3>
                                         <p class="mobile-slide-description">
-                                            Create a look that's uniquely you, or wear WHOOP off-wrist with all-new
-                                            WHOOP Body Smart Apparel.
+                                            Every number explained with clear steps to improve and progress.
                                         </p>
 										</div>
 								</div>
@@ -854,30 +872,30 @@
 				</div>
 
 
-                   <!-- Mobile Category Pills Slider (above image) -->
-                   <div class="mobile-category-pills">
-                       <div class="swiper mobile-category-swiper">
-                           <div class="swiper-wrapper">
-                               <div class="swiper-slide">
-                                   <div class="category-pill active">LEATHERLUXE</div>
+                    <!-- Mobile Category Pills Slider (above image) -->
+                    <div class="mobile-category-pills">
+                        <div class="swiper mobile-category-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="category-pill active">LEATHERLUXE</div>
 				</div>
-                               <div class="swiper-slide">
-                                   <div class="category-pill">SPORTFLEX</div>
+                                <div class="swiper-slide">
+                                    <div class="category-pill">SPORTFLEX</div>
 				</div>
-                               <div class="swiper-slide">
-                                   <div class="category-pill">CLOUDKNIT</div>
+                                <div class="swiper-slide">
+                                    <div class="category-pill">CLOUDKNIT</div>
 					</div>
-                               <div class="swiper-slide">
-                                   <div class="category-pill">SUPERKNIT</div>
+                                <div class="swiper-slide">
+                                    <div class="category-pill">SUPERKNIT</div>
 				</div>
 		</div>
 						</div>
 					</div>
 
-                   <!-- Live in luxe content -->
-                   <div class="luxe-content">
-                       <div class="luxe-image">
-                           <img src="https://placehold.co/600x400" alt="Premium leather accessories" class="luxe-img">
+                    <!-- Live in luxe content -->
+                    <div class="luxe-content">
+                        <div class="luxe-image">
+                            <img src="https://placehold.co/600x400" alt="Premium leather accessories" class="luxe-img">
 						</div>
                         <div class="luxe-text">
                             <!-- Category Pills Slider -->
@@ -914,12 +932,15 @@
                             <div class="try-whoop-text">
                                 <h1 class="try-whoop-title">No other wearable lets you try before you buy</h1>
                                 <p class="try-whoop-description">
-                                    Get a 1-month free trial of Peak membership with a certified pre-owned WHOOP 5.0 device to improve fitness, manage stress, and receive personalized guidance to optimize your Healthspan.
+                                    Get a 1-month free trial of Peak membership with a certified pre-owned WHOOP 5.0
+                                    device to improve fitness, manage stress, and receive personalized guidance to
+                                    optimize your Healthspan.
                                 </p>
                                 <a href="#" class="try-whoop-btn">TRY WHOOP FOR FREE</a>
 					</div>
                             <div class="try-whoop-devices">
-                                <img src="https://placehold.co/800x600" alt="WHOOP Devices - Watch, Charger and App" class="devices-composite">
+                                <img src="https://placehold.co/800x600" alt="WHOOP Devices - Watch, Charger and App"
+                                    class="devices-composite">
 						</div>
 					</div>
 						</div>
@@ -1023,13 +1044,14 @@
             <div class="footer-bottom">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="https://via.placeholder.com/200x60/ffffff/ffffff?text=WHOOP" alt="WHOOP" class="footer-logo-img">
+                        <img src="https://via.placeholder.com/200x60/ffffff/ffffff?text=WHOOP" alt="WHOOP"
+                            class="footer-logo-img">
 					</div>
                     <p class="footer-mission">
                         Our mission at WHOOP is to unlock human performance and Healthspan.
                     </p>
 				</div>
-                
+
                 <div class="footer-meta">
                     <div class="copyright">© 2025 WHOOP</div>
                     <div class="country-selector">
@@ -1049,7 +1071,7 @@
 
         function updateHeader() {
             const scrollY = window.scrollY;
-            
+
             if (scrollY > lastScrollY && scrollY > 100) {
                 // Scrolling down & past 100px - hide header
                 header.style.transform = 'translateY(-100%)';
@@ -1057,7 +1079,7 @@
                 // Scrolling up or at top - show header
                 header.style.transform = 'translateY(0)';
             }
-            
+
             lastScrollY = scrollY;
             ticking = false;
         }
@@ -1076,7 +1098,7 @@
             const scrollPosition = window.scrollY;
             const viewportHeight = window.innerHeight;
             const heroSection = document.querySelector('.hero-section');
-            
+
             // Calculate scroll progress based on when scrollable content reaches top
             // Complete darkness when scrolled 1 viewport height (when content hits top)
             const scrollProgress = Math.min(scrollPosition / viewportHeight, 1);
@@ -1127,7 +1149,7 @@
                     nextEl: '#main-slider-next',
                     prevEl: '#main-slider-prev',
                 },
-                
+
                 // Pagination dots
                 pagination: {
                     el: '#main-slider-pagination',
