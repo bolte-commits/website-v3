@@ -43,12 +43,14 @@
         }
         
         /* Testimonial Large Card Overlay */
-        .testimonial-card.large {
+        .testimonial-card.large,
+        .testimonial-card.overlay {
             position: relative;
             overflow: hidden;
         }
         
-        .testimonial-card.large .testimonial-image {
+        .testimonial-card.large .testimonial-image,
+        .testimonial-card.overlay .testimonial-image {
             position: absolute;
             top: 0;
             left: 0;
@@ -57,13 +59,15 @@
             z-index: 1;
         }
         
-        .testimonial-card.large .testimonial-image img {
+        .testimonial-card.large .testimonial-image img,
+        .testimonial-card.overlay .testimonial-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .testimonial-card.large .testimonial-content {
+        .testimonial-card.large .testimonial-content,
+        .testimonial-card.overlay .testimonial-content {
             position: relative;
             z-index: 2;
             background: linear-gradient(transparent 60%, rgba(0,0,0,0.8) 100%);
@@ -76,7 +80,9 @@
         }
         
         .testimonial-card.large .testimonial-name,
-        .testimonial-card.large .testimonial-title {
+        .testimonial-card.large .testimonial-title,
+        .testimonial-card.overlay .testimonial-name,
+        .testimonial-card.overlay .testimonial-title {
             color: white;
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
@@ -673,17 +679,17 @@
 
                         <div class="testimonial-card quote">
                             <div class="testimonial-quote">
-                                <h3>"WHOOP has been a huge motivator to a healthier lifestyle."</h3>
+                                <h3>"Every superstar I train wants results. Body Insight gives me the roadmap to deliver them."</h3>
                                 <div class="testimonial-author">
-                                    <h4 class="author-name">Ashlynn P.</h4>
-                                    <h4 class="author-title">WHOOP member</h4>
+                                    <h4 class="author-name">Arun Bhattacharya</h4>
+                                    <h4 class="author-title">Celebrity Trainer</h4>
 						</div>
                                 <button class="testimonial-expand">+</button>
 							</div>
 							</div>
 
                         <!-- Row 3 -->
-                        <div class="testimonial-card">
+                        <div class="testimonial-card overlay">
                             <div class="testimonial-image">
                                 <img src="images/clients/sanju.jpg" alt="Sanju Samson">
 						</div>
@@ -693,9 +699,9 @@
 							</div>
 							</div>
 
-                        <div class="testimonial-card">
+                        <div class="testimonial-card overlay">
                             <div class="testimonial-image">
-                                <img src="images/clients/s_patil.jpeg" alt="Nelly Korda">
+                                <img src="images/clients/s_patil.jpeg" alt="Shreyanka Patil">
 						</div>
                             <div class="testimonial-content">
                                 <h3 class="testimonial-name">Shreyanka Patil</h3>
@@ -703,7 +709,7 @@
 					</div>
 				</div>
 
-                        <div class="testimonial-card">
+                        <div class="testimonial-card overlay">
                             <div class="testimonial-image">
                                 <img src="images/clients/wpl.jpeg" alt="Dane Van Niekerk">
 			</div>
@@ -715,10 +721,10 @@
 
                         <div class="testimonial-card quote">
                             <div class="testimonial-quote">
-                                <h3>"Healthspan has helped me adjust my behaviors to help increase longevity."</p>
+                                <h3>"It’s the ultimate add-on for a gym: members see real results, and we build real trust."</p>
                                 <div class="testimonial-author">
-                                    <span class="author-name">Ellie G.</span>
-                                    <span class="author-title">WHOOP member</span>
+                                    <span class="author-name">Sai Prasanna.</span>
+                                    <span class="author-title">Owner, A3 Performance</span>
 											</div>
                                 <button class="testimonial-expand">+</button>
 										</div>
