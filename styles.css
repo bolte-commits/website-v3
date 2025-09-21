@@ -1224,8 +1224,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-card.quote {
-    background: #000;
-    color: white;
+    color: black;
     padding: 30px;
     display: flex;
     align-items: center;
@@ -1282,8 +1281,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-name {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 5px;
     color: #fff;
 }
@@ -1329,6 +1328,7 @@ h1, h2, h3, h4, h5, h6 {
 .testimonial-author {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .author-name {
@@ -1339,7 +1339,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .author-title {
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* Services Mobile Responsive */
