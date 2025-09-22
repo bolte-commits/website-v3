@@ -656,6 +656,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* Hide CTA button on desktop */
+@media (min-width: 1024px) {
+    .cta-button {
+        display: none;
+    }
+}
+
 /* Scrollable Content Container */
 .scrollable-content {
     position: relative;
@@ -1747,7 +1754,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .feature-item.active .feature-text {
-    font-size: 34px;
+    font-size: 40px;
 }
 
 .feature-content-inline {
