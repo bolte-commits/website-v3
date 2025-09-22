@@ -450,8 +450,8 @@ h1, h2, h3, h4, h5, h6 {
     .try-whoop-section {
         background: #f8f8f8;
         border-radius: 20px;
-        padding: 40px 20px;
-        margin: 40px 0;
+        padding: 20px !important;
+        margin: 40px 0 !important;
     }
 
     .try-whoop-content {
@@ -911,6 +911,8 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    margin-left: 10px;
+    margin-right: 10px;
     padding: 0 0px;
 }
 
