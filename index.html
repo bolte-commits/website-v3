@@ -138,6 +138,20 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-overlay">
+        <button class="mobile-nav-close">&times;</button>
+        <div class="mobile-nav-content">
+            <nav class="mobile-nav">
+                <a href="#services"><h4>SERVICES</h4></a>
+                <a href="#app"><h4>OUR APP</h4></a>
+                <a href="#clients"><h4>CLIENTS</h4></a>
+                <a href="#collaborations"><h4>COLLABORATIONS</h4></a>
+                <a href="#" class="mobile-join-btn"><h4>BOOK APPOINTMENT</h4></a>
+            </nav>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="main-content">
         <div class="hero-section">
@@ -152,7 +166,7 @@
                 </h1>
 
                 <p class="hero-description">
-                    We pioneered advanced testing in India - taking DEXA, RMR, and VO₂ max out of hospitals and into
+                    We pioneered advanced testing in India - taking them out of hospitals and into
                     fitness, homes, and workplaces, with over 20,000 customers served.
                 </p>
 
@@ -1068,6 +1082,40 @@
         }
 
         window.addEventListener('scroll', requestTick);
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+        const mobileNavClose = document.querySelector('.mobile-nav-close');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+        // Toggle mobile menu
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu with close button
+        mobileNavClose.addEventListener('click', function() {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on overlay
+        mobileNavOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileNavOverlay) {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking on navigation links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
         // Progressive darkening effect on scroll
         window.addEventListener('scroll', function () {
