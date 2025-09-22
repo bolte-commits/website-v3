@@ -1353,6 +1353,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
 }
 
 .play-button {
@@ -2342,6 +2343,7 @@ h1, h2, h3, h4, h5, h6 {
         height: 100%;
         object-fit: cover;
         display: block;
+        object-position: center top;
     }
 
     .testimonial-card.mobile.large .testimonial-content {
