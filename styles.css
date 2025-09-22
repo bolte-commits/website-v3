@@ -496,6 +496,12 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0 15px;
     }
 
+    .slider-container.slider-container-mobile {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 0 px;
+    }
+
     .swiper {
         padding-bottom: 0;
     }
@@ -911,8 +917,6 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    margin-left: 10px;
-    margin-right: 10px;
     padding: 0 0px;
 }
 
