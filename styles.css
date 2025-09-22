@@ -930,7 +930,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
     position: relative;
     height: auto;
 }
@@ -1314,6 +1314,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 60px;
 }
 
+/* Hide mobile testimonials on desktop */
+.testimonials-mobile {
+    display: none;
+}
+
 .testimonial-card {
     border-radius: 20px;
     overflow: hidden;
@@ -1469,19 +1474,19 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     /* DEXA+ mobile card specific background - targeting first mobile service card */
-    .service-card.mobile:first-child {
+    .services-swiper .swiper-slide:nth-child(1) .service-card.mobile {
         background: radial-gradient(145.07% 141.42% at 100% 0%, #AAAAAA99 3.9%, #EEEEEE66 46.13%, #DDDDDDFC 72.5%, #BBBBBB33 100%), #FFF;
         min-height: 500px;
         justify-content: space-between;
     }
     
     /* RMR mobile card specific background - targeting second mobile service card */
-    .service-card.mobile:nth-child(2) {
+    .services-swiper .swiper-slide:nth-child(2) .service-card.mobile {
         background: radial-gradient(145.07% 141.42% at 100% 0%, #ADC2CD 0%, rgba(71, 154, 194, 0)), #FFF;
     }
     
     /* VO2 Max mobile card specific background - targeting third mobile service card */
-    .service-card.mobile:nth-child(3) {
+    .services-swiper .swiper-slide:nth-child(3) .service-card.mobile {
         background: radial-gradient(145.07% 141.42% at 100% 0%, #B7E6DB80 0%, #F6FEECCD 57.37%, #BDB0BE66 100%), #FFF;
     }
     
@@ -1534,11 +1539,66 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 30px;
     }
 
-    /* Testimonials Mobile Layout */
+    /* Hide desktop testimonials on mobile */
     .testimonials-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        display: none !important;
+    }
+
+    /* Mobile Testimonials Swiper */
+    .testimonials-mobile {
+        display: block !important;
         margin-top: 40px;
+    }
+
+    .testimonials-swiper {
+        padding-bottom: 50px;
+    }
+
+    .testimonial-card.mobile {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+        position: relative;
+        height: 400px;
+        margin: 0;
+        width: 100%;
+    }
+
+    .testimonial-card.mobile.large .testimonial-image {
+        height: 300px;
+    }
+
+    .testimonial-card.mobile.large .testimonial-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 30px 20px 20px;
+    }
+
+    .testimonial-card.mobile.quote {
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #f8f8f8;
+        height: 400px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .testimonial-card.mobile.quote h3 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        color: #000;
+    }
+
+    .testimonials-pagination {
+        bottom: 0 !important;
     }
 
     .testimonial-card.large {
@@ -2244,6 +2304,78 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-arrow {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile Testimonials - Separate Media Query */
+@media (max-width: 768px) {
+    .testimonials-mobile {
+        display: block !important;
+        margin-top: 40px;
+    }
+
+    .testimonials-swiper {
+        padding-bottom: 50px;
+    }
+
+    .testimonial-card.mobile {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+        position: relative;
+        height: 400px;
+        margin: 0;
+        width: 100%;
+    }
+
+    .testimonial-card.mobile.large .testimonial-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .testimonial-card.mobile.large .testimonial-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .testimonial-card.mobile.large .testimonial-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 30px 20px 20px;
+        z-index: 2;
+    }
+
+    .testimonial-card.mobile.quote {
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #f8f8f8;
+        height: 400px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .testimonial-card.mobile.quote h3 {
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        color: #000;
+    }
+
+    .testimonials-pagination {
+        bottom: 0 !important;
+    }
 }
 
 /* Footer Mobile Responsive */
