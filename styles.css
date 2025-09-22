@@ -30,6 +30,10 @@ body {
     letter-spacing: 0.5px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Apply Montserrat to all heading elements */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', Arial, sans-serif;
@@ -753,7 +757,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .try-whoop-text {
     flex: 1;
-    text-align: center;
+    text-align: left;
 }
 
 .try-whoop-title {
@@ -1979,6 +1983,64 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
+/* App Download Section */
+.app-download-section {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.app-download-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 24px;
+}
+
+.app-download-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.app-store-btn,
+.play-store-btn {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.app-store-btn:hover,
+.play-store-btn:hover {
+    transform: scale(1.05);
+}
+
+.app-store-btn img,
+.play-store-btn img {
+    height: 60px;
+    width: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .app-download-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .app-download-buttons {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .app-store-btn img,
+    .play-store-btn img {
+        height: 55px;
+        width: 165px;
+    }
+}
+
 /* Newsletter Section */
 .newsletter-section {
     align-self: flex-end;
@@ -2055,7 +2117,7 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
     line-height: 1.5;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 .footer-meta {
