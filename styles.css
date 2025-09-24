@@ -1383,7 +1383,7 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px;
+    padding: 20px 20px 12px 20px;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     color: white;
 }
@@ -1391,7 +1391,7 @@ h1, h2, h3, h4, h5, h6 {
 .testimonial-name {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     color: #fff;
 }
 
@@ -2353,7 +2353,7 @@ h1, h2, h3, h4, h5, h6 {
         right: 0;
         background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
         color: white;
-        padding: 30px 20px 20px;
+        padding: 30px 20px 12px 20px;
         z-index: 2;
     }
 
