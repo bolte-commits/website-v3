@@ -89,7 +89,6 @@ html {
 /* Clients Slider Section */
 .clients-slider-section {
     padding: 60px 0;
-    background: #f8f8f8;
 }
 
 .clients-slider-container {
@@ -130,6 +129,12 @@ html {
     height: 60px;
     width: auto;
     object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.client-item:hover img {
+    filter: grayscale(0%);
 }
 
 /* Larger logos for BCCI and RCB */
