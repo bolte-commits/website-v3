@@ -85,6 +85,49 @@
 
         <!-- Scrollable Content Container -->
         <div class="scrollable-content">
+            <!-- Clients Slider Section -->
+            <section class="clients-slider-section">
+                <div class="">
+                    <div class="clients-slider-container">
+                        <div class="clients-slider">
+                            <div class="clients-track">
+                                <div class="client-item">
+                                    <img src="images/clients/gosports.png" alt="GoSports">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/bcci.png" alt="BCCI">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/rcb.png" alt="RCB">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/reset.png" alt="Reset">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/outfit.png" alt="Outfit">
+                                </div>
+                                <!-- Duplicate for seamless loop -->
+                                <div class="client-item">
+                                    <img src="images/clients/gosports.png" alt="GoSports">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/bcci.png" alt="BCCI">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/rcb.png" alt="RCB">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/reset.png" alt="Reset">
+                                </div>
+                                <div class="client-item">
+                                    <img src="images/clients/outfit.png" alt="Outfit">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Second Section - H -->
             <section class="wear-section">
                 <div class="padded-content">
@@ -1140,8 +1183,31 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
+        // Clients slider visibility control
+        function handleClientsSliderVisibility() {
+            const clientsTrack = document.querySelector('.clients-track');
+            if (!clientsTrack) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        clientsTrack.style.animationPlayState = 'running';
+                    } else {
+                        clientsTrack.style.animationPlayState = 'paused';
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            observer.observe(clientsTrack);
+        }
+
         // Initialize Swiper after library loads
         document.addEventListener('DOMContentLoaded', function () {
+            // Initialize clients slider visibility control
+            handleClientsSliderVisibility();
+
             // Built section accordion functionality
             const featureItems = document.querySelectorAll('.feature-item');
 

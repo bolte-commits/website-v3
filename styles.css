@@ -86,6 +86,119 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Clients Slider Section */
+.clients-slider-section {
+    padding: 60px 0;
+    background: #f8f8f8;
+}
+
+.clients-slider-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.clients-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.clients-track {
+    display: flex;
+    width: 200%;
+    animation: scroll-clients 20s linear infinite;
+    animation-play-state: paused;
+    gap: 60px;
+    margin-left: -60px;
+}
+
+.client-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.client-item:hover {
+    opacity: 1;
+}
+
+.client-item img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Larger logos for BCCI and RCB */
+.client-item img[alt="BCCI"],
+.client-item img[alt="RCB"] {
+    height: 80px;
+}
+
+/* Smaller logos for GoSports and Outfit */
+.client-item img[alt="GoSports"],
+.client-item img[alt="Outfit"] {
+    height: 45px;
+}
+
+/* Slightly smaller logo for Reset */
+.client-item img[alt="Reset"] {
+    height: 50px;
+}
+
+@media (max-width: 768px) {
+    .client-item img[alt="BCCI"],
+    .client-item img[alt="RCB"] {
+        height: 65px;
+    }
+    
+    .client-item img[alt="GoSports"],
+    .client-item img[alt="Outfit"] {
+        height: 35px;
+    }
+    
+    .client-item img[alt="Reset"] {
+        height: 40px;
+    }
+}
+
+@keyframes scroll-clients {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Ensure infinite loop */
+.clients-track {
+    animation-iteration-count: infinite;
+}
+
+/* Pause animation on hover */
+.clients-track:hover {
+    animation-play-state: paused;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .clients-slider-section {
+        padding: 20px 0;
+    }
+    
+    .clients-track {
+        gap: 40px;
+    }
+    
+    .client-item img {
+        height: 45px;
+    }
+}
+
 /* Responsive Hero Images */
 .mobile-hero {
     display: none;
