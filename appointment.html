@@ -150,18 +150,43 @@
             font-family: 'Montserrat', Arial, sans-serif;
         }
 
+        .summary-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .change-button {
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            flex: 1;
+        }
+
+        .change-button:hover {
+            background: #e9ecef;
+            border-color: #d0d0d0;
+        }
+
         .confirm-button {
             background: #28a745;
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 15px 30px;
             border-radius: 10px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
             font-family: 'Montserrat', Arial, sans-serif;
-            margin-top: 20px;
+            flex: 1;
         }
 
         .confirm-button:hover {
@@ -183,6 +208,287 @@
 
         .back-button:hover {
             color: #666;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-email {
+            font-size: 14px;
+            color: #666;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+        .mobile-user-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mobile-user-email {
+            font-size: 14px;
+            color: #666;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .mobile-logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            width: 100%;
+        }
+
+        .mobile-logout-btn:hover {
+            background: #c82333;
+        }
+
+        .pricing-info {
+            margin-top: 20px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-row.total {
+            font-weight: 600;
+        }
+
+        .pricing-label {
+            font-size: 16px;
+            color: #666;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .pricing-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: 700;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .pricing-value.credits {
+            color: #28a745;
+        }
+
+        .pricing-value.total {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 30px 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            text-align: center;
+        }
+
+        .summary-section {
+            margin-bottom: 25px;
+        }
+
+        .summary-section h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 15px 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+
+        /* Confirmation Section Styles */
+        .confirmation-container {
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto 30px;
+            font-weight: bold;
+        }
+
+        .confirmation-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #28a745;
+            margin: 0 0 20px 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .confirmation-message {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            margin: 0 0 40px 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .home-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin-top: 30px;
+        }
+
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px 0 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px 24px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background: #555;
         }
 
 
@@ -212,6 +518,44 @@
                 font-size: 14px;
             }
 
+            .nav-right {
+                gap: 15px;
+            }
+
+            .user-actions {
+                display: none;
+            }
+
+            .summary-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .change-button,
+            .confirm-button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .confirmation-title {
+                font-size: 28px;
+            }
+
+            .confirmation-message {
+                font-size: 16px;
+            }
+
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 36px;
+            }
+
+            .home-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
         }
 
         @media (max-width: 480px) {
@@ -236,26 +580,27 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/logo-dark.png" alt="Body Insight">
+                <a href="index.html">
+                    <img src="images/logo-dark.png" alt="Body Insight">
+                </a>
             </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <a href="index.html#services"><h4>SERVICES</h4></a>
-                <a href="index.html#app"><h4>OUR APP</h4></a>
-                <a href="index.html#clients"><h4>CLIENTS</h4></a>
-                <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
-            </nav>
+            <div class="nav-right">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <a href="index.html#services"><h4>SERVICES</h4></a>
+                    <a href="index.html#app"><h4>OUR APP</h4></a>
+                    <a href="index.html#clients"><h4>CLIENTS</h4></a>
+                    <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
+                </nav>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Join Button -->
-            <a href="option.html" class="join-btn"><h4>BOOK APPOINTMENT</h4></a>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -268,7 +613,10 @@
                 <a href="index.html#app"><h4>OUR APP</h4></a>
                 <a href="index.html#clients"><h4>CLIENTS</h4></a>
                 <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
-                <a href="option.html" class="mobile-join-btn"><h4>BOOK APPOINTMENT</h4></a>
+                <div class="mobile-user-info">
+                    <span id="mobile-user-email" class="mobile-user-email"></span>
+                    <button class="mobile-logout-btn" onclick="logout()">Logout</button>
+                </div>
             </nav>
         </div>
     </div>
@@ -280,10 +628,9 @@
                 Schedule your Body Insight assessment at your convenience
             </p>
 
-
             <!-- Booking Details Section -->
             <div class="booking-details active" id="booking-section">
-                <div class="form-group">
+                <div class="form-group" id="city-group">
                     <label for="city">City *</label>
                     <select id="city" name="city" required onchange="updateLocations()">
                         <option value="">Select your city</option>
@@ -293,7 +640,7 @@
                     <div class="error-message" id="city-error">Please select a city</div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="location-group" style="display: none;">
                     <label for="location">Location & Date *</label>
                     <select id="location" name="location" required onchange="updateTimeSlots()">
                         <option value="">Select location and date</option>
@@ -301,32 +648,99 @@
                     <div class="error-message" id="location-error">Please select a location and date</div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="time-group" style="display: none;">
                     <label for="time">Time Slot *</label>
-                    <select id="time" name="time" required>
+                    <select id="time" name="time" required onchange="showPricingInfo()">
                         <option value="">Select time slot</option>
                     </select>
                     <div class="error-message" id="time-error">Please select a time slot</div>
                 </div>
 
-                <button class="next-button" id="booking-next" onclick="showBookingSummary()">Review Booking</button>
+                <!-- Pricing Information -->
+                <div class="pricing-info" id="pricing-info" style="display: none;">
+                    <div class="pricing-row total">
+                        <span class="pricing-label">Price:</span>
+                        <span class="pricing-value" id="final-price">₹0</span>
+                    </div>
+                </div>
+
+                <button class="next-button" id="booking-next" onclick="showPersonalInfo()">Continue</button>
+            </div>
+
+            <!-- Personal Information Section -->
+            <div class="booking-details" id="personal-section">
+                <h3 class="section-title">Personal Information</h3>
+                
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    <div class="error-message" id="firstName-error">Please enter your first name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    <div class="error-message" id="lastName-error">Please enter your last name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth *</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                    <div class="error-message" id="dateOfBirth-error">Please enter your date of birth</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                    <div class="error-message" id="phoneNumber-error">Please enter a valid phone number</div>
+                </div>
+
+                <button class="confirm-button" id="personal-next" onclick="confirmBooking()">Confirm Appointment</button>
             </div>
 
             <!-- Booking Summary -->
             <div class="booking-details" id="summary-section">
                 <div class="booking-summary">
                     <h3>Booking Summary</h3>
-                    <p><strong>Email:</strong> <span id="summary-email"></span></p>
-                    <p><strong>City:</strong> <span id="summary-city"></span></p>
-                    <p><strong>Location & Date:</strong> <span id="summary-location"></span></p>
-                    <p><strong>Time:</strong> <span id="summary-time"></span></p>
+                    <div class="summary-section">
+                        <h4>Appointment Details</h4>
+                        <p><strong>Location & Date:</strong> <span id="summary-location"></span></p>
+                        <p><strong>Time:</strong> <span id="summary-time"></span></p>
+                    </div>
+                    <div class="summary-section">
+                        <h4>Personal Information</h4>
+                        <p><strong>Name:</strong> <span id="summary-name"></span></p>
+                        <p><strong>Date of Birth:</strong> <span id="summary-dob"></span></p>
+                        <p><strong>Phone:</strong> <span id="summary-phone"></span></p>
+                    </div>
                 </div>
-                <button class="confirm-button" onclick="confirmBooking()">Confirm Appointment</button>
+                <div class="summary-actions">
+                    <button class="change-button" onclick="changeDateTime()">Change Date & Time</button>
+                    <button class="confirm-button" onclick="confirmBooking()">Confirm Appointment</button>
+                </div>
             </div>
 
-            <a href="option.html" class="back-button">
-                ← Back to Options
-            </a>
+            <!-- Booking Confirmation -->
+            <div class="booking-details" id="confirmation-section">
+                <div class="confirmation-container">
+                    <div class="success-icon">✓</div>
+                    <h2 class="confirmation-title">Booking Successful!</h2>
+                    <p class="confirmation-message">
+                        Your appointment has been confirmed. An email has been sent to you with instructions on how to prepare for your appointment.
+                    </p>
+                    
+                    <div class="booking-summary">
+                        <h3>Appointment Details</h3>
+                        <div class="summary-section">
+                            <p><strong>Location & Date:</strong> <span id="confirm-location"></span></p>
+                            <p><strong>Time:</strong> <span id="confirm-time"></span></p>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html" class="home-button">Go to Homepage</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -400,9 +814,136 @@
         </div>
     </footer>
 
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Success</h3>
+                <button class="modal-close" onclick="closeSuccessModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">Your appointment has been booked successfully. An email has been sent to you with instructions on how to prepare for your appointment.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeSuccessModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Error</h3>
+                <button class="modal-close" onclick="closeErrorModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Something went wrong. Please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeErrorModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // API Configuration
+        const API_BASE_URL = 'https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod';
+        
         // Store events data from API
         let storedEvents = {};
+        let authToken = null;
+        let isComplete = false;
+        let userProfile = null;
+
+        // Check for authentication token and verify booking link
+        async function checkAuthentication() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('t');
+            
+            if (!token) {
+                showErrorModal('This link is either invalid or expired.');
+                return false;
+            }
+            
+            try {
+                // Call verifyBookingLink API
+                const response = await fetch(`${API_BASE_URL}/verifyBookingLink`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        token: token
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Check for API-level errors
+                if (data.error) {
+                    throw new Error(data.error.message || data.error || 'API error occurred');
+                }
+                
+                // Store the new token for future requests
+                // Check for token in various possible field names
+                const newToken = data.token || data.authToken || data.accessToken || data.access_token;
+                if (newToken) {
+                    authToken = newToken;
+                } else {
+                    // If no new token is returned, use the original token from URL
+                    authToken = token;
+                }
+                
+                // Store the isComplete property
+                isComplete = data.isComplete === true;
+                
+                // Store the profile data if available
+                if (data.profile) {
+                    userProfile = data.profile;
+                }
+                
+                return true;
+                
+            } catch (error) {
+                showErrorModal('This link is either invalid or expired.');
+                return false;
+            }
+        }
+
+        // Error Modal Functions
+        function showErrorModal(message) {
+            const modal = document.getElementById('errorModal');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message || 'Something went wrong. Please try again.';
+            modal.style.display = 'flex';
+        }
+
+        function showSuccessModal(message) {
+            const modal = document.getElementById('successModal');
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = message || 'Your appointment has been booked successfully. An email has been sent to you with instructions on how to prepare for your appointment.';
+            modal.style.display = 'flex';
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'none';
+            // Redirect to index page after closing success modal
+            window.location.href = 'index.html';
+        }
+
+        function closeErrorModal() {
+            const modal = document.getElementById('errorModal');
+            modal.style.display = 'none';
+            // Redirect to email page after closing error modal
+            window.location.href = 'email.html';
+        }
 
         const timeSlots = [
             "9:00 AM - 10:00 AM",
@@ -419,24 +960,34 @@
             const city = document.getElementById('city').value;
             const locationSelect = document.getElementById('location');
             const timeSelect = document.getElementById('time');
+            const locationGroup = document.getElementById('location-group');
+            const timeGroup = document.getElementById('time-group');
+            const pricingInfo = document.getElementById('pricing-info');
             
             // Clear location and time options
             locationSelect.innerHTML = '<option value="">Select location and date</option>';
             timeSelect.innerHTML = '<option value="">Select time slot</option>';
             
+            // Hide subsequent dropdowns and pricing info
+            locationGroup.style.display = 'none';
+            timeGroup.style.display = 'none';
+            pricingInfo.style.display = 'none';
+            
             if (city) {
                 try {
                     // Show loading state
                     locationSelect.innerHTML = '<option value="">Loading events...</option>';
+                    locationGroup.style.display = 'block';
                     
                     // Make API call
-                    const response = await fetch('https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod/findEvents', {
+                    const response = await fetch(`${API_BASE_URL}/findEvents`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            branch: city
+                            branch: city,
+                            token: authToken
                         })
                     });
                     
@@ -474,43 +1025,256 @@
             }
         }
 
-        function updateTimeSlots() {
+        async function updateTimeSlots() {
             const location = document.getElementById('location').value;
             const timeSelect = document.getElementById('time');
             const city = document.getElementById('city').value;
+            const timeGroup = document.getElementById('time-group');
+            const pricingInfo = document.getElementById('pricing-info');
             
             // Clear time options
             timeSelect.innerHTML = '<option value="">Select time slot</option>';
             
+            // Hide time dropdown and pricing info
+            timeGroup.style.display = 'none';
+            pricingInfo.style.display = 'none';
+            
             if (location && city) {
-                // Find the selected event from the stored events data
-                const selectedEvent = storedEvents[city]?.find(event => event._id === location);
-                
-                if (selectedEvent) {
-                    // Create time slot option using the event's start and end time
-                    const option = document.createElement('option');
-                    option.value = `${selectedEvent.startTime} - ${selectedEvent.endTime}`;
-                    option.textContent = `${selectedEvent.startTime} - ${selectedEvent.endTime}`;
-                    timeSelect.appendChild(option);
-                } else {
-                    // Fallback to static time slots if event not found
-                    timeSlots.forEach(timeSlot => {
-                        const option = document.createElement('option');
-                        option.value = timeSlot;
-                        option.textContent = timeSlot;
-                        timeSelect.appendChild(option);
+                try {
+                    // Show loading state
+                    timeSelect.innerHTML = '<option value="">Loading time slots...</option>';
+                    timeGroup.style.display = 'block';
+                    
+                    // Make API call to findAvailableAppointments
+                    const response = await fetch(`${API_BASE_URL}/findAvailableAppointments`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            token: authToken,
+                            eventId: location
+                        })
                     });
+                    
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error.message || data.error || 'API error occurred');
+                    }
+                    
+                    // Clear loading state
+                    timeSelect.innerHTML = '<option value="">Select time slot</option>';
+                    
+                    // Populate time slots with API data
+                    if (data.appointments && data.appointments.length > 0) {
+                        data.appointments.forEach(appointment => {
+                            const option = document.createElement('option');
+                            option.value = appointment._id;
+                            option.textContent = appointment.displayTime;
+                            option.dataset.amount = appointment.amount;
+                            timeSelect.appendChild(option);
+                        });
+                    } else {
+                        // Fallback to static time slots if no appointments available
+                        timeSlots.forEach(timeSlot => {
+                            const option = document.createElement('option');
+                            option.value = timeSlot;
+                            option.textContent = timeSlot;
+                            timeSelect.appendChild(option);
+                        });
+                    }
+                    
+                } catch (error) {
+                    timeSelect.innerHTML = '<option value="">Error loading time slots</option>';
                 }
             }
         }
 
+        function showPricingInfo() {
+            const timeSelect = document.getElementById('time');
+            const pricingInfo = document.getElementById('pricing-info');
+            const selectedOption = timeSelect.options[timeSelect.selectedIndex];
+            
+            if (selectedOption.value && selectedOption.dataset.amount) {
+                // Show pricing information
+                document.getElementById('final-price').textContent = `₹${selectedOption.dataset.amount}`;
+                pricingInfo.style.display = 'block';
+            } else {
+                // Hide pricing information
+                pricingInfo.style.display = 'none';
+            }
+        }
+
         function showBookingSummary() {
-            const email = document.getElementById('email').value;
             const city = document.getElementById('city').value;
             const location = document.getElementById('location');
             const time = document.getElementById('time');
             
-            // Validate all fields
+            // Always get values from form fields (they are prepopulated if isComplete is true)
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dateOfBirth = document.getElementById('dateOfBirth').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            
+            // Validate all required fields
+            let isValid = true;
+            
+            if (!firstName) {
+                document.getElementById('firstName-error').style.display = 'block';
+                document.getElementById('firstName').classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('firstName-error').style.display = 'none';
+                document.getElementById('firstName').classList.remove('error');
+            }
+            
+            if (!lastName) {
+                document.getElementById('lastName-error').style.display = 'block';
+                document.getElementById('lastName').classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('lastName-error').style.display = 'none';
+                document.getElementById('lastName').classList.remove('error');
+            }
+            
+            if (!dateOfBirth) {
+                document.getElementById('dateOfBirth-error').style.display = 'block';
+                document.getElementById('dateOfBirth').classList.add('error');
+                isValid = false;
+            } else {
+                document.getElementById('dateOfBirth-error').style.display = 'none';
+                document.getElementById('dateOfBirth').classList.remove('error');
+            }
+            
+            if (!isValid) return;
+            
+            // Update summary with personal details from form (whether prepopulated or manually entered)
+            document.getElementById('summary-name').textContent = `${firstName} ${lastName}`;
+            document.getElementById('summary-dob').textContent = dateOfBirth;
+            document.getElementById('summary-phone').textContent = phoneNumber || 'Not provided';
+            
+            // Update appointment details
+            document.getElementById('summary-location').textContent = location.options[location.selectedIndex].text;
+            document.getElementById('summary-time').textContent = time.options[time.selectedIndex].text;
+            
+            // Hide booking section and personal section, show summary
+            document.getElementById('booking-section').classList.remove('active');
+            document.getElementById('personal-section').classList.remove('active');
+            document.getElementById('summary-section').classList.add('active');
+        }
+
+        function changeDateTime() {
+            // Hide summary section and show booking section
+            document.getElementById('summary-section').classList.remove('active');
+            document.getElementById('booking-section').classList.add('active');
+            
+            // Reset city dropdown
+            document.getElementById('city').value = '';
+            
+            // Reset location and time dropdowns
+            document.getElementById('location').innerHTML = '<option value="">Select location and date</option>';
+            document.getElementById('time').innerHTML = '<option value="">Select time slot</option>';
+            
+            // Hide location and time groups
+            document.getElementById('location-group').style.display = 'none';
+            document.getElementById('time-group').style.display = 'none';
+            
+            // Hide pricing info
+            document.getElementById('pricing-info').style.display = 'none';
+        }
+
+        async function confirmBooking() {
+            // Get personal information from form fields or profile data
+            const firstName = document.getElementById('firstName').value || (userProfile ? userProfile.firstName : '');
+            const lastName = document.getElementById('lastName').value || (userProfile ? userProfile.lastName : '');
+            const dateOfBirth = document.getElementById('dateOfBirth').value || (userProfile ? userProfile.dateOfBirth : '');
+            const phoneNumber = document.getElementById('phoneNumber').value || (userProfile ? userProfile.phoneNumber : '');
+            
+            // Validate mandatory personal fields
+            if (!firstName || !lastName || !dateOfBirth) {
+                alert('Please fill in all required fields (First Name, Last Name, and Date of Birth).');
+                return;
+            }
+            
+            const timeSelect = document.getElementById('time');
+            const selectedAppointmentId = timeSelect.value;
+            
+            if (!selectedAppointmentId) {
+                alert('Please select a time slot before confirming.');
+                return;
+            }
+            
+            try {
+                // Show loading state
+                const confirmBtn = document.querySelector('#personal-next');
+                const originalText = confirmBtn.textContent;
+                confirmBtn.disabled = true;
+                confirmBtn.textContent = 'Booking...';
+                
+                const response = await fetch(`${API_BASE_URL}/bookAppointmentWebsite`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        appointmentId: selectedAppointmentId,
+                        token: authToken,
+                        firstName: firstName,
+                        lastName: lastName,
+                        dateOfBirth: dateOfBirth,
+                        phone: phoneNumber || null
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message || data.error || 'API error occurred');
+                }
+                
+                // Success - show confirmation section with all details
+                const locationSelect = document.getElementById('location');
+                const timeSelect = document.getElementById('time');
+                
+                // Update confirmation details
+                document.getElementById('confirm-location').textContent = locationSelect.options[locationSelect.selectedIndex].text;
+                document.getElementById('confirm-time').textContent = timeSelect.options[timeSelect.selectedIndex].text;
+                
+                // Hide personal section and show confirmation
+                document.getElementById('personal-section').classList.remove('active');
+                document.getElementById('confirmation-section').classList.add('active');
+                
+            } catch (error) {
+                const errorMsg = error.message || 'Something went wrong. Please try again.';
+                alert(errorMsg);
+            } finally {
+                // Reset button state
+                const confirmBtn = document.querySelector('#personal-next');
+                if (confirmBtn) {
+                    confirmBtn.disabled = false;
+                    confirmBtn.textContent = 'Confirm Appointment';
+                }
+            }
+        }
+
+
+        function showPersonalInfo() {
+            const city = document.getElementById('city').value;
+            const location = document.getElementById('location');
+            const time = document.getElementById('time');
+            
+            // Only validate city since location and time might not be visible yet
             let isValid = true;
             
             if (!city) {
@@ -522,7 +1286,9 @@
                 document.getElementById('city').classList.remove('error');
             }
             
-            if (!location.value) {
+            // Only validate location if it's visible
+            const locationGroup = document.getElementById('location-group');
+            if (locationGroup.style.display !== 'none' && !location.value) {
                 document.getElementById('location-error').style.display = 'block';
                 location.classList.add('error');
                 isValid = false;
@@ -531,7 +1297,9 @@
                 location.classList.remove('error');
             }
             
-            if (!time.value) {
+            // Only validate time if it's visible
+            const timeGroup = document.getElementById('time-group');
+            if (timeGroup.style.display !== 'none' && !time.value) {
                 document.getElementById('time-error').style.display = 'block';
                 time.classList.add('error');
                 isValid = false;
@@ -542,56 +1310,36 @@
             
             if (!isValid) return;
             
-            // Update summary
-            document.getElementById('summary-email').textContent = email;
-            document.getElementById('summary-city').textContent = city.charAt(0).toUpperCase() + city.slice(1);
-            document.getElementById('summary-location').textContent = location.options[location.selectedIndex].text;
-            document.getElementById('summary-time').textContent = time.value;
-            
-            // Hide booking section and show summary
-            document.getElementById('booking-section').classList.remove('active');
-            document.getElementById('summary-section').classList.add('active');
-        }
-
-        function confirmBooking() {
-            // Here you would typically send the booking data to your backend
-            alert('Appointment booked successfully! You will receive a confirmation email shortly.');
-            
-            // Reset form
-            document.getElementById('email').value = '';
-            document.getElementById('city').value = '';
-            document.getElementById('location').innerHTML = '<option value="">Select location and date</option>';
-            document.getElementById('time').innerHTML = '<option value="">Select time slot</option>';
-            
-            // Show email section again
-            document.getElementById('email-section').style.display = 'block';
-            document.getElementById('booking-section').classList.remove('active');
-            document.getElementById('summary-section').classList.remove('active');
-        }
-
-        // Check for authentication
-        function checkAuthentication() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const email = urlParams.get('email');
-            const authToken = localStorage.getItem('authToken');
-            const storedEmail = localStorage.getItem('userEmail');
-            
-            // Check if user is properly authenticated
-            if (email && authToken && storedEmail === email) {
-                console.log('User authenticated with email:', email);
-                // User is properly logged in, booking section is already visible
-            } else {
-                // Clear any invalid auth data and redirect to login
-                localStorage.removeItem('authToken');
-                localStorage.removeItem('userEmail');
-                window.location.href = 'login.html';
+            // Prepopulate personal information fields if profile data exists
+            if (userProfile) {
+                document.getElementById('firstName').value = userProfile.firstName || '';
+                document.getElementById('lastName').value = userProfile.lastName || '';
+                document.getElementById('dateOfBirth').value = userProfile.dateOfBirth || '';
+                document.getElementById('phoneNumber').value = userProfile.phoneNumber || '';
             }
+            
+            // Hide booking section and show personal info section
+            document.getElementById('booking-section').classList.remove('active');
+            document.getElementById('personal-section').classList.add('active');
         }
 
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check for authentication on page load
-            checkAuthentication();
+        // Logout function
+        function logout() {
+            // Clear authentication data
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('userEmail');
+            
+            // Redirect to login page
+            window.location.href = 'login.html';
+        }
+
+        // Check authentication and initialize page
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check authentication first
+            const isAuthenticated = await checkAuthentication();
+            if (!isAuthenticated) {
+                return; // Stop execution if authentication fails
+            }
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
             const mobileNavClose = document.querySelector('.mobile-nav-close');

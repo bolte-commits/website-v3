@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Body Insight</title>
+    <title>Send Booking Link - Body Insight</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Handlebars JS -->
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
     <style>
-        /* Login Page Specific Styles */
-        .login-page {
+        /* Email Page Specific Styles */
+        .email-page {
             min-height: 100vh;
             background: #fff;
             color: #333;
-            padding: 120px 20px 40px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
-        .login-container {
+        .email-container {
             max-width: 500px;
             width: 100%;
             text-align: center;
         }
 
-        .login-title {
-            font-size: 48px;
+        .email-title {
+            font-size: 32px;
             font-weight: 700;
             color: #333;
-            margin-bottom: 20px;
-            line-height: 1.1;
+            margin: 0 0 10px 0;
             font-family: 'Montserrat', Arial, sans-serif;
         }
 
-        .login-subtitle {
-            font-size: 20px;
+        .email-subtitle {
+            font-size: 18px;
             color: #666;
-            margin-bottom: 40px;
+            margin: 0 0 40px 0;
             line-height: 1.4;
             font-family: 'Montserrat', Arial, sans-serif;
         }
@@ -48,11 +46,11 @@
             border-radius: 15px;
             padding: 40px;
             margin-bottom: 30px;
-            text-align: left;
         }
 
         .form-group {
             margin-bottom: 25px;
+            text-align: left;
         }
 
         .form-group label {
@@ -66,12 +64,11 @@
 
         .form-group input {
             width: 100%;
-            padding: 15px 20px;
+            padding: 15px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
             font-family: 'Montserrat', Arial, sans-serif;
-            background: white;
             transition: border-color 0.3s ease;
             box-sizing: border-box;
         }
@@ -90,6 +87,7 @@
             font-size: 14px;
             margin-top: 5px;
             display: none;
+            font-family: 'Montserrat', Arial, sans-serif;
         }
 
         .next-button {
@@ -101,9 +99,8 @@
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             font-family: 'Montserrat', Arial, sans-serif;
-            margin-top: 20px;
+            transition: background 0.3s ease;
             width: 100%;
         }
 
@@ -116,71 +113,129 @@
             cursor: not-allowed;
         }
 
-        .otp-info {
-            font-size: 14px;
-            color: #666;
-            margin-top: 8px;
-            font-family: 'Montserrat', Arial, sans-serif;
-        }
-
-        .otp-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .resend-button {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-family: 'Montserrat', Arial, sans-serif;
-            flex: 1;
-        }
-
-        .resend-button:hover {
-            background: #5a6268;
-        }
-
-        .resend-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
         .back-button {
             color: #333;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: color 0.3s ease;
             font-family: 'Montserrat', Arial, sans-serif;
-            margin-top: 20px;
         }
 
         .back-button:hover {
             color: #666;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px 0 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px 24px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background: #555;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .login-page {
-                padding: 100px 15px 20px 15px;
+            .email-page {
+                padding: 15px;
             }
 
-            .login-title {
-                font-size: 36px;
+            .email-container {
+                max-width: 100%;
             }
 
-            .login-subtitle {
-                font-size: 18px;
+            .email-title {
+                font-size: 28px;
+            }
+
+            .email-subtitle {
+                font-size: 16px;
                 margin-bottom: 30px;
             }
 
@@ -189,32 +244,13 @@
             }
 
             .form-group input {
-                padding: 12px 15px;
-                font-size: 14px;
-            }
-
-            .otp-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .resend-button {
-                padding: 12px 25px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .login-title {
-                font-size: 28px;
-            }
-
-            .login-subtitle {
+                padding: 12px;
                 font-size: 16px;
             }
 
-            .form-section {
-                padding: 25px 15px;
+            .next-button {
+                padding: 12px 30px;
+                font-size: 16px;
             }
         }
     </style>
@@ -228,23 +264,22 @@
                 <img src="images/logo-dark.png" alt="Body Insight">
             </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="desktop-nav">
-                <a href="index.html#services"><h4>SERVICES</h4></a>
-                <a href="index.html#app"><h4>OUR APP</h4></a>
-                <a href="index.html#clients"><h4>CLIENTS</h4></a>
-                <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
-            </nav>
+            <div class="nav-right">
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <a href="index.html#services"><h4>SERVICES</h4></a>
+                    <a href="index.html#app"><h4>OUR APP</h4></a>
+                    <a href="index.html#clients"><h4>CLIENTS</h4></a>
+                    <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
+                </nav>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Join Button -->
-            <a href="option.html" class="join-btn"><h4>BOOK APPOINTMENT</h4></a>
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -257,45 +292,63 @@
                 <a href="index.html#app"><h4>OUR APP</h4></a>
                 <a href="index.html#clients"><h4>CLIENTS</h4></a>
                 <a href="index.html#collaborations"><h4>COLLABORATIONS</h4></a>
-                <a href="option.html" class="mobile-join-btn"><h4>BOOK APPOINTMENT</h4></a>
             </nav>
         </div>
     </div>
 
-    <div class="login-page">
-        <div class="login-container">
-            <h1 class="login-title">Login</h1>
-            <p class="login-subtitle">
-                Enter your email to continue with booking
+    <div class="email-page">
+        <div class="email-container">
+            <h1 class="email-title">Book Appointment</h1>
+            <p class="email-subtitle">
+                Enter an email address to book an appointment
             </p>
 
-            <!-- Email Form Section -->
-            <div class="form-section" id="email-section">
+            <div class="form-section">
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <input type="email" id="email" name="email" placeholder="Enter email address" required>
                     <div class="error-message" id="email-error">Please enter a valid email address</div>
                 </div>
-                <button class="next-button" id="email-next" onclick="sendOTP()">Send OTP</button>
-            </div>
-
-            <!-- OTP Verification Section -->
-            <div class="form-section" id="otp-section" style="display: none;">
-                <div class="form-group">
-                    <label for="otp">Enter OTP *</label>
-                    <input type="text" id="otp" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" required>
-                    <div class="error-message" id="otp-error">Please enter a valid OTP</div>
-                    <p class="otp-info">We've sent a 6-digit OTP to <span id="otp-email"></span></p>
-                </div>
-                <div class="otp-buttons">
-                    <button class="next-button" id="verify-otp" onclick="verifyOTP()">Verify OTP</button>
-                    <button class="resend-button" id="resend-otp" onclick="resendOTP()">Resend OTP</button>
+                <div style="text-align: center;">
+                    <button class="next-button" id="send-btn" onclick="sendBookingLink()">Continue</button>
                 </div>
             </div>
 
             <a href="option.html" class="back-button">
                 ← Back to Options
             </a>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Success</h3>
+                <button class="modal-close" onclick="closeSuccessModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">We have sent the booking link to your email. Please check your email and complete the appointment.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeSuccessModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Error</h3>
+                <button class="modal-close" onclick="closeErrorModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Something went wrong. Please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeErrorModal()">OK</button>
+            </div>
         </div>
     </div>
 
@@ -370,11 +423,39 @@
     </footer>
 
     <script>
-        async function sendOTP() {
+        // API Configuration
+        const API_BASE_URL = 'https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod';
+        
+        // Modal Functions
+        function showSuccessModal(message) {
+            const modal = document.getElementById('successModal');
+            const successMessage = document.getElementById('successMessage');
+            successMessage.innerHTML = message || 'We have sent the booking link to your email. Please check your email and complete the appointment.';
+            modal.style.display = 'flex';
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'none';
+        }
+
+        function showErrorModal(message) {
+            const modal = document.getElementById('errorModal');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message || 'Something went wrong. Please try again.';
+            modal.style.display = 'flex';
+        }
+
+        function closeErrorModal() {
+            const modal = document.getElementById('errorModal');
+            modal.style.display = 'none';
+        }
+
+        async function sendBookingLink() {
             const email = document.getElementById('email').value;
             const emailError = document.getElementById('email-error');
             const emailInput = document.getElementById('email');
-            const sendOTPBtn = document.getElementById('email-next');
+            const sendBtn = document.getElementById('send-btn');
             
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
@@ -387,13 +468,13 @@
             emailError.style.display = 'none';
             emailInput.classList.remove('error');
             
+            // Disable button and show loading state
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+            
             try {
-                // Show loading state
-                sendOTPBtn.disabled = true;
-                sendOTPBtn.textContent = 'Sending OTP...';
-                
-                // Make API call to getEmailOtp
-                const response = await fetch('https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod/getEmailOtp', {
+                // Call sendBookingLink API
+                const response = await fetch(`${API_BASE_URL}/sendBookingLink`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -404,121 +485,31 @@
                 });
                 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                console.log('OTP API response:', data);
                 
-                // Show OTP section
-                document.getElementById('otp-email').textContent = email;
-                document.getElementById('email-section').style.display = 'none';
-                document.getElementById('otp-section').style.display = 'block';
-                
-                alert('OTP sent to ' + email + '. Please check your email.');
-                
-            } catch (error) {
-                console.error('Error sending OTP:', error);
-                alert('Failed to send OTP. Please try again.');
-                
-                // Reset button state
-                sendOTPBtn.disabled = false;
-                sendOTPBtn.textContent = 'Send OTP';
-            }
-            
-            return true;
-        }
-
-        async function verifyOTP() {
-            const otp = document.getElementById('otp').value;
-            const otpError = document.getElementById('otp-error');
-            const otpInput = document.getElementById('otp');
-            const verifyBtn = document.getElementById('verify-otp');
-            const email = document.getElementById('otp-email').textContent;
-            
-            // Basic OTP validation (6 digits)
-            const otpRegex = /^\d{6}$/;
-            
-            if (!otp || !otpRegex.test(otp)) {
-                otpError.textContent = 'Please enter a valid 6-digit OTP';
-                otpError.style.display = 'block';
-                otpInput.classList.add('error');
-                return false;
-            }
-            
-            try {
-                // Show loading state
-                verifyBtn.disabled = true;
-                verifyBtn.textContent = 'Verifying...';
-                
-                // Make API call to verifyEmailOtp
-                const response = await fetch('https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod/verifyEmailOtp', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        otp: otp
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // Check for API-level errors
+                if (data.error) {
+                    throw new Error(data.error.message || data.error || 'API error occurred');
                 }
                 
-                const data = await response.json();
-                console.log('OTP verification response:', data);
+                // Show success modal
+                showSuccessModal(`We have sent the booking link to <strong>${email}</strong>. Please check your email and complete the appointment.`);
                 
-                // Check if verification was successful
-                if (data.token) {
-                    // Store token in localStorage for future use
-                    localStorage.setItem('authToken', data.token);
-                    localStorage.setItem('userEmail', email);
-                    
-                    // Clear any errors
-                    otpError.style.display = 'none';
-                    otpInput.classList.remove('error');
-                    
-                    // Redirect to appointment page with email parameter
-                    window.location.href = `appointment.html?email=${encodeURIComponent(email)}`;
-                    
-                    return true;
-                } else {
-                    throw new Error('No token received from server');
-                }
+                // Clear the email field
+                document.getElementById('email').value = '';
                 
             } catch (error) {
-                console.error('Error verifying OTP:', error);
-                
-                // Show error message
-                otpError.textContent = 'Invalid OTP. Please try again.';
-                otpError.style.display = 'block';
-                otpInput.classList.add('error');
-                
-                // Reset button state
-                verifyBtn.disabled = false;
-                verifyBtn.textContent = 'Verify OTP';
-                
-                return false;
+                console.error('Error sending booking link:', error);
+                showErrorModal(error.message || 'Failed to send booking link. Please try again.');
+            } finally {
+                // Re-enable button
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send Booking Link';
             }
-        }
-
-        function resendOTP() {
-            const email = document.getElementById('otp-email').textContent;
-            
-            // Disable resend button temporarily
-            const resendBtn = document.getElementById('resend-otp');
-            resendBtn.disabled = true;
-            resendBtn.textContent = 'Resending...';
-            
-            // Simulate resend delay
-            setTimeout(() => {
-                console.log('OTP resent to:', email);
-                alert('OTP resent to ' + email);
-                resendBtn.disabled = false;
-                resendBtn.textContent = 'Resend OTP';
-            }, 2000);
         }
 
         // Mobile menu functionality
@@ -564,4 +555,5 @@
         });
     </script>
 </body>
+
 </html>
