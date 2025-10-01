@@ -1616,12 +1616,33 @@ h1, h2, h3, h4, h5, h6 {
     grid-row: span 2;
 }
 
+.testimonial-card.large.reduced {
+    grid-row: span 1.4;
+}
+
+.testimonial-card.large.reduced .testimonial-image {
+    height: 100%;
+}
+
 .testimonial-card.quote {
     color: black;
     padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.clients-disclaimer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.clients-disclaimer p {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    line-height: 1.6;
 }
 
 .testimonial-image {
@@ -1632,7 +1653,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-card.large .testimonial-image {
-    height: 300px;
+    height: 100%;
+}
+
+.testimonial-image {
+    height: 100%;
 }
 
 .testimonial-image img {
@@ -1893,11 +1918,15 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .testimonial-image {
-        height: 220px;
+        height: 100%;
     }
 
     .testimonial-card.large .testimonial-image {
-        height: 300px;
+        height: 100%;
+    }
+
+    .testimonial-card.large.reduced .testimonial-image {
+        height: 100%;
     }
 
     .testimonial-content {
@@ -2011,11 +2040,15 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .testimonial-image {
-        height: 250px !important;
+        height: 100% !important;
     }
 
     .testimonial-card.large .testimonial-image {
-        height: 350px !important;
+        height: 100% !important;
+    }
+
+    .testimonial-card.large.reduced .testimonial-image {
+        height: 100% !important;
     }
 
     .testimonial-quote p {
