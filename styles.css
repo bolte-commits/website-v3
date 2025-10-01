@@ -1438,6 +1438,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 12px;
     font-size: 14px;
     color: #000;
+    font-weight: 600;
 }
 
 .feature-header {
@@ -1461,6 +1462,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     gap: 15px;
     flex-shrink: 0;
+    align-items: center;
 }
 
 .service-cta {
@@ -1473,6 +1475,8 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     border: none;
     text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .service-cta.primary {
