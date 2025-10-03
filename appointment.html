@@ -416,6 +416,41 @@
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
 
+        .app-download-prompt {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .app-download-prompt p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .app-download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .app-store-btn,
+        .play-store-btn {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .app-store-btn:hover,
+        .play-store-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .app-store-btn img,
+        .play-store-btn img {
+            height: 50px;
+            width: auto;
+        }
+
         /* Modal Styles */
         .modal-overlay {
             position: fixed;
@@ -744,6 +779,17 @@
                     <p class="confirmation-message">
                         Your appointment has been confirmed. An email has been sent to you with instructions on how to prepare for your appointment.
                     </p>
+                    <div class="app-download-prompt">
+                        <p>Download our app to view your detailed report and track your progress:</p>
+                        <div class="app-download-buttons">
+                            <a href="https://apps.apple.com/us/app/body-insight/id6751254360" target="_blank" class="app-store-btn">
+                                <img src="images/app/appstore.png" alt="Download on the App Store" />
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.bolte.bodyinsight" target="_blank" class="play-store-btn">
+                                <img src="images/app/playstore.png" alt="Get it on Google Play" />
+                            </a>
+                        </div>
+                    </div>
                     
                     <div class="booking-summary">
                         <h3>Appointment Details</h3>
