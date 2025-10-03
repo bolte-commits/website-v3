@@ -18,6 +18,16 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- Optimized Google Fonts - only load weights we use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/logo-dark.png">
+    <link rel="preload" as="image" href="images/truck.jpg">
+    <link rel="preload" as="image" href="images/truck-mobile.jpg">
 
 </head>
 
@@ -25,7 +35,7 @@
     <!-- HSA/FSA Banner -->
     <!--
     <div class="hsa-banner">
-        <span>Pay for WHOOP with HSA/FSA — Select Truemed at Checkout.</span>
+        <span>Pay for Body Insight services with HSA/FSA — Select Truemed at Checkout.</span>
         <a href="#" class="join-link">Join Now</a>
 				</div>
 -->
@@ -34,7 +44,9 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/logo-dark.png" alt="WHOOP">
+                <a href="index.html">
+                    <img src="images/logo-dark.png" alt="Body Insight" fetchpriority="high">
+                </a>
             </div>
 
             <!-- Desktop Navigation -->
@@ -75,8 +87,8 @@
     <main class="main-content">
         <div class="hero-section">
             <div class="hero-background">
-                <img src="images/truck.jpg" alt="Woman working out" class="hero-image desktop-hero">
-                <img src="images/truck-mobile.jpg" alt="Woman working out" class="hero-image mobile-hero">
+                <img src="images/truck.jpg" alt="Woman working out" class="hero-image desktop-hero" fetchpriority="high">
+                <img src="images/truck-mobile.jpg" alt="Woman working out" class="hero-image mobile-hero" fetchpriority="high">
             </div>
 
             <div class="hero-content">
@@ -153,7 +165,7 @@
                     </div>
 
                     <div class="wear-image-container">
-                        <img src="images/ai.jpg" alt="Person running in desert" class="wear-image">
+                        <img src="images/ai.jpg" alt="Person running in desert" class="wear-image" loading="lazy">
                     </div>
                 </div>
             </section>
@@ -182,7 +194,7 @@
                             </div>
 
                             <div class="service-image">
-                                <img src="images/services/dexa.png" alt="WHOOP ONE device and app">
+                                <img src="images/services/dexa.png" alt="DEXA+ scan device and app" loading="lazy">
                             </div>
 
 
@@ -224,7 +236,7 @@
                             </div>
 
                             <div class="service-image">
-                                <img src="images/services/rmr.png" alt="WHOOP PEAK device and app">
+                                <img src="images/services/rmr.png" alt="RMR metabolic testing device and app" loading="lazy">
                             </div>
 
 
@@ -266,7 +278,7 @@
                             </div>
 
                             <div class="service-image">
-                                <img src="images/services/vo2max.png" alt="WHOOP LIFE device and app">
+                                <img src="images/services/vo2max.png" alt="VO2 Max fitness testing device and app" loading="lazy">
                             </div>
 
 
@@ -316,7 +328,7 @@
                                         </div>
 
                                         <div class="service-image">
-                                            <img src="images/services/dexa.png" alt="">
+                                            <img src="images/services/dexa.png" alt="" loading="lazy">
                                         </div>
 
 
@@ -361,7 +373,7 @@
                                         </div>
 
                                         <div class="service-image">
-                                            <img src="images/services/rmr.png" alt="">
+                                            <img src="images/services/rmr.png" alt="" loading="lazy">
                                         </div>
 
 
@@ -406,7 +418,7 @@
                                         </div>
 
                                         <div class="service-image">
-                                            <img src="images/services/vo2max.png" alt="">
+                                            <img src="images/services/vo2max.png" alt="" loading="lazy">
                                         </div>
 
 
@@ -448,7 +460,7 @@
                     <div class="membership-card mobile">
                         <div class="membership-content mobile">
                             <div class="membership-image">
-                                <img src="images/confused.jpg" alt="WHOOP members in kitchen" />
+                                <img src="images/confused.jpg" alt="Body Insight clients in consultation" />
                             </div>
                             <div class="membership-text">
                                 <h1 class="membership-title">Find the right test for you</h1>
@@ -901,7 +913,7 @@
 
                         <div class="built-device">
                             <div class="device-container">
-                                <img src="images/icon.png" alt="WHOOP Device" class="device-image">
+                                <img src="images/icon.png" alt="Body Insight Device" class="device-image">
                             </div>
                         </div>
                     </div>
@@ -1020,19 +1032,19 @@
                         </div>
                     </div>
 
-                    <!-- Try WHOOP Section -->
-                    <div class="try-whoop-section">
-                        <div class="try-whoop-content">
-                            <div class="try-whoop-text">
-                                <h1 class="try-whoop-title">Refer us and get free testing</h1>
-                                <p class="try-whoop-description">
-                                    Connect us to your gym, apartment,office, or a large gathering and get a year's
+                    <!-- Referral Section -->
+                    <div class="referral-section">
+                        <div class="referral-content">
+                            <div class="referral-text">
+                                <h1 class="referral-title">Refer us and get free testing</h1>
+                                <p class="referral-description">
+                                    Connect us to your gym, apartment, office, or a large gathering and get a year's
                                     worth of Body Insight tests completely free.
                                 </p>
-                                <a href="#" class="try-whoop-btn">Talk to us</a>
+                                <a href="#" class="referral-btn">Talk to us</a>
                             </div>
-                            <div class="try-whoop-devices">
-                                <img src="images/referral-event.jpg" alt="WHOOP Devices - Watch, Charger and App"
+                            <div class="referral-devices">
+                                <img src="images/referral-event.jpg" alt="Body Insight Testing Equipment and Services"
                                     class="devices-composite">
                             </div>
                         </div>
@@ -1101,8 +1113,10 @@
             <div class="footer-bottom">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="images/logo-dark.png" alt="WHOOP"
-                            class="footer-logo-img">
+                        <a href="index.html">
+                            <img src="images/logo-dark.png" alt="Body Insight"
+                                class="footer-logo-img">
+                        </a>
                     </div>
                     <p class="footer-mission">
                         Our mission to provide accurate, accessible, affordable, and actionable health insights to everyone.

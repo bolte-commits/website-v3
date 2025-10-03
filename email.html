@@ -16,6 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Send Booking Link - Body Insight</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Optimized Google Fonts - only load weights we use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Email Page Specific Styles */
         .email-page {
@@ -39,7 +44,7 @@
             font-weight: 700;
             color: #333;
             margin: 0 0 10px 0;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .email-subtitle {
@@ -47,7 +52,7 @@
             color: #666;
             margin: 0 0 40px 0;
             line-height: 1.4;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .form-section {
@@ -69,7 +74,7 @@
             font-weight: 600;
             color: #333;
             margin-bottom: 8px;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .form-group input {
@@ -78,7 +83,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             transition: border-color 0.3s ease;
             box-sizing: border-box;
         }
@@ -97,7 +102,7 @@
             font-size: 14px;
             margin-top: 5px;
             display: none;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .next-button {
@@ -109,7 +114,7 @@
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             transition: background 0.3s ease;
             width: 100%;
         }
@@ -132,7 +137,7 @@
             align-items: center;
             gap: 8px;
             transition: color 0.3s ease;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .back-button:hover {
@@ -174,7 +179,7 @@
             font-weight: 600;
             color: #333;
             margin: 0;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .modal-close {
@@ -204,7 +209,7 @@
             color: #666;
             margin: 0;
             line-height: 1.5;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
         .modal-footer {
@@ -222,7 +227,7 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            font-family: 'Montserrat', Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             transition: background 0.3s ease;
         }
 
@@ -271,7 +276,9 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="images/logo-dark.png" alt="Body Insight">
+                <a href="index.html">
+                    <img src="images/logo-dark.png" alt="Body Insight">
+                </a>
             </div>
 
             <div class="nav-right">
@@ -325,7 +332,7 @@
             </div>
 
             <a href="option.html" class="back-button">
-                ← Back to Options
+                ← Use App Instead
             </a>
         </div>
     </div>
@@ -418,7 +425,9 @@
             <div class="footer-bottom">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="images/logo-dark.png" alt="Body Insight" class="footer-logo-img">
+                        <a href="index.html">
+                            <img src="images/logo-dark.png" alt="Body Insight" class="footer-logo-img">
+                        </a>
                     </div>
                     <p class="footer-mission">
                         Our mission to provide accurate, accessible, affordable, and actionable health insights to everyone.
