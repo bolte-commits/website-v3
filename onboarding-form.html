@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Insight - Onboarding Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 8px;
+        }
+
+        .form-row label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .form-row input[type="radio"] {
+            margin: 0;
+        }
+
+        .form-row input[type="text"],
+        .form-row input[type="number"] {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            font-size: 12px;
+            width: 80px;
+            border-radius: 3px;
+        }
+
+        .form-row input[type="text"]:focus,
+        .form-row input[type="number"]:focus {
+            outline: none;
+            border-color: #000;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .height-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .height-separator {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Print optimizations */
+        @media print {
+            body {
+                padding: 0;
+                font-size: 11px;
+            }
+            
+            .form-container {
+                max-width: none;
+                padding: 0.3in;
+            }
+            
+            .form-row input[type="text"],
+            .form-row input[type="number"] {
+                border: 1px solid #000;
+                background: white;
+            }
+            
+            .checkbox-group {
+                page-break-inside: avoid;
+            }
+            
+            .form-section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Ensure proper spacing for print */
+        .form-row {
+            min-height: 20px;
+        }
+
+        .checkbox-group {
+            min-height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <img src="images/logo-light.png" alt="Body Insight" class="logo">
+            <div class="subtitle">Our Insights, Your Results</div>
+        </div>
+
+        <form>
+            <!-- Personal Information -->
+            <div class="form-section">
+                <div class="section-title">Personal Information</div>
+                
+                <div class="form-group">
+                    <div class="form-label">Sex:</div>
+                    <div class="form-row">
+                        <label>
+                            <input type="radio" name="sex" value="male">
+                            Male
+                        </label>
+                        <label>
+                            <input type="radio" name="sex" value="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">Current Weight (kg):</div>
+                    <div class="form-row">
+                        <input type="number" name="weight" step="0.1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">Height:</div>
+                    <div class="height-group">
+                        <div class="form-row">
+                            <input type="number" name="height_cm">
+                            <span>(cm)</span>
+                        </div>
+                        <div class="height-separator">or</div>
+                        <div class="form-row">
+                            <input type="text" name="height_ft_in">
+                            <span>(ft'in")</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Goal -->
+            <div class="form-section">
+                <div class="section-title">Primary Goal (choose one)</div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="goal" value="fat_loss">
+                        Fat Loss
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="goal" value="muscle_gain">
+                        Muscle Gain
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="goal" value="maintain_weight">
+                        Maintain Weight
+                    </label>
+                </div>
+            </div>
+
+            <!-- Weight Training Experience -->
+            <div class="form-section">
+                <div class="section-title">Weight Training Experience</div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="experience" value="beginner">
+                        Beginner (less than 6 months)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="experience" value="intermediate">
+                        Intermediate (6–24 months consistent training)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="experience" value="advanced">
+                        Advanced (2+ years structured training)
+                    </label>
+                </div>
+            </div>
+
+            <!-- Lifestyle / Activity Level -->
+            <div class="form-section">
+                <div class="section-title">Lifestyle / Activity Level</div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="activity" value="sedentary">
+                        Sedentary (Desk job)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="activity" value="light">
+                        Light Activity (Brief walking periods)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="activity" value="moderate">
+                        Moderately Active (Long, frequent walks)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="activity" value="very_active">
+                        Very Active (Labor intensive)
+                    </label>
+                </div>
+                <div class="form-row">
+                    <label>
+                        <input type="radio" name="activity" value="intense">
+                        Intense (Prolonged, intense labor)
+                    </label>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

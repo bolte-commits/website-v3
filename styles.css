@@ -1347,7 +1347,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-card {
     background: #f5f5f5;
     border-radius: 20px;
-    padding: 40px 30px 40px 30px;
+    padding: 40px 0 40px 0;
     display: flex;
     flex-direction: column;
     min-height: 700px;
@@ -1371,12 +1371,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-card.mobile {
     min-height: 600px;
-    padding: 30px 20px;
+    padding: 30px 0;
 }
 
 .service-header {
     text-align: center;
     margin-bottom: 30px;
+    padding: 0 30px;
 }
 
 .service-name {
@@ -1404,8 +1405,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-image img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
 .service-pricing {
@@ -1425,7 +1427,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-features {
-    margin: 30px 0;
+    margin: 30px 30px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -1784,9 +1786,17 @@ h1, h2, h3, h4, h5, h6 {
     .service-card.mobile {
         background: #f5f5f5;
         border-radius: 20px;
-        padding: 30px 20px 30px 20px;
+        padding: 30px 0 30px 0;
         display: flex;
         flex-direction: column;
+    }
+    
+    .service-card.mobile .service-header {
+        padding: 0 20px;
+    }
+    
+    .service-card.mobile .service-features {
+        margin: 30px 20px;
     }
     
     /* DEXA+ mobile card specific background - targeting first mobile service card */
@@ -1809,12 +1819,10 @@ h1, h2, h3, h4, h5, h6 {
     /* Mobile service pricing styling */
     .service-card.mobile .service-pricing {
         margin: 0;
-        padding: 15px 0;
+        padding: 15px 20px;
         background: white;
         border-radius: 0 0 20px 20px;
         margin-top: -1px;
-        margin-left: -20px;
-        margin-right: -20px;
     }
 
     /* Membership Card Mobile */
