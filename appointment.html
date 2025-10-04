@@ -1033,6 +1033,17 @@
             const timeGroup = document.getElementById('time-group');
             const pricingInfo = document.getElementById('pricing-info');
             
+            // Hide any existing no appointments message
+            hideNoAppointmentsMessage();
+            
+            // Clear error messages
+            document.getElementById('city-error').style.display = 'none';
+            document.getElementById('location-error').style.display = 'none';
+            document.getElementById('time-error').style.display = 'none';
+            document.getElementById('city').classList.remove('error');
+            locationSelect.classList.remove('error');
+            timeSelect.classList.remove('error');
+            
             // Clear location and time options
             locationSelect.innerHTML = '<option value="">Select location and date</option>';
             timeSelect.innerHTML = '<option value="">Select time slot</option>';
@@ -1074,6 +1085,9 @@
                     
                     // Populate location dropdown with API data
                     if (data.events && data.events.length > 0) {
+                        // Hide any existing no appointments message
+                        hideNoAppointmentsMessage();
+                        
                         data.events.forEach(event => {
                             const option = document.createElement('option');
                             option.value = event._id;
@@ -1081,11 +1095,15 @@
                             locationSelect.appendChild(option);
                         });
                     } else {
+                        // Show custom message when no events are available
                         const option = document.createElement('option');
                         option.value = '';
                         option.textContent = 'No events available';
                         option.disabled = true;
                         locationSelect.appendChild(option);
+                        
+                        // Show custom message below the location select
+                        showNoAppointmentsMessage();
                     }
                 } catch (error) {
                     console.error('Error fetching events:', error);
@@ -1100,6 +1118,13 @@
             const city = document.getElementById('city').value;
             const timeGroup = document.getElementById('time-group');
             const pricingInfo = document.getElementById('pricing-info');
+            
+            // Hide any existing no appointments message
+            hideNoAppointmentsMessage();
+            
+            // Clear error messages
+            document.getElementById('time-error').style.display = 'none';
+            timeSelect.classList.remove('error');
             
             // Clear time options
             timeSelect.innerHTML = '<option value="">Select time slot</option>';
@@ -1142,6 +1167,9 @@
                     
                     // Populate time slots with API data
                     if (data.appointments && data.appointments.length > 0) {
+                        // Hide any existing no appointments message
+                        hideNoAppointmentsMessage();
+                        
                         data.appointments.forEach(appointment => {
                             const option = document.createElement('option');
                             option.value = appointment._id;
@@ -1150,13 +1178,15 @@
                             timeSelect.appendChild(option);
                         });
                     } else {
-                        // Fallback to static time slots if no appointments available
-                        timeSlots.forEach(timeSlot => {
-                            const option = document.createElement('option');
-                            option.value = timeSlot;
-                            option.textContent = timeSlot;
-                            timeSelect.appendChild(option);
-                        });
+                        // Show custom message when no time slots are available
+                        const noSlotsOption = document.createElement('option');
+                        noSlotsOption.value = '';
+                        noSlotsOption.textContent = 'No time slots available';
+                        noSlotsOption.disabled = true;
+                        timeSelect.appendChild(noSlotsOption);
+                        
+                        // Show custom message below the time select
+                        showNoAppointmentsMessage();
                     }
                     
                 } catch (error) {
@@ -1177,6 +1207,41 @@
             } else {
                 // Hide pricing information
                 pricingInfo.style.display = 'none';
+            }
+        }
+
+        function showNoAppointmentsMessage() {
+            // Hide any existing message
+            hideNoAppointmentsMessage();
+            
+            // Create the message element
+            const messageDiv = document.createElement('div');
+            messageDiv.id = 'no-appointments-message';
+            messageDiv.style.cssText = `
+                background: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-radius: 10px;
+                padding: 20px;
+                margin-top: 15px;
+                text-align: center;
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            `;
+            
+            messageDiv.innerHTML = `
+                <h4 style="color: #333; margin: 0 0 10px 0; font-size: 18px; font-weight: 600;">Our calendar is being updated</h4>
+                <p style="color: #666; margin: 0 0 15px 0; font-size: 16px; line-height: 1.5;">Please check back in a bit for available time slots.</p>
+                <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.4;">If you want our services for a group of people, please <a href="mailto:support@bodyinsight.in" style="color: #333; text-decoration: underline;">contact us</a>.</p>
+            `;
+            
+            // Insert after the location group
+            const locationGroup = document.getElementById('location-group');
+            locationGroup.parentNode.insertBefore(messageDiv, locationGroup.nextSibling);
+        }
+
+        function hideNoAppointmentsMessage() {
+            const existingMessage = document.getElementById('no-appointments-message');
+            if (existingMessage) {
+                existingMessage.remove();
             }
         }
 
