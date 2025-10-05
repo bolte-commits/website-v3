@@ -210,9 +210,34 @@
             flex: 1;
         }
 
-        .confirm-button:hover {
-            background: #1e7e34;
-        }
+         .confirm-button:hover {
+             background: #1e7e34;
+         }
+
+         .personal-actions {
+             display: flex;
+             flex-direction: column;
+             gap: 15px;
+             margin-top: 20px;
+         }
+
+         .change-appointment-button {
+             background: #f8f9fa;
+             color: #333;
+             border: 2px solid #e0e0e0;
+             padding: 15px 30px;
+             border-radius: 10px;
+             font-size: 16px;
+             font-weight: 500;
+             cursor: pointer;
+             transition: all 0.3s ease;
+             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+         }
+
+         .change-appointment-button:hover {
+             background: #e9ecef;
+             border-color: #d0d0d0;
+         }
 
         .back-button {
             color: #333;
@@ -751,8 +776,11 @@
                     <div class="error-message" id="phoneNumber-error">Please enter a valid phone number</div>
                 </div>
 
-                <button class="confirm-button" id="personal-next" onclick="confirmBooking()">Confirm Appointment</button>
-            </div>
+                 <div class="personal-actions">
+                     <button class="confirm-button" id="personal-next" onclick="confirmBooking()">Confirm Appointment</button>
+                     <button class="change-appointment-button" onclick="goBackToAppointmentSelection()">Select Different Appointment</button>
+                 </div>
+             </div>
 
             <!-- Booking Summary -->
             <div class="booking-details" id="summary-section">
@@ -1303,25 +1331,63 @@
             document.getElementById('summary-section').classList.add('active');
         }
 
-        function changeDateTime() {
-            // Hide summary section and show booking section
-            document.getElementById('summary-section').classList.remove('active');
-            document.getElementById('booking-section').classList.add('active');
-            
-            // Reset city dropdown
-            document.getElementById('city').value = '';
-            
-            // Reset location and time dropdowns
-            document.getElementById('location').innerHTML = '<option value="">Select location and date</option>';
-            document.getElementById('time').innerHTML = '<option value="">Select time slot</option>';
-            
-            // Hide location and time groups
-            document.getElementById('location-group').style.display = 'none';
-            document.getElementById('time-group').style.display = 'none';
-            
-            // Hide pricing info
-            document.getElementById('pricing-info').style.display = 'none';
-        }
+         function changeDateTime() {
+             // Hide summary section and show booking section
+             document.getElementById('summary-section').classList.remove('active');
+             document.getElementById('booking-section').classList.add('active');
+             
+             // Reset city dropdown
+             document.getElementById('city').value = '';
+             
+             // Reset location and time dropdowns
+             document.getElementById('location').innerHTML = '<option value="">Select location and date</option>';
+             document.getElementById('time').innerHTML = '<option value="">Select time slot</option>';
+             
+             // Hide location and time groups
+             document.getElementById('location-group').style.display = 'none';
+             document.getElementById('time-group').style.display = 'none';
+             
+             // Hide pricing info
+             document.getElementById('pricing-info').style.display = 'none';
+         }
+
+         function goBackToAppointmentSelection() {
+             // Hide personal information section and show booking section
+             document.getElementById('personal-section').classList.remove('active');
+             document.getElementById('booking-section').classList.add('active');
+             
+             // Reset form fields
+             document.getElementById('firstName').value = '';
+             document.getElementById('lastName').value = '';
+             document.getElementById('dateOfBirth').value = '';
+             document.getElementById('phoneNumber').value = '';
+             
+             // Reset city dropdown to trigger the flow again
+             document.getElementById('city').value = '';
+             
+             // Reset location and time dropdowns
+             document.getElementById('location').innerHTML = '<option value="">Select location and date</option>';
+             document.getElementById('time').innerHTML = '<option value="">Select time slot</option>';
+             
+             // Hide location and time groups
+             document.getElementById('location-group').style.display = 'none';
+             document.getElementById('time-group').style.display = 'none';
+             
+             // Hide pricing info
+             document.getElementById('pricing-info').style.display = 'none';
+             
+             // Clear any error messages
+             const errorMessages = document.querySelectorAll('.error-message');
+             errorMessages.forEach(error => {
+                 error.style.display = 'none';
+             });
+             
+             // Remove error classes
+             const errorInputs = document.querySelectorAll('.form-group input.error');
+             errorInputs.forEach(input => {
+                 input.classList.remove('error');
+             });
+         }
 
         async function confirmBooking() {
             // Get personal information from form fields or profile data
