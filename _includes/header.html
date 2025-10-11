@@ -1,0 +1,43 @@
+<!-- Header -->
+<header class="header">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="{{ '/' | relative_url }}">
+                <img src="{{ '/images/logo-dark.png' | relative_url }}" alt="{{ site.title }}" fetchpriority="high">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <a href="{{ '/' | relative_url }}#services"><h4>SERVICES</h4></a>
+            <a href="{{ '/' | relative_url }}#app"><h4>OUR APP</h4></a>
+            <a href="{{ '/' | relative_url }}#clients"><h4>CLIENTS</h4></a>
+            <a href="{{ '/' | relative_url }}#collaborations"><h4>COLLABORATIONS</h4></a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Join Button -->
+        <a href="{{ '/option.html' | relative_url }}" class="join-btn"><h4>BOOK APPOINTMENT</h4></a>
+    </div>
+</header>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav-overlay">
+    <button class="mobile-nav-close">&times;</button>
+    <div class="mobile-nav-content">
+        <nav class="mobile-nav">
+            <a href="{{ '/' | relative_url }}#services"><h4>SERVICES</h4></a>
+            <a href="{{ '/' | relative_url }}#app"><h4>OUR APP</h4></a>
+            <a href="{{ '/' | relative_url }}#clients"><h4>CLIENTS</h4></a>
+            <a href="{{ '/' | relative_url }}#collaborations"><h4>COLLABORATIONS</h4></a>
+            <a href="{{ '/option.html' | relative_url }}" class="mobile-join-btn"><h4>BOOK APPOINTMENT</h4></a>
+        </nav>
+    </div>
+</div>
+

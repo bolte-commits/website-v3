@@ -1,0 +1,279 @@
+<script>
+    // Header scroll behavior
+    let lastScrollY = 0;
+    let ticking = false;
+    const header = document.querySelector('.header');
+
+    function updateHeader() {
+        const scrollY = window.scrollY;
+
+        if (scrollY > lastScrollY && scrollY > 100) {
+            // Scrolling down & past 100px - hide header
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up or at top - show header
+            header.style.transform = 'translateY(0)';
+        }
+
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateHeader);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick);
+
+    // Mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+    const mobileNavClose = document.querySelector('.mobile-nav-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+    // Toggle mobile menu
+    mobileMenuBtn.addEventListener('click', function() {
+        mobileNavOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu with close button
+    mobileNavClose.addEventListener('click', function() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close mobile menu when clicking on overlay
+    mobileNavOverlay.addEventListener('click', function(e) {
+        if (e.target === mobileNavOverlay) {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu when clicking on navigation links
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Progressive darkening effect on scroll
+    window.addEventListener('scroll', function () {
+        const scrollPosition = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const heroSection = document.querySelector('.hero-section');
+
+        // Calculate scroll progress based on when scrollable content reaches top
+        // Complete darkness when scrolled 1 viewport height (when content hits top)
+        const scrollProgress = Math.min(scrollPosition / viewportHeight, 1);
+
+        // Apply progressive darkening - reaches 100% darkness when content hits top
+        const darknessLevel = scrollProgress * 1.0; // Max 100% darkness
+        heroSection.style.setProperty('--darkness', darknessLevel);
+    });
+
+</script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // Clients slider visibility control
+    function handleClientsSliderVisibility() {
+        const clientsTrack = document.querySelector('.clients-track');
+        if (!clientsTrack) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    clientsTrack.style.animationPlayState = 'running';
+                } else {
+                    clientsTrack.style.animationPlayState = 'paused';
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        observer.observe(clientsTrack);
+    }
+
+    // Initialize Swiper after library loads
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize clients slider visibility control
+        handleClientsSliderVisibility();
+
+        // Built section accordion functionality
+        const featureItems = document.querySelectorAll('.feature-item');
+
+        featureItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // Remove active class from all items
+                featureItems.forEach(i => i.classList.remove('active'));
+
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+        const swiper = new Swiper('.main-swiper', {
+            // Responsive breakpoints - full width slides
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            centeredSlides: false,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '#main-slider-next',
+                prevEl: '#main-slider-prev',
+            },
+
+            // Pagination dots
+            pagination: {
+                el: '#main-slider-pagination',
+                clickable: true,
+                type: 'bullets',
+                dynamicBullets: false,
+            },
+
+            // Touch settings
+            touchRatio: 1,
+            touchAngle: 45,
+            simulateTouch: true,
+
+            // Prevent clicking disabled
+            allowTouchMove: true,
+
+            // Loop disabled (no infinite scroll)
+            loop: false,
+
+            // Disable preloader
+            preloadImages: false,
+            lazy: true,
+        });
+
+        // Initialize Services Swiper for mobile
+        const servicesSwiper = new Swiper('.services-swiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 20,
+            pagination: {
+                el: '.services-pagination',
+                clickable: true,
+            },
+            loop: false,
+            allowTouchMove: true,
+        });
+
+        // Initialize Built Swiper for mobile
+        const builtSwiper = new Swiper('.built-swiper', {
+            slidesPerView: 1.5,
+            spaceBetween: 15,
+            centeredSlides: false,
+            pagination: {
+                el: '.built-pagination',
+                clickable: true,
+            },
+            loop: false,
+            allowTouchMove: true,
+            autoHeight: true,
+        });
+
+        // Initialize Category Pills Swiper (Desktop)
+        const categorySwiper = new Swiper('.category-swiper', {
+            slidesPerView: 2.3,
+            spaceBetween: 15,
+            freeMode: true,
+            loop: false,
+            allowTouchMove: true,
+            navigation: false,
+            pagination: false,
+            a11y: false,
+        });
+
+        // Initialize Mobile Category Pills Swiper
+        const mobileCategorySwiper = new Swiper('.mobile-category-swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 15,
+            freeMode: true,
+            loop: false,
+            allowTouchMove: true,
+            navigation: false,
+            pagination: false,
+            a11y: false,
+        });
+
+        // Initialize Testimonials Swiper for mobile
+        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+            slidesPerView: 1.1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.testimonials-pagination',
+                clickable: true,
+            },
+            loop: false,
+            allowTouchMove: true,
+        });
+
+        // Category content data
+        const categoryContent = {
+            'Fitness Centers': {
+                title: 'Fitness Centers',
+                description: 'Partner with us to offer members medical-grade health testing, boosting retention, differentiation, and premium fitness value - all on site'
+            },
+            'Sports Academies': {
+                title: 'Sports Academies',
+                description: 'Enhance your academy\'s training programs with precise health analytics that help young athletes optimize performance, track progress, and prevent injuries.'
+            },
+            'Apartments': {
+                title: 'Apartments',
+                description: 'Provide residents with convenient access to advanced health testing, adding premium wellness services to your amenities while engaging the community'
+            },
+            'Corporates': {
+                title: 'Corporates',
+                description: 'Boost employee wellness and productivity with comprehensive health insights that drive better workplace health outcomes and reduce healthcare costs.'
+            }
+        };
+
+        // Initialize content with default active pill (Fitness Centers)
+        function updateContent(categoryName) {
+            const content = categoryContent[categoryName];
+            if (content) {
+                document.getElementById('category-title').textContent = content.title;
+                document.getElementById('category-description').textContent = content.description;
+            }
+        }
+
+        // Set initial content for the active pill
+        updateContent('Fitness Centers');
+
+        // Handle pill clicks
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', function () {
+                // Remove active class from all pills
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+
+                // Add active class to clicked pill
+                this.classList.add('active');
+
+                // Get category name and update content
+                const categoryName = this.textContent.trim();
+                updateContent(categoryName);
+            });
+        });
+    });
+</script>
+

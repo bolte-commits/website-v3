@@ -1,0 +1,75 @@
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ site.google_analytics }}');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% if page.title %}
+    <title>{{ page.title }} | {{ site.title }}</title>
+    {% else %}
+    <title>{{ site.title }} - {{ site.description }}</title>
+    {% endif %}
+    
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% else %}
+    <meta name="description" content="{{ site.description }}">
+    {% endif %}
+    
+    <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}DEXA scan India, body composition analysis, RMR testing, VO2 Max test, health testing, fitness assessment, body fat analysis, muscle mass measurement, metabolism testing{% endif %}">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="robots" content="{% if page.robots %}{{ page.robots }}{% else %}index, follow{% endif %}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{{ '/images/hero.jpg' | absolute_url }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta property="twitter:title" content="{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}">
+    <meta property="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="twitter:image" content="{{ '/images/hero.jpg' | absolute_url }}">
+    
+    <link rel="icon" type="image/png" href="{{ '/images/favicon.png' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+    
+    {% if page.swiper %}
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    {% endif %}
+    
+    <!-- Optimized Google Fonts - only load weights we use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    {% if page.preload_images %}
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="{{ '/images/logo-dark.png' | relative_url }}">
+    {% for image in page.preload_images %}
+    <link rel="preload" as="image" href="{{ image | relative_url }}">
+    {% endfor %}
+    {% endif %}
+    
+    {% if page.structured_data %}
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {{ page.structured_data | jsonify }}
+    </script>
+    {% endif %}
+</head>
+

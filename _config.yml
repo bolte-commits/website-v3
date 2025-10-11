@@ -1,0 +1,87 @@
+# Jekyll Configuration for Body Insight Website
+
+# Site settings
+title: Body Insight
+description: Advanced health testing and body composition analysis including DEXA scans, RMR testing, and VO2 Max analysis in India.
+url: "https://bodyinsight.in"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+permalink: none
+
+# Collections
+collections:
+  layouts:
+    output: false
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .DS_Store
+
+# Include files
+include:
+  - _layouts
+  - _includes
+
+# Default settings
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "pages"
+#     values:
+#       layout: "default"
+
+# Site metadata
+author: Body Insight
+email: support@bodyinsight.in
+phone: "+918073399697"
+social:
+  instagram: "https://instagram.com/bodyinsight.in"
+  youtube: "https://www.youtube.com/@bodyinsightteam6426"
+  linkedin: "#"
+
+# Google Analytics
+google_analytics: G-BPHR8ZCDT2
+
+# SEO settings
+logo: /images/logo-dark.png
+twitter:
+  username: bodyinsight
+  card: summary_large_image
+
+# Company info
+company:
+  name: Body Insight and Performance
+  legal_name: BODY INSIGHT AND PERFORMANCE
+  mission: Our mission to provide accurate, accessible, affordable, and actionable health insights to everyone.
+  
+# Contact info
+contact:
+  support_email: support@bodyinsight.in
+  team_email: team@bodyinsight.in
+  phone: "+918073399697"
+
+# App download links
+apps:
+  ios: "https://apps.apple.com/us/app/body-insight/id6751254360"
+  android: "https://play.google.com/store/apps/details?id=com.bolte.bodyinsight"
+
+# API Configuration
+api:
+  base_url: "https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod"
+
+# Available cities
+cities:
+  - name: Bengaluru
+    code: BLRVAN
+  - name: Hyderabad
+    code: HYDVAN
+
