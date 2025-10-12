@@ -1,0 +1,494 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPHR8ZCDT2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BPHR8ZCDT2');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Body Insight Mobile Van Locations</title>
+    <meta name="description" content="View Body Insight mobile van schedule for the next 2 weeks. Find locations near you for DEXA scans, RMR testing, and VO2 Max analysis.">
+    <meta name="keywords" content="Body Insight schedule, mobile van locations, DEXA scan locations, health testing schedule">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bodyinsight.in/schedule.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Optimized Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .schedule-page {
+            min-height: 100vh;
+            background: #fff;
+            padding: 120px 20px 40px 20px;
+        }
+
+        .schedule-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .schedule-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .schedule-subtitle {
+            font-size: 20px;
+            color: #666;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .schedule-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .schedule-card {
+            background: rgba(248, 249, 250, 0.6);
+            border: 1px solid rgba(233, 236, 239, 0.5);
+            border-radius: 15px;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .schedule-card:nth-child(6n+1)::before {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.2) 100%);
+        }
+
+        .schedule-card:nth-child(6n+2)::before {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.4) 0%, rgba(245, 87, 108, 0.2) 100%);
+        }
+
+        .schedule-card:nth-child(6n+3)::before {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.4) 0%, rgba(0, 242, 254, 0.2) 100%);
+        }
+
+        .schedule-card:nth-child(6n+4)::before {
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.4) 0%, rgba(56, 249, 215, 0.2) 100%);
+        }
+
+        .schedule-card:nth-child(6n+5)::before {
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.4) 0%, rgba(254, 225, 64, 0.2) 100%);
+        }
+
+        .schedule-card:nth-child(6n+6)::before {
+            background: linear-gradient(135deg, rgba(254, 202, 87, 0.4) 0%, rgba(255, 107, 107, 0.2) 100%);
+        }
+
+        .schedule-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-card.hidden {
+            display: none;
+        }
+
+        .location-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .location-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .location-area {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .location-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .location-link:hover {
+            color: #000;
+        }
+
+        .datetime-info {
+            text-align: center;
+            padding: 0 25px;
+            border-left: 2px solid #e0e0e0;
+            border-right: 2px solid #e0e0e0;
+        }
+
+        .date-day {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .date-full {
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 12px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .time-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .book-action {
+            text-align: right;
+        }
+
+        .book-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            white-space: nowrap;
+        }
+
+        .book-btn:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 18px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* Loading Spinner */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .schedule-page {
+                padding: 100px 15px 30px 15px;
+            }
+
+            .schedule-title {
+                font-size: 32px;
+            }
+
+            .schedule-subtitle {
+                font-size: 18px;
+            }
+
+            .schedule-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .datetime-info {
+                border-left: none;
+                border-right: none;
+                border-bottom: 2px solid #e0e0e0;
+                padding: 0 0 15px 0;
+                text-align: left;
+                width: 100%;
+                order: -1;
+            }
+
+            .date-day {
+                display: inline;
+                font-size: 18px;
+                font-weight: 700;
+                color: #333;
+            }
+
+            .date-full {
+                display: inline;
+                font-size: 18px;
+                font-weight: 700;
+                color: #333;
+                margin-bottom: 8px;
+            }
+
+            .date-full::before {
+                content: ', ';
+            }
+
+            .time-text {
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                color: #888;
+                margin-top: 5px;
+            }
+
+            .location-info {
+                width: 100%;
+            }
+
+            .location-name {
+                font-size: 20px;
+            }
+
+            .book-action {
+                width: 100%;
+                text-align: left;
+            }
+
+            .book-btn {
+                width: auto;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include header.html %}
+
+    <div class="schedule-page">
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h1 class="schedule-title">Our Schedule</h1>
+                <p class="schedule-subtitle">Find our mobile van near you in the next 2 weeks</p>
+            </div>
+
+
+            <!-- Schedule Grid -->
+            <div class="schedule-grid" id="schedule-grid">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+
+            <div class="no-results" id="no-results" style="display: none;">
+                No appointments available for the selected city.
+            </div>
+        </div>
+    </div>
+
+    {% include footer.html %}
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod';
+        
+        // Schedule data - will be populated from API
+        let scheduleData = [];
+
+        // Generate schedule cards
+        function generateScheduleCards() {
+            const grid = document.getElementById('schedule-grid');
+            grid.innerHTML = '';
+
+            scheduleData.forEach((schedule, index) => {
+                const card = document.createElement('div');
+                card.className = 'schedule-card';
+                card.dataset.city = schedule.city;
+                
+                card.innerHTML = `
+                    <div class="location-info">
+                        <div class="location-name">${schedule.location}</div>
+                        <div class="location-area">${schedule.area}</div>
+                        <a href="${schedule.googleMapsUrl}" target="_blank" class="location-link">
+                            📍 View on Google Maps
+                        </a>
+                    </div>
+
+                    <div class="datetime-info">
+                        <div class="date-day">${schedule.dayName}</div>
+                        <div class="date-full">${schedule.dateDisplay}</div>
+                        <div class="time-text">${schedule.timings}</div>
+                    </div>
+
+                    <div class="book-action">
+                        <button class="book-btn" onclick="bookAppointment(${index})">
+                            Book Slot
+                        </button>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Book appointment
+        function bookAppointment(scheduleIndex) {
+            const schedule = scheduleData[scheduleIndex];
+            
+            // Show confirmation
+            const confirmed = confirm(
+                `Book slot at:\n\n` +
+                `Location: ${schedule.location}, ${schedule.area}\n` +
+                `Date: ${schedule.dateDisplay}\n` +
+                `Time: ${schedule.timings}\n\n` +
+                `Continue to booking?`
+            );
+            
+            if (confirmed) {
+                // Redirect to appointment page
+                // In future, you can pass location/date as URL parameters
+                window.location.href = 'appointment.html';
+            }
+        }
+
+        // Load events from API
+        async function loadSchedule() {
+            const grid = document.getElementById('schedule-grid');
+            
+            // Show loading spinner
+            grid.innerHTML = `
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Loading schedule...</div>
+                </div>
+            `;
+            
+            try {
+                // Fetch events for Bengaluru (BLRVAN)
+                const response = await fetch(`${API_BASE_URL}/findEvents`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        branch: 'BLRVAN'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.events && data.events.length > 0) {
+                    // Convert API data to schedule format
+                    scheduleData = data.events.map(event => {
+                        // Parse the date
+                        const eventDate = new Date(event.date);
+                        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                        
+                        return {
+                            city: 'Bengaluru',
+                            location: event.area,
+                            area: event.landmark,
+                            googleMapsUrl: event.googleMapsUrl,
+                            date: event.date,
+                            dayName: days[eventDate.getDay()],
+                            dateDisplay: event.displayDate,
+                            timings: event.timings
+                        };
+                    });
+                    
+                    // Generate cards with API data
+                    generateScheduleCards();
+                } else {
+                    // No events found
+                    grid.innerHTML = '<div class="no-results">No upcoming events available at the moment. Please check back later.</div>';
+                }
+                
+            } catch (error) {
+                console.error('Error loading schedule:', error);
+                // Show error message
+                grid.innerHTML = '<div class="no-results">Unable to load schedule. Please try again later.</div>';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSchedule();
+        });
+    </script>
+</body>
+
+</html>
+
