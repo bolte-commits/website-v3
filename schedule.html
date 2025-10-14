@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule - Body Insight Mobile Van Locations</title>
-    <meta name="description" content="View Body Insight mobile van schedule for the next 2 weeks. Find locations near you for DEXA scans, RMR testing, and VO2 Max analysis.">
+    <meta name="description" content="View Body Insight mobile van upcoming schedule. Find locations near you for DEXA scans, RMR testing, and VO2 Max analysis.">
     <meta name="keywords" content="Body Insight schedule, mobile van locations, DEXA scan locations, health testing schedule">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://bodyinsight.in/schedule.html">
@@ -222,6 +222,35 @@
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
+        .error-container {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #dc3545;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .retry-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .retry-btn:hover {
+            background: #555;
+        }
+
         /* Loading Spinner */
         .loading-container {
             display: flex;
@@ -339,7 +368,7 @@
         <div class="schedule-container">
             <div class="schedule-header">
                 <h1 class="schedule-title">Our Schedule</h1>
-                <p class="schedule-subtitle">Find our mobile van near you in the next 2 weeks</p>
+                <p class="schedule-subtitle">Find our mobile van near you</p>
             </div>
 
 
@@ -403,20 +432,8 @@
         function bookAppointment(scheduleIndex) {
             const schedule = scheduleData[scheduleIndex];
             
-            // Show confirmation
-            const confirmed = confirm(
-                `Book slot at:\n\n` +
-                `Location: ${schedule.location}, ${schedule.area}\n` +
-                `Date: ${schedule.dateDisplay}\n` +
-                `Time: ${schedule.timings}\n\n` +
-                `Continue to booking?`
-            );
-            
-            if (confirmed) {
-                // Redirect to appointment page
-                // In future, you can pass location/date as URL parameters
-                window.location.href = 'appointment.html';
-            }
+            // Redirect to option page with event ID
+            window.location.href = `option.html?eventId=${schedule.id}`;
         }
 
         // Load events from API
@@ -458,6 +475,7 @@
                         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                         
                         return {
+                            id: event._id,
                             city: 'Bengaluru',
                             location: event.area,
                             area: event.landmark,
@@ -478,8 +496,13 @@
                 
             } catch (error) {
                 console.error('Error loading schedule:', error);
-                // Show error message
-                grid.innerHTML = '<div class="no-results">Unable to load schedule. Please try again later.</div>';
+                // Show error message with retry button
+                grid.innerHTML = `
+                    <div class="error-container">
+                        <div class="error-message">Unable to load schedule. Please check your connection and try again.</div>
+                        <button class="retry-btn" onclick="loadSchedule()">Retry</button>
+                    </div>
+                `;
             }
         }
 

@@ -1,0 +1,692 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPHR8ZCDT2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BPHR8ZCDT2');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Time Slot - Book Your Appointment | Body Insight</title>
+    <meta name="description" content="Select your preferred time slot for your Body Insight health testing appointment.">
+    <meta name="keywords" content="book appointment, time slot selection, DEXA scan booking">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://bodyinsight.in/selecttime.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Optimized Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .selecttime-page {
+            min-height: 100vh;
+            background: #fff;
+            padding: 120px 20px 40px 20px;
+        }
+
+        .selecttime-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 20px;
+            color: #666;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .event-info {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .event-info h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #666;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .event-detail strong {
+            color: #333;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .time-slot-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot-card:hover {
+            border-color: #333;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .time-slot-card.selected {
+            background: #333;
+            border-color: #333;
+            color: white;
+        }
+
+        .time-slot-card.unavailable {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #e9ecef;
+        }
+
+        .time-slot-card.unavailable:hover {
+            transform: none;
+            border-color: #e0e0e0;
+            box-shadow: none;
+        }
+
+        .slot-time {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .time-slot-card.selected .slot-time {
+            color: white;
+        }
+
+        .slot-status {
+            font-size: 14px;
+            font-weight: 500;
+            color: #28a745;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .time-slot-card.selected .slot-status {
+            color: #fff;
+        }
+
+        .personal-details-form {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .personal-details-form.show {
+            display: block;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        .submit-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #555;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .selected-time-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .selected-time-text {
+            font-size: 16px;
+            color: #333;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .selected-time-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .change-time-btn {
+            background: transparent;
+            color: #333;
+            border: 2px solid #333;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .change-time-btn:hover {
+            background: #333;
+            color: white;
+        }
+
+        .back-button {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            margin-top: 30px;
+        }
+
+        .back-button:hover {
+            color: #666;
+        }
+
+        /* Loading Spinner */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            width: 100%;
+            grid-column: 1 / -1;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: #666;
+            font-weight: 500;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 60px 20px;
+            width: 100%;
+            grid-column: 1 / -1;
+        }
+
+        .error-message {
+            font-size: 18px;
+            color: #dc3545;
+            margin-bottom: 25px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .retry-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .retry-btn:hover {
+            background: #555;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .selecttime-page {
+                padding: 100px 15px 30px 15px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .page-subtitle {
+                font-size: 18px;
+            }
+
+            .time-slots-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-info {
+                padding: 20px;
+            }
+
+            .event-info .event-detail {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+
+            .event-info .change-time-btn {
+                width: 100%;
+                margin-top: 10px !important;
+            }
+
+            .personal-details-form {
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+
+            .selected-time-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .change-time-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {% include header.html %}
+
+    <div class="selecttime-page">
+        <div class="selecttime-container">
+            <div class="page-header">
+                <h1 class="page-title">Select Your Time Slot</h1>
+                <p class="page-subtitle">Choose your preferred appointment time</p>
+            </div>
+
+            <!-- Event Information -->
+            <div class="event-info" id="event-info" style="display: none;">
+                <h3>Appointment Details</h3>
+                <div class="event-detail">
+                    <strong>Location:</strong> <span id="event-location"></span>
+                </div>
+                <div class="event-detail" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <strong>Date:</strong> <span id="event-date"></span>
+                    </div>
+                    <button type="button" class="change-time-btn" onclick="changeDate()" style="margin: 0;">Change Date</button>
+                </div>
+            </div>
+
+            <!-- Time Slots Grid -->
+            <div class="time-slots-grid" id="time-slots-grid">
+                <!-- Loading spinner will show here initially -->
+            </div>
+
+            <!-- Personal Details Form -->
+            <div class="personal-details-form" id="personal-details-form">
+                <h3 class="form-title">Enter Your Personal Details</h3>
+                <div class="selected-time-info" id="selected-time-info">
+                    <div class="selected-time-text">
+                        Selected Time: <span class="selected-time-value" id="selected-time-display"></span>
+                    </div>
+                    <button type="button" class="change-time-btn" onclick="changeTimeSlot()">Change Time</button>
+                </div>
+                <form id="details-form">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input type="email" class="form-input" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First Name *</label>
+                        <input type="text" class="form-input" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="lastName">Last Name *</label>
+                        <input type="text" class="form-input" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="dob">Date of Birth *</label>
+                        <input type="date" class="form-input" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" class="form-input" id="phone" name="phone">
+                    </div>
+                    <button type="submit" class="submit-btn">Continue to Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% include footer.html %}
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod';
+        
+        let eventData = null;
+        let selectedAppointmentId = null;
+        let selectedAppointmentTime = null;
+        let availableAppointments = [];
+
+        // Load available appointments for the event
+        async function loadAvailableAppointments(eventId) {
+            const grid = document.getElementById('time-slots-grid');
+            
+            // Show loading spinner
+            grid.innerHTML = `
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Loading available time slots...</div>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/findAvailableAppointments`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        eventId: eventId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message || data.error);
+                }
+
+                // Store event and appointments data
+                if (data.event) {
+                    eventData = data.event;
+                    displayEventInfo(eventData);
+                }
+
+                availableAppointments = data.appointments || [];
+                
+                if (availableAppointments.length > 0) {
+                    displayTimeSlots(availableAppointments);
+                } else {
+                    grid.innerHTML = `
+                        <div class="error-container">
+                            <div class="error-message">No time slots available for this event.</div>
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error('Error loading appointments:', error);
+                const urlParams = new URLSearchParams(window.location.search);
+                const eventId = urlParams.get('eventId');
+                
+                grid.innerHTML = `
+                    <div class="error-container">
+                        <div class="error-message">Something went wrong. Please try again.</div>
+                        <button class="retry-btn" onclick="loadAvailableAppointments('${eventId}')">Retry</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Display event information
+        function displayEventInfo(event) {
+            const eventInfo = document.getElementById('event-info');
+            const locationText = `${event.area || event.name}${event.landmark ? ', ' + event.landmark : ''}`;
+            
+            // If locationUrl is available, make it a clickable link
+            if (event.locationUrl) {
+                document.getElementById('event-location').innerHTML = `<a href="${event.locationUrl}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: underline;">${locationText}</a>`;
+            } else {
+                document.getElementById('event-location').textContent = locationText;
+            }
+            
+            document.getElementById('event-date').textContent = event.date;
+            eventInfo.style.display = 'block';
+        }
+
+        // Display time slots
+        function displayTimeSlots(appointments) {
+            const grid = document.getElementById('time-slots-grid');
+            grid.innerHTML = '';
+
+            appointments.forEach((appointment, index) => {
+                const card = document.createElement('div');
+                card.className = 'time-slot-card';
+                card.dataset.appointmentId = appointment._id;
+                
+                card.innerHTML = `
+                    <div class="slot-time">${appointment.displayTime || appointment.timeSlot}</div>
+                    <div class="slot-status">Available</div>
+                `;
+                
+                card.addEventListener('click', function() {
+                    selectTimeSlot(appointment._id);
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Select time slot
+        function selectTimeSlot(appointmentId) {
+            selectedAppointmentId = appointmentId;
+            
+            // Find the selected appointment to get its time
+            const selectedAppointment = availableAppointments.find(apt => apt._id === appointmentId);
+            selectedAppointmentTime = selectedAppointment ? (selectedAppointment.displayTime || selectedAppointment.timeSlot) : '';
+            
+            // Update UI
+            const cards = document.querySelectorAll('.time-slot-card');
+            cards.forEach(card => {
+                if (card.dataset.appointmentId === appointmentId) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+            
+            // Hide time slots grid
+            const grid = document.getElementById('time-slots-grid');
+            grid.style.display = 'none';
+            
+            // Show personal details form
+            const form = document.getElementById('personal-details-form');
+            form.classList.add('show');
+            
+            // Display selected time
+            document.getElementById('selected-time-display').textContent = selectedAppointmentTime;
+            
+            // Scroll to form smoothly
+            form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Change time slot - go back to time selection
+        function changeTimeSlot() {
+            // Show time slots grid
+            const grid = document.getElementById('time-slots-grid');
+            grid.style.display = 'grid';
+            
+            // Hide personal details form
+            const form = document.getElementById('personal-details-form');
+            form.classList.remove('show');
+            
+            // Clear form inputs
+            document.getElementById('details-form').reset();
+            
+            // Scroll to time slots
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Change date - go back to schedule page
+        function changeDate() {
+            window.location.href = 'schedule.html';
+        }
+
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            if (!selectedAppointmentId) {
+                alert('Please select a time slot');
+                return;
+            }
+            
+            // Get form values
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const firstName = formData.get('firstName');
+            const lastName = formData.get('lastName');
+            const dob = formData.get('dob');
+            
+            // Build URL with all parameters
+            const params = new URLSearchParams({
+                appointmentId: selectedAppointmentId,
+                email: email,
+                phone: phone,
+                firstName: firstName,
+                lastName: lastName,
+                dob: dob
+            });
+            
+            // Redirect to appointment page with all details
+            window.location.href = `appointment.html?${params.toString()}`;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get eventId from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('eventId');
+            
+            if (!eventId) {
+                // No eventId provided - redirect to schedule
+                window.location.href = 'schedule.html';
+                return;
+            }
+            
+            // Load available appointments for this event
+            loadAvailableAppointments(eventId);
+            
+            // Add form submit handler
+            document.getElementById('details-form').addEventListener('submit', handleFormSubmit);
+        });
+    </script>
+</body>
+
+</html>
+

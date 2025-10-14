@@ -318,7 +318,7 @@
                 </div>
 
                 <!-- Website Option -->
-                <a href="email.html" class="option-button">
+                <a href="email.html" class="option-button" id="website-option">
                     <div class="option-icon">🌐</div>
                     <div>
                         <div>Continue on Website</div>
@@ -351,6 +351,18 @@
                     this.style.transform = 'translateY(0)';
                 });
             });
+
+            // Check if eventId was passed from schedule page
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('eventId');
+            
+            if (eventId) {
+                // Update the "Continue on Website" link to pass eventId to selecttime page
+                const websiteOption = document.getElementById('website-option');
+                if (websiteOption) {
+                    websiteOption.href = `selecttime.html?eventId=${eventId}`;
+                }
+            }
         });
     </script>
 </body>
