@@ -91,11 +91,10 @@ html {
 
 .clients-track {
     display: flex;
-    width: 200%;
-    animation: scroll-clients 20s linear infinite;
+    width: max-content;
+    animation: scroll-clients 30s linear infinite;
     animation-play-state: paused;
     gap: 60px;
-    margin-left: -60px;
 }
 
 .client-item {
@@ -107,20 +106,11 @@ html {
     transition: opacity 0.3s ease;
 }
 
-.client-item:hover {
-    opacity: 1;
-}
-
 .client-item img {
     height: 60px;
     width: auto;
     object-fit: contain;
     filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.client-item:hover img {
-    filter: grayscale(0%);
 }
 
 /* Larger logos for BCCI and RCB */
@@ -140,6 +130,17 @@ html {
     height: 50px;
 }
 
+/* Hockey India logo */
+.client-item img[alt="Hockey India"] {
+    height: 90px;
+}
+
+/* SAI logo */
+.client-item img[alt="SAI"] {
+    height: 70px;
+    transform: translateY(-8px);
+}
+
 @media (max-width: 768px) {
     .client-item img[alt="BCCI"],
     .client-item img[alt="RCB"] {
@@ -154,14 +155,23 @@ html {
     .client-item img[alt="Reset"] {
         height: 40px;
     }
+    
+    .client-item img[alt="Hockey India"] {
+        height: 70px;
+    }
+    
+    .client-item img[alt="SAI"] {
+        height: 55px;
+        transform: translateY(-6px);
+    }
 }
 
 @keyframes scroll-clients {
-    0% {
+    from {
         transform: translateX(0);
     }
-    100% {
-        transform: translateX(-50%);
+    to {
+        transform: translateX(calc(-100% / 2));
     }
 }
 
