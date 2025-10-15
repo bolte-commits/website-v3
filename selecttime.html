@@ -268,6 +268,101 @@
             color: white;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-body p {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .modal-footer {
+            padding: 0 24px 24px 24px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .modal-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            transition: background 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background: #555;
+        }
+
         .back-button {
             color: #333;
             text-decoration: none;
@@ -423,11 +518,46 @@
                     </div>
                     <button type="button" class="change-time-btn" onclick="changeDate()" style="margin: 0;">Change Date</button>
                 </div>
+                <div class="event-detail">
+                    <strong>Price:</strong> <span id="event-price"></span>
+                </div>
             </div>
 
             <!-- Time Slots Grid -->
             <div class="time-slots-grid" id="time-slots-grid">
                 <!-- Loading spinner will show here initially -->
+            </div>
+
+            <!-- Booking Confirmation Section -->
+            <div class="personal-details-form" id="confirmation-section" style="display: none;">
+                <div style="text-align: center;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; color: white; margin: 0 auto 30px; font-weight: bold;">✓</div>
+                    <h2 style="font-size: 32px; font-weight: 700; color: #28a745; margin: 0 0 20px 0; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Booking Successful!</h2>
+                    <p style="font-size: 18px; color: #666; line-height: 1.6; margin: 0 0 40px 0; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+                        Your appointment has been confirmed. A confirmation email has been sent to <strong id="confirmation-email"></strong> with all the details.
+                    </p>
+                    
+                    <div style="background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 30px; text-align: left;">
+                        <h3 style="font-size: 20px; font-weight: 600; color: #333; margin: 0 0 15px 0; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">Appointment Details</h3>
+                        <p style="font-size: 16px; color: #666; margin-bottom: 8px; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;"><strong>Location:</strong> <span id="confirmation-location"></span></p>
+                        <p style="font-size: 16px; color: #666; margin-bottom: 8px; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;"><strong>Date:</strong> <span id="confirmation-date"></span></p>
+                        <p style="font-size: 16px; color: #666; margin-bottom: 0; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;"><strong>Time:</strong> <span id="confirmation-time"></span></p>
+                    </div>
+
+                    <div style="margin: 30px 0; text-align: center;">
+                        <p style="font-size: 16px; color: #666; margin-bottom: 20px;">Download our app to view your detailed report and track your progress:</p>
+                        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://apps.apple.com/us/app/body-insight/id6751254360" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                                <img src="images/app/appstore.png" alt="Download on the App Store" style="height: 50px; width: auto;" />
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.bolte.bodyinsight" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">
+                                <img src="images/app/playstore.png" alt="Get it on Google Play" style="height: 50px; width: auto;" />
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-size: 18px; font-weight: 600; transition: all 0.3s ease; font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; margin-top: 30px;">Go to Homepage</a>
+                </div>
             </div>
 
             <!-- Personal Details Form -->
@@ -460,8 +590,30 @@
                         <label class="form-label" for="phone">Phone Number</label>
                         <input type="tel" class="form-input" id="phone" name="phone">
                     </div>
-                    <button type="submit" class="submit-btn">Continue to Appointment</button>
+                    <div class="selected-time-info" id="selected-price-info" style="margin-top: 30px;">
+                        <div class="selected-time-text">
+                            Total Price: <span class="selected-time-value" id="selected-price-display"></span>
+                            <span style="font-size: 14px; color: #666; font-weight: 400; margin-left: 8px;">(to be paid at location)</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Appointment</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Error</h3>
+                <button class="modal-close" onclick="closeErrorModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Something went wrong. Please try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" onclick="closeErrorModal()">OK</button>
             </div>
         </div>
     </div>
@@ -555,7 +707,21 @@
             }
             
             document.getElementById('event-date').textContent = event.date;
+            
+            // Display price from event.amount
+            if (event.amount !== null && event.amount !== undefined) {
+                document.getElementById('event-price').textContent = formatPrice(event.amount);
+            } else {
+                document.getElementById('event-price').textContent = 'N/A';
+            }
+            
             eventInfo.style.display = 'block';
+        }
+        
+        // Format price for display
+        function formatPrice(price) {
+            if (price === null || price === undefined) return 'N/A';
+            return `₹${price.toLocaleString('en-IN')}`;
         }
 
         // Display time slots
@@ -568,9 +734,13 @@
                 card.className = 'time-slot-card';
                 card.dataset.appointmentId = appointment._id;
                 
+                // Use event amount for price display
+                const priceDisplay = (eventData && eventData.amount) ? `<div class="slot-status" style="color: #333; font-weight: 600;">${formatPrice(eventData.amount)}</div>` : '';
+                
                 card.innerHTML = `
                     <div class="slot-time">${appointment.displayTime || appointment.timeSlot}</div>
                     <div class="slot-status">Available</div>
+                    ${priceDisplay}
                 `;
                 
                 card.addEventListener('click', function() {
@@ -610,6 +780,13 @@
             // Display selected time
             document.getElementById('selected-time-display').textContent = selectedAppointmentTime;
             
+            // Display price from event.amount
+            if (eventData && eventData.amount !== null && eventData.amount !== undefined) {
+                document.getElementById('selected-price-display').textContent = formatPrice(eventData.amount);
+            } else {
+                document.getElementById('selected-price-display').textContent = 'N/A';
+            }
+            
             // Scroll to form smoothly
             form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
@@ -636,8 +813,57 @@
             window.location.href = 'schedule.html';
         }
 
+        // Modal functions
+        function showErrorModal(message) {
+            const modal = document.getElementById('errorModal');
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message || 'Something went wrong. Please try again.';
+            modal.classList.add('show');
+        }
+
+        function closeErrorModal() {
+            const modal = document.getElementById('errorModal');
+            modal.classList.remove('show');
+        }
+
+        // Show confirmation section
+        function showConfirmation(email) {
+            // Hide the form
+            document.getElementById('personal-details-form').style.display = 'none';
+            
+            // Hide the page header
+            const pageHeader = document.querySelector('.page-header');
+            if (pageHeader) {
+                pageHeader.style.display = 'none';
+            }
+            
+            // Hide the event info section
+            const eventInfo = document.getElementById('event-info');
+            if (eventInfo) {
+                eventInfo.style.display = 'none';
+            }
+            
+            // Update confirmation details
+            document.getElementById('confirmation-email').textContent = email;
+            
+            // Get event and appointment details
+            if (eventData) {
+                const locationText = `${eventData.area || eventData.name}${eventData.landmark ? ', ' + eventData.landmark : ''}`;
+                document.getElementById('confirmation-location').textContent = locationText;
+                document.getElementById('confirmation-date').textContent = eventData.displayDate || eventData.date;
+            }
+            
+            document.getElementById('confirmation-time').textContent = selectedAppointmentTime;
+            
+            // Show confirmation section
+            document.getElementById('confirmation-section').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // Handle form submission
-        function handleFormSubmit(event) {
+        async function handleFormSubmit(event) {
             event.preventDefault();
             
             if (!selectedAppointmentId) {
@@ -653,18 +879,70 @@
             const lastName = formData.get('lastName');
             const dob = formData.get('dob');
             
-            // Build URL with all parameters
-            const params = new URLSearchParams({
-                appointmentId: selectedAppointmentId,
-                email: email,
-                phone: phone,
-                firstName: firstName,
-                lastName: lastName,
-                dob: dob
-            });
+            // Validate required fields (all except phone)
+            if (!email || !firstName || !lastName || !dob) {
+                alert('Please fill in all required fields (Email, First Name, Last Name, and Date of Birth).');
+                return;
+            }
             
-            // Redirect to appointment page with all details
-            window.location.href = `appointment.html?${params.toString()}`;
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            try {
+                // Show loading state on button
+                const submitBtn = event.target.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Booking...';
+                
+                // Call bookAppointmentWeb endpoint
+                const response = await fetch(`${API_BASE_URL}/bookAppointmentWeb`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        appointmentId: selectedAppointmentId,
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName,
+                        dateOfBirth: dob,
+                        phone: phone || null
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error.message || data.error || 'API error occurred');
+                }
+                
+                // Success - show confirmation section
+                showConfirmation(email);
+                
+            } catch (error) {
+                console.error('Error booking appointment:', error);
+                
+                // Show error modal with message from error object or default message
+                const errorMsg = (error && error.message) ? error.message : 'Something went wrong. Please try again.';
+                showErrorModal(errorMsg);
+                
+                // Reset button state
+                const submitBtn = event.target.querySelector('.submit-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Book Appointment';
+                }
+            }
         }
 
         // Initialize on page load
