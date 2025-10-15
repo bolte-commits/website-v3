@@ -81,3 +81,267 @@
     })();
 </script>
 
+<script>
+    // Google Analytics - Track button clicks
+    document.addEventListener('DOMContentLoaded', function() {
+        // Track CTA button (Book Appointment - Hero)
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'CTA',
+                        'event_label': 'Book Appointment - Hero',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track Schedule button (Our Schedule - Hero)
+        const scheduleButton = document.querySelector('.schedule-button');
+        if (scheduleButton) {
+            scheduleButton.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Our Schedule - Hero',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track header Book Appointment button
+        const headerBookBtn = document.querySelector('.join-btn');
+        if (headerBookBtn) {
+            headerBookBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'CTA',
+                        'event_label': 'Book Appointment - Header',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track mobile header Book Appointment button
+        const mobileBookBtn = document.querySelector('.mobile-join-btn');
+        if (mobileBookBtn) {
+            mobileBookBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'CTA',
+                        'event_label': 'Book Appointment - Mobile Menu',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track schedule page "Book Slot" buttons
+        const bookSlotButtons = document.querySelectorAll('.book-btn');
+        bookSlotButtons.forEach((button, index) => {
+            button.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'Booking',
+                        'event_label': 'Book Slot - Schedule Page',
+                        'value': 1
+                    });
+                }
+            });
+        });
+        
+        // Track selecttime page "Book Appointment" button
+        const selectTimeSubmit = document.querySelector('#details-form .submit-btn');
+        if (selectTimeSubmit) {
+            selectTimeSubmit.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'Booking',
+                        'event_label': 'Book Appointment - Submit Form',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track service "BOOK APPOINTMENT" buttons (all service CTAs)
+        const serviceCtaButtons = document.querySelectorAll('.service-cta.primary');
+        serviceCtaButtons.forEach((button, index) => {
+            button.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'CTA',
+                        'event_label': 'Book Appointment - Service Card',
+                        'value': 1
+                    });
+                }
+            });
+        });
+        
+        // Track "TALK TO US" button in collaborations section
+        const talkToUsBtn = document.querySelector('.membership-cta');
+        if (talkToUsBtn) {
+            talkToUsBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'Engagement',
+                        'event_label': 'Talk to Us - Collaborations',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track App Store download button
+        const appStoreBtn = document.querySelector('.app-store-btn');
+        if (appStoreBtn) {
+            appStoreBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'app_download', {
+                        'event_category': 'Download',
+                        'event_label': 'App Store',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track Google Play download button
+        const playStoreBtn = document.querySelector('.play-store-btn');
+        if (playStoreBtn) {
+            playStoreBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'app_download', {
+                        'event_category': 'Download',
+                        'event_label': 'Google Play',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track referral "Talk to us" link
+        const referralBtn = document.querySelector('.referral-btn');
+        if (referralBtn) {
+            referralBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'button_click', {
+                        'event_category': 'Engagement',
+                        'event_label': 'Talk to Us - Referral',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track category pill clicks
+        const categoryPills = document.querySelectorAll('.category-pill');
+        categoryPills.forEach((pill) => {
+            pill.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    const categoryName = this.textContent.trim();
+                    gtag('event', 'category_filter', {
+                        'event_category': 'Engagement',
+                        'event_label': `Category Pill - ${categoryName}`,
+                        'category_name': categoryName,
+                        'value': 1
+                    });
+                }
+            });
+        });
+        
+        // Track AI slider navigation (swiper buttons)
+        const swiperNextBtn = document.querySelector('#main-slider-next');
+        const swiperPrevBtn = document.querySelector('#main-slider-prev');
+        
+        if (swiperNextBtn) {
+            swiperNextBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'slider_navigation', {
+                        'event_category': 'Engagement',
+                        'event_label': 'AI Slider - Next',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        if (swiperPrevBtn) {
+            swiperPrevBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'slider_navigation', {
+                        'event_category': 'Engagement',
+                        'event_label': 'AI Slider - Previous',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // OPTION PAGE TRACKING
+        
+        // Track "Continue on Website" button on option page
+        const websiteOptionBtn = document.querySelector('#website-option');
+        if (websiteOptionBtn) {
+            websiteOptionBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'booking_method_selected', {
+                        'event_category': 'Booking',
+                        'event_label': 'Continue on Website',
+                        'booking_method': 'website',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track App Store downloads on option page (separate from index page)
+        const optionPageAppStoreBadge = document.querySelector('.app-download-section a[href*="apps.apple.com"]');
+        if (optionPageAppStoreBadge && document.querySelector('.option-page')) {
+            optionPageAppStoreBadge.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'booking_method_selected', {
+                        'event_category': 'Booking',
+                        'event_label': 'App Store - Option Page',
+                        'booking_method': 'app_ios',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track Google Play downloads on option page
+        const optionPagePlayStoreBadge = document.querySelector('.app-download-section a[href*="play.google.com"]');
+        if (optionPagePlayStoreBadge && document.querySelector('.option-page')) {
+            optionPagePlayStoreBadge.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'booking_method_selected', {
+                        'event_category': 'Booking',
+                        'event_label': 'Google Play - Option Page',
+                        'booking_method': 'app_android',
+                        'value': 1
+                    });
+                }
+            });
+        }
+        
+        // Track "Back to Home" link on option page
+        const backToHomeBtn = document.querySelector('.back-button');
+        if (backToHomeBtn && document.querySelector('.option-page')) {
+            backToHomeBtn.addEventListener('click', function(e) {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'navigation', {
+                        'event_category': 'Navigation',
+                        'event_label': 'Back to Home - Option Page',
+                        'value': 1
+                    });
+                }
+            });
+        }
+    });
+</script>
+

@@ -318,7 +318,7 @@
                 </div>
 
                 <!-- Website Option -->
-                <a href="email.html" class="option-button" id="website-option">
+                <a href="schedule.html" class="option-button" id="website-option">
                     <div class="option-icon">🌐</div>
                     <div>
                         <div>Continue on Website</div>
@@ -362,6 +362,9 @@
                 if (websiteOption) {
                     websiteOption.href = `selecttime.html?eventId=${eventId}`;
                 }
+            } else {
+                // No eventId - redirect to schedule page
+                window.location.href = 'schedule.html';
             }
         });
     </script>
