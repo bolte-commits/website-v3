@@ -328,10 +328,6 @@
                 margin-bottom: 8px;
             }
 
-            .date-full::before {
-                content: ', ';
-            }
-
             .time-text {
                 display: block;
                 font-size: 14px;
@@ -412,7 +408,6 @@
                     </div>
 
                     <div class="datetime-info">
-                        <div class="date-day">${schedule.dayName}</div>
                         <div class="date-full">${schedule.dateDisplay}</div>
                         <div class="time-text">${schedule.timings}</div>
                     </div>
@@ -480,10 +475,7 @@
                     // Convert API data to schedule format
                     scheduleData = data.events.map(event => {
                         // Parse the date
-                        const eventDate = new Date(event.date);
-                        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-                        
+                      
                         return {
                             id: event._id,
                             city: 'Bengaluru',
@@ -491,8 +483,7 @@
                             area: event.landmark,
                             googleMapsUrl: event.googleMapsUrl,
                             date: event.date,
-                            dayName: days[eventDate.getDay()],
-                            dateDisplay: event.displayDate,
+                            dateDisplay: event.webDisplayDate,
                             timings: event.timings
                         };
                     });
