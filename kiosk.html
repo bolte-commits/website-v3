@@ -1,0 +1,1126 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPHR8ZCDT2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BPHR8ZCDT2');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Insight Kiosk - Create Account</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Optimized Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .kiosk-page {
+            min-height: 100vh;
+            background: #FFF;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: #FFF;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .kiosk-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            margin-top: 120px;
+        }
+
+        .kiosk-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .selection-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .selection-btn {
+            flex: 1;
+            padding: 30px 20px;
+            border: 3px solid #0c213c;
+            border-radius: 15px;
+            background: white;
+            color: #0c213c;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+        }
+
+        .selection-btn:hover {
+            background: #0c213c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(12, 33, 60, 0.3);
+        }
+
+        .selection-btn.selected {
+            background: white;
+            color: #0c213c;
+            border-color: #0c213c;
+            border-width: 4px;
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: #0c213c;
+            transform: scale(1.2);
+        }
+
+        .step-dot.completed {
+            background: #0c213c;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 45px;
+        }
+
+        /* Increase margins significantly in the last step */
+        #step-4 .form-group {
+            margin-bottom: 70px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .form-label .optional {
+            color: #999;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #0c213c;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .gender-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .gender-btn {
+            flex: 1;
+            padding: 15px 30px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .gender-btn:hover {
+            border-color: #0c213c;
+            background: #f8f9ff;
+        }
+
+        .gender-btn.selected {
+            background: white;
+            color: #0c213c;
+            border-color: #0c213c;
+            border-width: 3px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .reset-link-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            display: none; /* Hidden by default, shown when form is active */
+        }
+
+        .reset-link {
+            color: #444;
+            font-size: 16px;
+            text-decoration: none;
+            opacity: 1;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .reset-link:hover {
+            color: #0c213c;
+            text-decoration: underline;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .btn-primary {
+            background: #0c213c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0a1a2f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                top: 10px;
+                padding: 5px;
+            }
+
+            .kiosk-container {
+                padding: 30px 20px;
+                margin-top: 100px;
+            }
+
+            .kiosk-title {
+                font-size: 28px;
+            }
+
+            .selection-buttons {
+                flex-direction: column;
+            }
+
+            .selection-btn {
+                padding: 25px 15px;
+                font-size: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kiosk-page">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Body Insight Logo" style="max-width: 200px; height: auto;">
+        </div>
+        <div class="kiosk-container">
+
+            <!-- Selection Screen -->
+            <div id="selection-screen">
+                <div class="selection-buttons">
+                    <button class="selection-btn" id="anon-btn">Anon</button>
+                    <button class="selection-btn" id="regular-btn">Regular</button>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div id="form-container" class="form-container">
+
+                <form id="kiosk-form" novalidate>
+                    <!-- Step 1: Contact Info (Regular only) -->
+                    <div class="form-step" id="step-1">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" class="form-input" id="email" name="email" required>
+                            <div id="email-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                Phone Number
+                                <span class="optional">(Optional)</span>
+                            </label>
+                            <input type="tel" class="form-input" id="phone" name="phone">
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                            <button type="button" class="btn btn-primary next-btn" onclick="nextStep()">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Name -->
+                    <div class="form-step" id="step-2">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">First Name</label>
+                                <input type="text" class="form-input" id="firstName" name="firstName" maxlength="15" required>
+                                <div id="firstName-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Last Name</label>
+                                <input type="text" class="form-input" id="lastName" name="lastName" maxlength="15" required>
+                                <div id="lastName-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                            <button type="button" class="btn btn-primary next-btn" onclick="nextStep()">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Demographics -->
+                    <div class="form-step" id="step-3">
+                        <div class="form-group">
+                            <label class="form-label" for="dob">Date of Birth</label>
+                            <input type="date" class="form-input" id="dob" name="dob" required>
+                            <div id="dob-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <div class="gender-buttons">
+                                <button type="button" class="gender-btn" data-gender="male" onclick="selectGender('male')">Male</button>
+                                <button type="button" class="gender-btn" data-gender="female" onclick="selectGender('female')">Female</button>
+                            </div>
+                            <input type="hidden" id="gender" name="gender" required>
+                            <div id="gender-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="height">Height (cm)</label>
+                                <input type="number" class="form-input" id="height" name="height" min="120" max="210" required>
+                                <div id="height-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="weight">Weight (kg)</label>
+                                <input type="number" class="form-input" id="weight" name="weight" min="35" max="135" step="0.1" required>
+                                <div id="weight-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                            <button type="button" class="btn btn-primary next-btn" onclick="nextStep()">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Goals & Lifestyle -->
+                    <div class="form-step" id="step-4">
+                        <div class="form-group">
+                            <label class="form-label">Goal</label>
+                            <div class="gender-buttons">
+                                <button type="button" class="gender-btn" data-goal="goal_loss">Fat Loss</button>
+                                <button type="button" class="gender-btn" data-goal="goal_gain">Muscle Gain</button>
+                                <button type="button" class="gender-btn" data-goal="goal_maintain">Maintenance</button>
+                            </div>
+                            <input type="hidden" id="goal" name="goal" required>
+                            <div id="goal-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lifestyle">Lifestyle</label>
+                            <select class="form-select" id="lifestyle" name="lifestyle" required>
+                                <option value="">Select Lifestyle</option>
+                                <option value="sedentary">Sedentary</option>
+                                <option value="light">Light Activity</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="highly_active">Highly Active</option>
+                                <option value="intense">Intense</option>
+                            </select>
+                            <div id="lifestyle-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Weight Training Experience</label>
+                            <div class="gender-buttons">
+                                <button type="button" class="gender-btn" data-experience="beginner">Beginner</button>
+                                <button type="button" class="gender-btn" data-experience="intermediate">Intermediate</button>
+                                <button type="button" class="gender-btn" data-experience="advanced">Advanced</button>
+                            </div>
+                            <input type="hidden" id="weightTraining" name="weightTraining" required>
+                            <div id="weightTraining-error" style="color: #dc3545; font-size: 14px; margin-top: 5px; display: none;"></div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="btn btn-secondary" onclick="previousStep()">Back</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="reset-link-container">
+                <a href="#" class="reset-link" onclick="resetToSelection(); return false;">Reset</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let isAnon = false;
+        let totalSteps = 4;
+
+        function selectMode(mode) {
+            isAnon = mode === 'anon';
+            
+            // Hide selection screen and show form
+            document.getElementById('selection-screen').style.display = 'none';
+            document.getElementById('form-container').classList.add('active');
+            
+            // Show reset link when form is active
+            const resetContainer = document.querySelector('.reset-link-container');
+            if (resetContainer) {
+                resetContainer.style.display = 'block';
+            }
+            
+            // Handle required attribute for email field
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            if (isAnon) {
+                // Remove required attribute in anon mode
+                if (emailInput) {
+                    emailInput.removeAttribute('required');
+                }
+                if (phoneInput) {
+                    phoneInput.removeAttribute('required');
+                }
+            } else {
+                // Add required attribute in regular mode
+                if (emailInput) {
+                    emailInput.setAttribute('required', 'required');
+                }
+                // Phone is optional, so no need to set required
+            }
+            
+            // Set total steps and starting step
+            if (isAnon) {
+                totalSteps = 3;
+                currentStep = 1; // Will show step-2 (index 1)
+            } else {
+                totalSteps = 4;
+                currentStep = 1; // Will show step-1 (index 0)
+            }
+            
+            updateStepIndicator();
+            showCurrentStep();
+            updateNextButtonText();
+        }
+
+        function resetToSelection() {
+            // Show confirmation alert
+            if (!confirm('Are you sure you want to reset? All entered data will be lost.')) {
+                return;
+            }
+            
+            // Reset form
+            document.getElementById('kiosk-form').reset();
+            
+            // Reset all hidden inputs
+            document.getElementById('gender').value = '';
+            document.getElementById('goal').value = '';
+            document.getElementById('weightTraining').value = '';
+            
+            // Reset button selections
+            document.querySelectorAll('.selection-btn, .gender-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Reset error messages
+            document.querySelectorAll('[id$="-error"]').forEach(el => {
+                el.style.display = 'none';
+                el.textContent = '';
+            });
+            
+            // Reset step indicators
+            currentStep = 1;
+            totalSteps = 4;
+            
+            // Show selection screen and hide form
+            document.getElementById('selection-screen').style.display = 'block';
+            document.getElementById('form-container').classList.remove('active');
+            
+            // Hide reset link when back to selection screen
+            const resetContainer = document.querySelector('.reset-link-container');
+            if (resetContainer) {
+                resetContainer.style.display = 'none';
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Make function globally accessible
+        window.selectMode = selectMode;
+
+        function updateStepIndicator() {
+            // Step indicator removed, so this function is now a no-op
+            return;
+            const indicator = document.getElementById('step-indicator');
+            if (!indicator) return;
+            indicator.innerHTML = '';
+            
+            for (let i = 1; i <= totalSteps; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'step-dot';
+                if (i < currentStep) {
+                    dot.classList.add('completed');
+                } else if (i === currentStep) {
+                    dot.classList.add('active');
+                }
+                indicator.appendChild(dot);
+            }
+        }
+
+        function updateNextButtonText() {
+            const nextButtons = document.querySelectorAll('.next-btn');
+            nextButtons.forEach(btn => {
+                // Only update button if it's visible (in active step)
+                const activeStep = document.querySelector('.form-step.active');
+                if (activeStep && activeStep.contains(btn)) {
+                    btn.textContent = `Next - ${currentStep}/${totalSteps}`;
+                }
+            });
+        }
+
+        function showCurrentStep() {
+            const steps = document.querySelectorAll('.form-step');
+            
+            // Calculate which step index to show
+            // Anon: currentStep 1->2 (index 1), 2->3 (index 2), 3->4 (index 3)
+            // Regular: currentStep 1->1 (index 0), 2->2 (index 1), 3->3 (index 2), 4->4 (index 3)
+            const stepIndex = isAnon ? currentStep : currentStep - 1;
+            
+            steps.forEach((step, index) => {
+                if (index === stepIndex) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+            
+            // Hide/show back button based on current step
+            const backButtons = document.querySelectorAll('.btn-secondary');
+            backButtons.forEach(btn => {
+                if (btn.textContent.trim() === 'Back') {
+                    btn.style.display = currentStep === 1 ? 'none' : 'block';
+                }
+            });
+            
+            // Update Next button text
+            updateNextButtonText();
+        }
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function selectGender(gender) {
+            // Validate that gender is either 'male' or 'female'
+            if (gender !== 'male' && gender !== 'female') {
+                console.error('Invalid gender value:', gender);
+                return;
+            }
+            
+            // Update hidden input
+            document.getElementById('gender').value = gender;
+            
+            // Update button styles
+            document.querySelectorAll('.gender-btn[data-gender]').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.querySelector(`.gender-btn[data-gender="${gender}"]`).classList.add('selected');
+            
+            // Hide error message if it was showing
+            const errorEl = document.getElementById('gender-error');
+            errorEl.style.display = 'none';
+            
+            // Reset border if needed
+            const genderInput = document.getElementById('gender');
+            genderInput.style.borderColor = '#e0e0e0';
+        }
+
+        function selectGoal(goal) {
+            // Update hidden input
+            document.getElementById('goal').value = goal;
+            
+            // Update button styles
+            document.querySelectorAll('.gender-btn[data-goal]').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.querySelector(`.gender-btn[data-goal="${goal}"]`).classList.add('selected');
+            
+            // Hide error message if it was showing
+            const errorEl = document.getElementById('goal-error');
+            errorEl.style.display = 'none';
+        }
+
+        // Make function globally accessible
+        window.selectGoal = selectGoal;
+
+        function selectExperience(experience) {
+            // Update hidden input
+            document.getElementById('weightTraining').value = experience;
+            
+            // Update button styles
+            document.querySelectorAll('.gender-btn[data-experience]').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.querySelector(`.gender-btn[data-experience="${experience}"]`).classList.add('selected');
+            
+            // Hide error message if it was showing
+            const errorEl = document.getElementById('weightTraining-error');
+            errorEl.style.display = 'none';
+        }
+
+        // Make function globally accessible
+        window.selectExperience = selectExperience;
+
+        function nextStep() {
+            // Validate current step
+            const currentStepElement = document.querySelector('.form-step.active');
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Sort inputs to check firstName before lastName
+            const sortedInputs = Array.from(inputs).sort((a, b) => {
+                if (a.id === 'firstName') return -1;
+                if (b.id === 'firstName') return 1;
+                if (a.id === 'lastName') return -1;
+                if (b.id === 'lastName') return 1;
+                return 0;
+            });
+            
+            sortedInputs.forEach(input => {
+                // For select elements, check value directly (don't trim)
+                let value;
+                if (input.tagName === 'SELECT') {
+                    value = input.value;
+                } else {
+                    value = input.value.trim();
+                }
+                
+                // Reset border color
+                input.style.borderColor = '#e0e0e0';
+                
+                // Check if required field is empty
+                if (!value || value === '') {
+                    isValid = false;
+                    const fieldName = input.labels && input.labels.length > 0 ? input.labels[0].textContent.replace('*', '').trim() : input.name || input.id;
+                    errorMessage = `Please fill in ${fieldName}.`;
+                    return;
+                }
+                
+                // Email validation
+                if (input.type === 'email' && input.id === 'email') {
+                    if (!validateEmail(value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address.';
+                        return;
+                    }
+                }
+                
+                // First Name validation (checked before lastName)
+                if (input.id === 'firstName') {
+                    if (value.length === 0) {
+                        isValid = false;
+                        errorMessage = 'First name cannot be blank.';
+                        return;
+                    }
+                    if (value.length > 15) {
+                        isValid = false;
+                        errorMessage = 'First name must be 15 characters or less.';
+                        return;
+                    }
+                }
+                
+                // Last Name validation (checked after firstName)
+                if (input.id === 'lastName') {
+                    if (value.length === 0) {
+                        isValid = false;
+                        errorMessage = 'Last name cannot be blank.';
+                        return;
+                    }
+                    if (value.length > 15) {
+                        isValid = false;
+                        errorMessage = 'Last name must be 15 characters or less.';
+                        return;
+                    }
+                }
+                
+                // Date of Birth validation - must be greater than 18 and less than 100 years old
+                if (input.id === 'dob' && input.type === 'date') {
+                    if (value) {
+                        const birthDate = new Date(value);
+                        const today = new Date();
+                        
+                        // Check if birth date is in the future
+                        if (birthDate > today) {
+                            isValid = false;
+                            errorMessage = 'Date of birth cannot be in the future.';
+                            return;
+                        }
+                        
+                        const age = today.getFullYear() - birthDate.getFullYear();
+                        const monthDiff = today.getMonth() - birthDate.getMonth();
+                        const dayDiff = today.getDate() - birthDate.getDate();
+                        
+                        // Calculate actual age considering month and day
+                        let actualAge = age;
+                        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                            actualAge--;
+                        }
+                        
+                        if (actualAge <= 18) {
+                            isValid = false;
+                            errorMessage = 'You must be older than 18 years old.';
+                            return;
+                        }
+                        
+                        if (actualAge >= 100) {
+                            isValid = false;
+                            errorMessage = 'Age must be less than 100 years.';
+                            return;
+                        }
+                    }
+                }
+                
+                // Height validation - must be between 120 and 210
+                if (input.id === 'height' && input.type === 'number') {
+                    const heightValue = parseFloat(value);
+                    if (value && (heightValue < 120 || heightValue > 210)) {
+                        isValid = false;
+                        errorMessage = 'Height must be between 120 and 210 cm.';
+                        return;
+                    }
+                }
+                
+                // Weight validation - must be between 35 and 135
+                if (input.id === 'weight' && input.type === 'number') {
+                    const weightValue = parseFloat(value);
+                    if (value && (weightValue < 35 || weightValue > 135)) {
+                        isValid = false;
+                        errorMessage = 'Weight must be between 35 and 135 kg.';
+                        return;
+                    }
+                }
+            });
+            
+            // Gender validation (hidden input) - for nextStep
+            if (currentStepElement && currentStepElement.id === 'step-3') {
+                const genderInput = document.getElementById('gender');
+                if (genderInput && (!genderInput.value || (genderInput.value !== 'male' && genderInput.value !== 'female'))) {
+                    isValid = false;
+                    errorMessage = 'Please select a gender.';
+                }
+            }
+            
+            // Goal validation (hidden input) - for nextStep
+            if (currentStepElement && currentStepElement.id === 'step-4') {
+                const goalInput = document.getElementById('goal');
+                if (goalInput && !goalInput.value) {
+                    isValid = false;
+                    errorMessage = 'Please select a goal.';
+                }
+                
+                // Lifestyle validation (select dropdown) - for nextStep
+                const lifestyleInput = document.getElementById('lifestyle');
+                if (lifestyleInput && (!lifestyleInput.value || lifestyleInput.value === '')) {
+                    isValid = false;
+                    errorMessage = 'Please select a lifestyle.';
+                }
+                
+                // Weight Training Experience validation
+                const experienceInput = document.getElementById('weightTraining');
+                if (experienceInput && !experienceInput.value) {
+                    isValid = false;
+                    errorMessage = 'Please select weight training experience.';
+                }
+            }
+            
+            if (!isValid) {
+                if (!errorMessage) {
+                    errorMessage = 'Please correct the errors above.';
+                }
+                alert(errorMessage);
+                return;
+            }
+            
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepIndicator();
+                showCurrentStep();
+                updateNextButtonText();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepIndicator();
+                showCurrentStep();
+                updateNextButtonText();
+            } else {
+                // If at first step, go back to selection screen
+                document.getElementById('selection-screen').style.display = 'block';
+                document.getElementById('form-container').classList.remove('active');
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('kiosk-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate final step with same validation logic
+            const currentStepElement = document.querySelector('.form-step.active');
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            let errorMessage = '';
+            
+            // Sort inputs to check firstName before lastName
+            const sortedInputs = Array.from(inputs).sort((a, b) => {
+                if (a.id === 'firstName') return -1;
+                if (b.id === 'firstName') return 1;
+                if (a.id === 'lastName') return -1;
+                if (b.id === 'lastName') return 1;
+                return 0;
+            });
+            
+            sortedInputs.forEach(input => {
+                // For select elements, check value directly (don't trim)
+                let value;
+                if (input.tagName === 'SELECT') {
+                    value = input.value;
+                } else {
+                    value = input.value.trim();
+                }
+                
+                // Reset border color
+                input.style.borderColor = '#e0e0e0';
+                
+                // Check if required field is empty
+                if (!value || value === '') {
+                    isValid = false;
+                    const fieldName = input.labels && input.labels.length > 0 ? input.labels[0].textContent.replace('*', '').trim() : input.name || input.id;
+                    errorMessage = `Please fill in ${fieldName}.`;
+                    return;
+                }
+                
+                // Email validation
+                if (input.type === 'email' && input.id === 'email') {
+                    if (!validateEmail(value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address.';
+                        return;
+                    }
+                }
+                
+                // First Name validation (checked before lastName)
+                if (input.id === 'firstName') {
+                    if (value.length === 0) {
+                        isValid = false;
+                        errorMessage = 'First name cannot be blank.';
+                        return;
+                    }
+                    if (value.length > 15) {
+                        isValid = false;
+                        errorMessage = 'First name must be 15 characters or less.';
+                        return;
+                    }
+                }
+                
+                // Last Name validation (checked after firstName)
+                if (input.id === 'lastName') {
+                    if (value.length === 0) {
+                        isValid = false;
+                        errorMessage = 'Last name cannot be blank.';
+                        return;
+                    }
+                    if (value.length > 15) {
+                        isValid = false;
+                        errorMessage = 'Last name must be 15 characters or less.';
+                        return;
+                    }
+                }
+                
+                // Date of Birth validation - must be greater than 18 and less than 100 years old (for submit handler)
+                if (input.id === 'dob' && input.type === 'date') {
+                    if (value) {
+                        const birthDate = new Date(value);
+                        const today = new Date();
+                        
+                        // Check if birth date is in the future
+                        if (birthDate > today) {
+                            isValid = false;
+                            errorMessage = 'Date of birth cannot be in the future.';
+                            return;
+                        }
+                        
+                        const age = today.getFullYear() - birthDate.getFullYear();
+                        const monthDiff = today.getMonth() - birthDate.getMonth();
+                        const dayDiff = today.getDate() - birthDate.getDate();
+                        
+                        // Calculate actual age considering month and day
+                        let actualAge = age;
+                        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+                            actualAge--;
+                        }
+                        
+                        if (actualAge <= 18) {
+                            isValid = false;
+                            errorMessage = 'You must be older than 18 years old.';
+                            return;
+                        }
+                        
+                        if (actualAge >= 100) {
+                            isValid = false;
+                            errorMessage = 'Age must be less than 100 years.';
+                            return;
+                        }
+                    }
+                }
+                
+                // Height validation - must be between 120 and 210 (for submit handler)
+                if (input.id === 'height' && input.type === 'number') {
+                    const heightValue = parseFloat(value);
+                    if (value && (heightValue < 120 || heightValue > 210)) {
+                        isValid = false;
+                        errorMessage = 'Height must be between 120 and 210 cm.';
+                        return;
+                    }
+                }
+                
+                // Weight validation - must be between 35 and 135 (for submit handler)
+                if (input.id === 'weight' && input.type === 'number') {
+                    const weightValue = parseFloat(value);
+                    if (value && (weightValue < 35 || weightValue > 135)) {
+                        isValid = false;
+                        errorMessage = 'Weight must be between 35 and 135 kg.';
+                        return;
+                    }
+                }
+            });
+            
+            // Gender validation (hidden input) - for submit handler
+            const genderInput = document.getElementById('gender');
+            if (genderInput && (!genderInput.value || (genderInput.value !== 'male' && genderInput.value !== 'female'))) {
+                isValid = false;
+                errorMessage = 'Please select a gender.';
+            }
+            
+            // Goal validation (hidden input) - for submit handler
+            const goalInput = document.getElementById('goal');
+            if (goalInput && !goalInput.value) {
+                isValid = false;
+                errorMessage = 'Please select a goal.';
+            }
+            
+            // Lifestyle validation (select dropdown) - for submit handler
+            const lifestyleInput = document.getElementById('lifestyle');
+            if (lifestyleInput && (!lifestyleInput.value || lifestyleInput.value === '')) {
+                isValid = false;
+                errorMessage = 'Please select a lifestyle.';
+            }
+            
+            // Weight Training Experience validation - for submit handler
+            const experienceInput = document.getElementById('weightTraining');
+            if (experienceInput && !experienceInput.value) {
+                isValid = false;
+                errorMessage = 'Please select weight training experience.';
+            }
+            
+            if (!isValid) {
+                if (!errorMessage) {
+                    errorMessage = 'Please correct the errors above.';
+                }
+                alert(errorMessage);
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Only include email and phone if not anon
+            if (!isAnon) {
+                data.email = formData.get('email');
+                data.phone = formData.get('phone');
+            }
+            
+            data.firstName = formData.get('firstName');
+            data.lastName = formData.get('lastName');
+            data.dateOfBirth = formData.get('dob');
+            data.gender = formData.get('gender');
+            data.height = formData.get('height');
+            data.weight = formData.get('weight');
+            data.goal = formData.get('goal');
+            data.lifestyle = formData.get('lifestyle');
+            data.weightTraining = formData.get('weightTraining');
+            data.mode = isAnon ? 'anon' : 'regular';
+            
+            // Show alert with data
+            const dataString = JSON.stringify(data, null, 2);
+            alert('Created\n\nForm Data:\n' + dataString);
+            
+            // Also log the data for debugging:
+            console.log('Form data:', data);
+        });
+
+        // Make function globally accessible
+        window.selectMode = selectMode;
+
+        // Add event listeners for selection buttons - wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initButtons);
+        } else {
+            // DOM is already ready
+            initButtons();
+        }
+        
+        function initButtons() {
+            const anonBtn = document.getElementById('anon-btn');
+            const regularBtn = document.getElementById('regular-btn');
+            
+            if (anonBtn) {
+                anonBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    selectMode('anon');
+                });
+            }
+            
+            if (regularBtn) {
+                regularBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    selectMode('regular');
+                });
+            }
+            
+            // Add event listeners for goal buttons
+            document.querySelectorAll('.gender-btn[data-goal]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectGoal(this.getAttribute('data-goal'));
+                });
+            });
+            
+            // Add event listeners for experience buttons
+            document.querySelectorAll('.gender-btn[data-experience]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    selectExperience(this.getAttribute('data-experience'));
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
+
