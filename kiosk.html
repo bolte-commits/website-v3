@@ -713,7 +713,11 @@
                 // Only update button if it's visible (in active step)
                 const activeStep = document.querySelector('.form-step.active');
                 if (activeStep && activeStep.contains(btn)) {
-                    btn.textContent = `Next - ${currentStep}/${totalSteps}`;
+                    if (currentStep === totalSteps) {
+                        btn.textContent = 'Submit';
+                    } else {
+                        btn.textContent = 'Next';
+                    }
                 }
             });
         }
