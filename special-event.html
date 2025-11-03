@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BPHR8ZCDT2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Extract and store ref parameter from URL for tracking
+      const urlParams = new URLSearchParams(window.location.search);
+      const refParam = urlParams.get('ref') || 'direct';
+      
+      // Store ref parameter globally so it can be attached to all events
+      window.trackingRef = refParam;
+      
+      // Configure GA and track ref parameter if available
+      if (refParam && refParam !== 'direct') {
+        // Send as event parameter for custom dimension support
+        gtag('event', 'page_view_with_ref', {
+          'event_category': 'Traffic Source',
+          'event_label': refParam,
+          'ref_source': refParam, // This can be used as a custom dimension
+          'value': 1
+        });
+      }
+      
+      // Initialize GA config with ref parameter
+      gtag('config', 'G-BPHR8ZCDT2', {
+        'ref_source': refParam // Set ref_source as a page parameter
+      });
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Event - Body Insight</title>
+    <meta name="description" content="Body Insight special event landing page">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .landing-container {
+            background: white;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .landing-at {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0c213c;
+            margin: 15px auto;
+            text-align: center;
+        }
+
+        .landing-landmark {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0c213c;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .landing-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .event-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .event-info-item {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .event-info-item strong {
+            color: #0c213c;
+            display: inline-block;
+            width: 120px;
+        }
+
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .more-info-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            position: relative;
+        }
+
+        .more-info-label-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .more-info-label-wrapper::before,
+        .more-info-label-wrapper::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .more-info-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 20px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        .more-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .event-button {
+            background: #0c213c;
+            color: white;
+            border: none;
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .event-button.book-slot-button {
+            padding: 18px 35px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .more-info-grid .event-button {
+            background: #f8f9fa;
+            color: #0c213c;
+            border: 1px solid #e0e0e0;
+            padding: 15px 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+        .event-button:active {
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            min-height: 100vh;
+            padding: 60px 20px 40px;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        .modal-inner {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            color: #333;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .modal-text ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .modal-text li {
+            margin-bottom: 10px;
+        }
+
+        /* Book Slot Styles */
+        .appointments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .appointment-slot {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .appointment-slot.available {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .appointment-slot.available:hover {
+            background: #c3e6cb;
+            transform: translateY(-2px);
+        }
+
+        .appointment-slot.booked {
+            border-color: #dc3545;
+            background: #f8d7da;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .slot-time {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .slot-status {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .slot-status.available {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .slot-status.booked {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0c213c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .main-content {
+            display: none;
+        }
+
+        .main-content.loaded {
+            display: block;
+        }
+
+        .truck-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 12px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .appointment-dropdown-container {
+            margin-bottom: 20px;
+        }
+
+        .appointment-dropdown {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .appointment-dropdown:focus {
+            outline: none;
+            border-color: #0c213c;
+        }
+
+        .book-slot-button {
+            width: 100%;
+            background: #0c213c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .book-slot-button:hover:not(:disabled) {
+            background: #1a3a5c;
+        }
+
+        .book-slot-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .booking-form {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0c213c;
+        }
+
+        .submit-booking-btn {
+            width: 100%;
+            background: #0c213c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 10px;
+        }
+
+        .submit-booking-btn:hover:not(:disabled) {
+            background: #1a3a5c;
+        }
+
+        .submit-booking-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .selected-slot-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .landing-container {
+                padding: 40px 20px;
+            }
+
+            .landing-title {
+                font-size: 28px;
+            }
+
+            .button-grid {
+                gap: 20px;
+            }
+
+            .more-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .more-info-section {
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+
+            .modal-content {
+                padding: 40px 15px 30px;
+            }
+
+            .modal-inner {
+                padding: 25px;
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+
+            .appointments-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                top: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <a href="index.html" target="_blank" style="display: inline-block;">
+            <img src="images/logo.png" alt="Body Insight" class="logo">
+        </a>
+        
+        <div class="loading-container" id="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading">Loading event details...</div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <p class="landing-at" id="landing-at" style="display: none;">@</p>
+            <p class="landing-landmark" id="landing-landmark" style="display: none;"></p>
+            <p class="landing-subtitle" id="landing-subtitle">Bringing the gold standard DEXA scan straight to your door in our mobile van. Body Insight is trusted by BCCI, RCB, Hockey India and celebrities</p>
+
+            <img src="images/truck-real.jpg" alt="Body Insight Mobile Van" class="truck-image" id="truck-image">
+
+            <div class="event-info" id="event-info">
+            </div>
+
+            <div class="button-grid">
+            <button class="event-button book-slot-button" onclick="openModal('book-slot')">BOOK A SLOT</button>
+            
+            <div class="more-info-section">
+                <div class="more-info-label-wrapper">
+                    <div class="more-info-label">More Info</div>
+                </div>
+                <div class="more-info-grid">
+                    <button class="event-button" onclick="openModal('why-dexa')">Why Dexa?</button>
+                    <button class="event-button" onclick="openModal('sample-report')">Sample Report</button>
+                    <button class="event-button" onclick="openModal('how-to-prepare')">How to prepare</button>
+                    <button class="event-button" onclick="window.open('https://youtu.be/hZxX9UyE-2c?si=GZMZzLSRXTlCh9Ue', '_blank')">The Process</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Dexa Modal -->
+    <div id="modal-why-dexa" class="modal-overlay">
+        <button class="modal-close" onclick="closeModal('why-dexa')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-inner">
+                <h2 class="modal-title">Why DEXA Scan?</h2>
+                <div class="modal-text">
+                    <p>Dual-Energy X-ray Absorptiometry (DEXA) is the gold standard for measuring body composition. Here's why it's the best choice:</p>
+                    <ul>
+                        <li><strong>High Accuracy:</strong> DEXA scans are used in research labs to provide the most precise measurement of body fat, muscle mass, and bone density.</li>
+                        <li><strong>Comprehensive Analysis:</strong> Get detailed breakdowns of your entire body composition, not just overall percentages.</li>
+                        <li><strong>Regional Analysis:</strong> Understand body composition in different regions (arms, legs, trunk) to identify imbalances.</li>
+                        <li><strong>Visceral Fat Measurement:</strong> Accurately measure visceral fat (fat around organs), a critical health indicator linked to metabolic disease risk.</li>
+                        <li><strong>Bone Health:</strong> Receive valuable information about your bone density, important for long-term health.</li>
+                        <li><strong>Metabolism Insights:</strong> Body composition data helps estimate your resting metabolic rate (RMR) and overall metabolic health.</li>
+                        <li><strong>Track Progress:</strong> Perfect for monitoring changes in muscle mass and fat loss over time with consistent measurements.</li>
+                        <li><strong>Low Radiation:</strong> DEXA uses minimal radiation - less than a standard X-ray.</li>
+                        <li><strong>Quick & Non-Invasive:</strong> The scan takes just 5-7 minutes and requires no preparation.</li>
+                    </ul>
+                    <p>Unlike other methods like bioelectrical impedance or calipers, DEXA provides laboratory-grade accuracy that can help you make informed decisions about your fitness and health journey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample Report Modal -->
+    <div id="modal-sample-report" class="modal-overlay">
+        <button class="modal-close" onclick="closeModal('sample-report')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-inner" style="padding: 0;">
+                <iframe src="https://d3vn46qh52pv01.cloudfront.net/sample-report.pdf" style="width: 100%; height: 100vh; min-height: 600px; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- How to Prepare Modal -->
+    <div id="modal-how-to-prepare" class="modal-overlay">
+        <button class="modal-close" onclick="closeModal('how-to-prepare')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-inner">
+                <h2 class="modal-title">How to Prepare</h2>
+                <div class="modal-text">
+                    <p>Preparing for your DEXA scan is simple. Follow these guidelines for the most accurate results:</p>
+                    <h3 style="margin-top: 20px; margin-bottom: 10px; color: #0c213c;">Before Your Scan:</h3>
+                    <ul>
+                        <li><strong>Fasting Not Required:</strong> You can eat and drink normally before your scan.</li>
+                        <li><strong>Stay Hydrated:</strong> Drink water as usual - dehydration won't affect results.</li>
+                        <li><strong>No Exercise Needed:</strong> You don't need to exercise before the scan.</li>
+                        <li><strong>Wear Light Clothing:</strong> Wear comfortable, lightweight clothing without metal buttons or zippers.</li>
+                    </ul>
+                    <h3 style="margin-top: 20px; margin-bottom: 10px; color: #0c213c;">During Your Scan:</h3>
+                    <ul>
+                        <li><strong>Lie Still:</strong> You'll lie comfortably on a scanning table for 5-7 minutes.</li>
+                        <li><strong>Stay Relaxed:</strong> The scan is completely painless and non-invasive.</li>
+                        <li><strong>Breathe Normally:</strong> No special breathing techniques required.</li>
+                    </ul>
+                    <h3 style="margin-top: 20px; margin-bottom: 10px; color: #0c213c;">Important Notes:</h3>
+                    <ul>
+                        <li>If you're pregnant or think you might be pregnant, please inform us before your scan.</li>
+                        <li>Remove all jewelry and metal objects before the scan.</li>
+                        <li>If you have any medical implants or devices, let us know in advance.</li>
+                    </ul>
+                    <p style="margin-top: 20px;"><strong>That's it!</strong> No complicated preparation needed. Just arrive at your scheduled time and we'll take care of the rest.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Slot Modal -->
+    <div id="modal-book-slot" class="modal-overlay">
+        <button class="modal-close" onclick="closeModal('book-slot')">&times;</button>
+        <div class="modal-content">
+            <div class="modal-inner">
+                <h2 class="modal-title">Book Your Slot</h2>
+                <div id="book-slot-content">
+                    <div class="loading-container" style="min-height: 200px;">
+                        <div class="loading-spinner"></div>
+                        <div class="loading">Loading available slots...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'https://vzhsj8805e.execute-api.ap-south-1.amazonaws.com/prod';
+        
+        let eventData = null;
+        let availableAppointments = [];
+        let bookedAppointments = [];
+
+        // Get event ID from URL
+        function getEventIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventId = urlParams.get('event');
+            return eventId ? parseInt(eventId) : null;
+        }
+
+        // Fetch event details
+        async function fetchEventDetails() {
+            const eventId = getEventIdFromUrl();
+            const loadingContainer = document.getElementById('loading-container');
+            const mainContent = document.getElementById('main-content');
+            
+            if (!eventId) {
+                if (loadingContainer) loadingContainer.style.display = 'none';
+                if (mainContent) {
+                    mainContent.classList.add('loaded');
+                    document.getElementById('event-info').innerHTML = '<div class="error-message">Event ID not found in URL. Please use ?event=YOUR_EVENT_ID</div>';
+                }
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/getEvent`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        eventId: eventId
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || 'Failed to fetch event details');
+                }
+
+                eventData = result.event;
+                availableAppointments = result.availableAppointments || [];
+                bookedAppointments = result.bookedAppointments || [];
+
+                // Hide loading spinner and show main content
+                if (loadingContainer) loadingContainer.style.display = 'none';
+                if (mainContent) mainContent.classList.add('loaded');
+
+                displayEventInfo();
+            } catch (error) {
+                // Hide loading spinner and show error
+                if (loadingContainer) loadingContainer.style.display = 'none';
+                if (mainContent) {
+                    mainContent.classList.add('loaded');
+                    document.getElementById('event-info').innerHTML = `<div class="error-message">${error?.message || 'Something went wrong. Please try again.'}</div>`;
+                }
+            }
+        }
+
+        // Display event information
+        function displayEventInfo() {
+            if (!eventData) return;
+
+            // Update @ symbol and landmark
+            const landingAt = document.getElementById('landing-at');
+            const landingLandmark = document.getElementById('landing-landmark');
+            if (eventData.landmark) {
+                if (landingAt) {
+                    landingAt.style.display = 'block';
+                }
+                if (landingLandmark) {
+                    landingLandmark.textContent = eventData.landmark;
+                    landingLandmark.style.display = 'block';
+                }
+            }
+
+            const eventInfoDiv = document.getElementById('event-info');
+
+            let html = '';
+            if (eventData.displayDate) {
+                html += `<div class="event-info-item"><strong>Date:</strong> ${eventData.displayDate}</div>`;
+            }
+            if (eventData.timings) {
+                html += `<div class="event-info-item"><strong>Time:</strong> ${eventData.timings}</div>`;
+            }
+            html += `<div class="event-info-item"><strong>Duration:</strong> 6 minutes per scan</div>`;
+            if (eventData.amount) {
+                html += `<div class="event-info-item"><strong>Price:</strong> ₹${eventData.amount.toLocaleString('en-IN')}</div>`;
+            }
+
+            eventInfoDiv.innerHTML = html;
+        }
+
+        // Load available appointments for booking
+        async function loadAvailableAppointmentsForBooking() {
+            const contentDiv = document.getElementById('book-slot-content');
+            const eventId = getEventIdFromUrl();
+
+            if (!eventId) {
+                contentDiv.innerHTML = '<div class="error-message">Event ID not found in URL.</div>';
+                return;
+            }
+
+            // Show loading spinner
+            contentDiv.innerHTML = `
+                <div class="loading-container" style="min-height: 200px;">
+                    <div class="loading-spinner"></div>
+                    <div class="loading">Loading available appointments...</div>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/findAvailableAppointments`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        eventId: eventId
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || result.error || 'Failed to load available appointments');
+                }
+
+                const appointments = result.appointments || [];
+
+                if (!appointments || appointments.length === 0) {
+                    contentDiv.innerHTML = '<div class="error-message">No available appointments for this event.</div>';
+                    return;
+                }
+
+                // Display dropdown with appointments
+                let html = '<p class="modal-text" style="margin-bottom: 20px;" id="dropdown-label">Select an available time slot:</p>';
+                html += '<div class="appointment-dropdown-container" id="appointment-dropdown-container">';
+                html += '<select id="appointment-select" class="appointment-dropdown">';
+                html += '<option value="">-- Select a time slot --</option>';
+
+                appointments.forEach(appointment => {
+                    const time = appointment.displayTime || appointment.startTime || appointment.timeSlot || 'N/A';
+                    const appointmentId = appointment._id || appointment.id;
+                    html += `<option value="${appointmentId}" data-time="${time}">${time}</option>`;
+                });
+
+                html += '</select>';
+                html += '</div>';
+                html += '<div class="booking-form" id="booking-form" style="display: none;">';
+                html += '<div class="selected-slot-info" id="selected-slot-info"></div>';
+                html += '<form id="booking-details-form">';
+                html += '<div class="form-group">';
+                html += '<label class="form-label">Email *</label>';
+                html += '<input type="email" name="email" class="form-input" required>';
+                html += '</div>';
+                html += '<div class="form-group">';
+                html += '<label class="form-label">Phone</label>';
+                html += '<input type="tel" name="phone" class="form-input">';
+                html += '</div>';
+                html += '<div class="form-group">';
+                html += '<label class="form-label">First Name *</label>';
+                html += '<input type="text" name="firstName" class="form-input" required>';
+                html += '</div>';
+                html += '<div class="form-group">';
+                html += '<label class="form-label">Last Name *</label>';
+                html += '<input type="text" name="lastName" class="form-input" required>';
+                html += '</div>';
+                html += '<div class="form-group">';
+                html += '<label class="form-label">Date of Birth *</label>';
+                html += '<input type="date" name="dob" class="form-input" required>';
+                html += '</div>';
+                html += '<button type="submit" class="submit-booking-btn">Book Appointment</button>';
+                html += '</form>';
+                html += '</div>';
+                
+                // Confirmation section (initially hidden)
+                html += '<div class="booking-confirmation" id="booking-confirmation" style="display: none;">';
+                html += '<div style="text-align: center; padding-top: 20px;">';
+                html += '<img src="images/logo.png" alt="Body Insight" style="max-width: 150px; margin: 0 auto 30px; display: block;" />';
+                html += '<h2 style="font-size: 32px; font-weight: 700; color: #28a745; margin: 0 0 20px 0; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;">Booking Successful!</h2>';
+                html += '<p style="font-size: 18px; color: #666; line-height: 1.6; margin: 0 0 40px 0; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;">';
+                html += 'Your appointment has been confirmed. A confirmation email has been sent to <strong id="confirmation-email-display"></strong> with all the details.';
+                html += '</p>';
+                html += '<div style="background: white; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 30px; text-align: left;">';
+                html += '<h3 style="font-size: 20px; font-weight: 600; color: #333; margin: 0 0 15px 0; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;">Appointment Details</h3>';
+                html += '<p style="font-size: 16px; color: #666; margin-bottom: 8px; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;"><strong>Event:</strong> <span id="confirmation-event-name"></span></p>';
+                html += '<p style="font-size: 16px; color: #666; margin-bottom: 8px; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;"><strong>Date:</strong> <span id="confirmation-event-date"></span></p>';
+                html += '<p style="font-size: 16px; color: #666; margin-bottom: 8px; font-family: \'Montserrat\', -apple-system, BlinkMacSystemFont, \'Segoe UI\', Arial, sans-serif;"><strong>Time:</strong> <span id="confirmation-appointment-time"></span></p>';
+                html += '</div>';
+                html += '<div style="margin: 30px 0; text-align: center;">';
+                html += '<p style="font-size: 16px; color: #666; margin-bottom: 20px;">Download our app to view your detailed report and track your progress:</p>';
+                html += '<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">';
+                html += '<a href="https://apps.apple.com/us/app/body-insight/id6751254360" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">';
+                html += '<img src="images/app/appstore.png" alt="Download on the App Store" style="height: 50px; width: auto;" />';
+                html += '</a>';
+                html += '<a href="https://play.google.com/store/apps/details?id=com.bolte.bodyinsight" target="_blank" style="display: inline-block; transition: transform 0.3s ease;">';
+                html += '<img src="images/app/playstore.png" alt="Get it on Google Play" style="height: 50px; width: auto;" />';
+                html += '</a>';
+                html += '</div>';
+                html += '</div>';
+                html += '<button class="book-slot-button" onclick="bookAnotherSlot()">Book Another Slot</button>';
+                html += '</div>';
+                html += '</div>';
+
+                contentDiv.innerHTML = html;
+
+                // Show form when appointment is selected
+                const appointmentSelect = document.getElementById('appointment-select');
+                const bookingForm = document.getElementById('booking-form');
+                const selectedSlotInfo = document.getElementById('selected-slot-info');
+                
+                appointmentSelect.addEventListener('change', function() {
+                    const selectedOption = this.options[this.selectedIndex];
+                    if (this.value) {
+                        selectedAppointmentId = this.value;
+                        selectedAppointmentTime = selectedOption ? selectedOption.getAttribute('data-time') : '';
+                        
+                        // Show form and update selected slot info
+                        if (bookingForm) {
+                            bookingForm.style.display = 'block';
+                        }
+                        if (selectedSlotInfo && selectedAppointmentTime) {
+                            selectedSlotInfo.textContent = `Selected Slot: ${selectedAppointmentTime}`;
+                        }
+                        
+                        // Scroll to form
+                        bookingForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        // Hide form if no selection
+                        if (bookingForm) {
+                            bookingForm.style.display = 'none';
+                        }
+                        selectedAppointmentId = null;
+                        selectedAppointmentTime = null;
+                    }
+                });
+
+                // Add form submit handler
+                document.getElementById('booking-details-form').addEventListener('submit', handleBookingFormSubmit);
+
+            } catch (error) {
+                const errorMsg = error.message || 'Something went wrong. Please try again.';
+                contentDiv.innerHTML = `<div class="error-message">${errorMsg}</div>`;
+            }
+        }
+
+        let selectedAppointmentId = null;
+        let selectedAppointmentTime = null;
+
+
+        // Show booking confirmation
+        function showBookingConfirmation(email, firstName, lastName) {
+            // Hide dropdown label, dropdown container, and booking form
+            const dropdownLabel = document.getElementById('dropdown-label');
+            if (dropdownLabel) {
+                dropdownLabel.style.display = 'none';
+            }
+            
+            const appointmentDropdownContainer = document.getElementById('appointment-dropdown-container');
+            if (appointmentDropdownContainer) {
+                appointmentDropdownContainer.style.display = 'none';
+            }
+            
+            const bookingForm = document.getElementById('booking-form');
+            if (bookingForm) {
+                bookingForm.style.display = 'none';
+            }
+
+            // Hide modal title (Book Your Slot header)
+            const modalTitle = document.querySelector('#modal-book-slot .modal-title');
+            if (modalTitle) {
+                modalTitle.style.display = 'none';
+            }
+
+            // Show confirmation section
+            const confirmationSection = document.getElementById('booking-confirmation');
+            if (confirmationSection) {
+                confirmationSection.style.display = 'block';
+            }
+
+            // Update confirmation details
+            const emailDisplay = document.getElementById('confirmation-email-display');
+            if (emailDisplay) {
+                emailDisplay.textContent = email;
+            }
+
+            // Update event details
+            if (eventData) {
+                const eventNameDisplay = document.getElementById('confirmation-event-name');
+                if (eventNameDisplay) {
+                    let venueText = '';
+                    if (eventData.landmark && eventData.area) {
+                        venueText = `${eventData.landmark}, ${eventData.area}`;
+                    } else if (eventData.landmark) {
+                        venueText = eventData.landmark;
+                    } else if (eventData.area) {
+                        venueText = eventData.area;
+                    }
+                    if (venueText) {
+                        eventNameDisplay.textContent = venueText;
+                    }
+                }
+
+                const eventDateDisplay = document.getElementById('confirmation-event-date');
+                if (eventDateDisplay && eventData.displayDate) {
+                    eventDateDisplay.textContent = eventData.displayDate;
+                }
+            }
+
+            const appointmentTimeDisplay = document.getElementById('confirmation-appointment-time');
+            if (appointmentTimeDisplay && selectedAppointmentTime) {
+                appointmentTimeDisplay.textContent = selectedAppointmentTime;
+            }
+
+            // Scroll to top of modal content
+            const modalContent = document.querySelector('#modal-book-slot .modal-content');
+            if (modalContent) {
+                modalContent.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Handle booking form submission
+        async function handleBookingFormSubmit(event) {
+            event.preventDefault();
+
+            if (!selectedAppointmentId) {
+                alert('Please select a time slot first.');
+                return;
+            }
+
+            // Get form values
+            const formData = new FormData(event.target);
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const firstName = formData.get('firstName');
+            const lastName = formData.get('lastName');
+            const dob = formData.get('dob');
+
+            // Validate required fields (all except phone)
+            if (!email || !firstName || !lastName || !dob) {
+                alert('Please fill in all required fields (Email, First Name, Last Name, and Date of Birth).');
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            try {
+                // Show loading state on button
+                const submitBtn = event.target.querySelector('.submit-booking-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Booking...';
+
+                // Call bookAppointmentWeb endpoint
+                const response = await fetch(`${API_BASE_URL}/bookAppointmentWeb`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        appointmentId: selectedAppointmentId,
+                        email: email,
+                        firstName: firstName,
+                        lastName: lastName,
+                        dateOfBirth: dob,
+                        phone: phone || null
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error.message || data.error || 'API error occurred');
+                }
+
+                // Track successful booking with ref parameter
+                const refParam = window.trackingRef || 'direct';
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'appointment_booked_success', {
+                        'event_category': 'Special Event',
+                        'event_label': 'Appointment Successfully Booked',
+                        'ref_source': refParam,
+                        'value': 1
+                    });
+                }
+
+                // Success - show confirmation
+                showBookingConfirmation(email, firstName, lastName);
+
+            } catch (error) {
+                // Error handling - show alert
+                alert(error?.message || 'Something went wrong. Please try again.');
+
+                // Reset button state
+                const submitBtn = event.target.querySelector('.submit-booking-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Book Appointment';
+                }
+            }
+        }
+
+        // Book another slot - reset booking flow
+        function bookAnotherSlot() {
+            // Reset selected appointment
+            selectedAppointmentId = null;
+            selectedAppointmentTime = null;
+            
+            // Reload available appointments (this will reset the form and hide confirmation)
+            loadAvailableAppointmentsForBooking();
+            
+            // Show modal title again
+            const modalTitle = document.querySelector('#modal-book-slot .modal-title');
+            if (modalTitle) {
+                modalTitle.style.display = 'block';
+            }
+        }
+
+        // Open modal
+        function openModal(modalId) {
+            const modal = document.getElementById(`modal-${modalId}`);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // If it's the book slot modal, reset state and load available appointments
+                if (modalId === 'book-slot') {
+                    selectedAppointmentId = null;
+                    selectedAppointmentTime = null;
+                    
+                    // Show modal title
+                    const modalTitle = document.querySelector('#modal-book-slot .modal-title');
+                    if (modalTitle) {
+                        modalTitle.style.display = 'block';
+                    }
+                    
+                    loadAvailableAppointmentsForBooking();
+                }
+            }
+        }
+
+        // Close modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(`modal-${modalId}`);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+
+        // Google Analytics - Track button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchEventDetails();
+            
+            // Helper function to track events with ref parameter
+            function trackEventWithRef(eventName, category, label, value = 1) {
+                if (typeof gtag !== 'undefined') {
+                    const refParam = window.trackingRef || 'direct';
+                    gtag('event', eventName, {
+                        'event_category': category,
+                        'event_label': label,
+                        'ref_source': refParam,
+                        'value': value
+                    });
+                }
+            }
+            
+            // Track Book a slot button
+            const bookSlotBtn = document.querySelector('.book-slot-button');
+            if (bookSlotBtn) {
+                bookSlotBtn.addEventListener('click', function() {
+                    trackEventWithRef('button_click', 'Special Event', 'Book a slot - Main');
+                });
+            }
+            
+            // Track More Info buttons
+            const moreInfoButtons = document.querySelectorAll('.more-info-grid .event-button');
+            moreInfoButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const buttonText = btn.textContent.trim();
+                    trackEventWithRef('button_click', 'Special Event', 'More Info - ' + buttonText);
+                });
+            });
+            
+            // Track appointment booking submission (most important - tracks bookings by ref)
+            const bookingForm = document.getElementById('booking-details-form');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function() {
+                    const refParam = window.trackingRef || 'direct';
+                    trackEventWithRef('appointment_booked', 'Special Event', 'Appointment Booked - ' + refParam, 1);
+                    // Also track with more detail
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'booking_submit', {
+                            'event_category': 'Special Event',
+                            'event_label': 'Appointment Booking - Submit',
+                            'ref_source': refParam,
+                            'value': 1
+                        });
+                    }
+                });
+            }
+            
+            // Track Book Another Slot button
+            document.addEventListener('click', function(e) {
+                if (e.target && e.target.textContent && e.target.textContent.trim() === 'Book Another Slot') {
+                    trackEventWithRef('button_click', 'Special Event', 'Book Another Slot');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
