@@ -35,7 +35,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special Event - Body Insight</title>
-    <meta name="description" content="Body Insight special event landing page">
+    <meta name="description" content="Body Insight Special Event">
     <link rel="icon" type="image/png" href="images/favicon.png">
     
     <!-- Google Fonts -->
@@ -172,6 +172,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-icon {
+            font-size: 20px;
+            line-height: 1;
         }
 
         .event-button.book-slot-button {
@@ -590,10 +599,22 @@
                     <div class="more-info-label">More Info</div>
                 </div>
                 <div class="more-info-grid">
-                    <button class="event-button" onclick="openModal('why-dexa')">Why Dexa?</button>
-                    <button class="event-button" onclick="openModal('sample-report')">Sample Report</button>
-                    <button class="event-button" onclick="openModal('how-to-prepare')">How to prepare</button>
-                    <button class="event-button" onclick="window.open('https://youtu.be/hZxX9UyE-2c?si=GZMZzLSRXTlCh9Ue', '_blank')">The Process</button>
+                    <button class="event-button" onclick="openModal('why-dexa')">
+                        <span class="button-icon">🔬</span>
+                        <span>Why Dexa?</span>
+                    </button>
+                    <button class="event-button" onclick="openModal('sample-report')">
+                        <span class="button-icon">📊</span>
+                        <span>Sample Report</span>
+                    </button>
+                    <button class="event-button" onclick="openModal('how-to-prepare')">
+                        <span class="button-icon">📋</span>
+                        <span>How to prepare</span>
+                    </button>
+                    <button class="event-button" onclick="window.open('https://youtu.be/hZxX9UyE-2c?si=GZMZzLSRXTlCh9Ue', '_blank')">
+                        <span class="button-icon">▶️</span>
+                        <span>The Process</span>
+                    </button>
                 </div>
             </div>
         </div>
