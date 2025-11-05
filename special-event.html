@@ -15,21 +15,22 @@
       // Store ref parameter globally so it can be attached to all events
       window.trackingRef = refParam;
       
-      // Configure GA and track ref parameter if available
-      if (refParam && refParam !== 'direct') {
-        // Send as event parameter for custom dimension support
-        gtag('event', 'page_view_with_ref', {
-          'event_category': 'Traffic Source',
-          'event_label': refParam,
-          'ref_source': refParam, // This can be used as a custom dimension
-          'value': 1
-        });
-      }
-      
-      // Initialize GA config with ref parameter
+      // Initialize GA config first
       gtag('config', 'G-BPHR8ZCDT2', {
         'ref_source': refParam // Set ref_source as a page parameter
       });
+      
+      // Send special_event_landing event immediately after config
+      // This event is specific to the special-event.html page
+      gtag('event', 'special_event_landing', {
+        'event_category': 'Special Event',
+        'event_label': refParam,
+        'ref_source': refParam, // This can be used as a custom dimension
+        'value': 1
+      });
+      
+      // Debug: log to console
+      console.log('GA Event sent: special_event_landing with ref:', refParam);
     </script>
     
     <meta charset="UTF-8">
@@ -603,7 +604,7 @@
                         <span class="button-icon">🔬</span>
                         <span>Why Dexa?</span>
                     </button>
-                    <button class="event-button" onclick="openModal('sample-report')">
+                    <button class="event-button" onclick="openSampleReport()">
                         <span class="button-icon">📊</span>
                         <span>Sample Report</span>
                     </button>
@@ -649,8 +650,17 @@
     <div id="modal-sample-report" class="modal-overlay">
         <button class="modal-close" onclick="closeModal('sample-report')">&times;</button>
         <div class="modal-content">
-            <div class="modal-inner" style="padding: 0;">
-                <iframe src="https://d3vn46qh52pv01.cloudfront.net/sample-report.pdf" style="width: 100%; height: 100vh; min-height: 600px; border: none;"></iframe>
+            <div class="modal-inner" style="padding: 20px;">
+                <!-- Mobile: Show button to open PDF -->
+                <div id="pdf-mobile-view" style="display: none; text-align: center; padding: 40px 20px;">
+                    <h2 class="modal-title" style="margin-bottom: 20px;">Sample Report</h2>
+                    <p style="margin-bottom: 30px; color: #666;">Tap the button below to view the full report in your browser.</p>
+                    <a href="https://d3vn46qh52pv01.cloudfront.net/sample-report.pdf" target="_blank" class="event-button" style="display: inline-block; text-decoration: none;">
+                        <span>View Full Report</span>
+                    </a>
+                </div>
+                <!-- Desktop: Show iframe -->
+                <iframe id="pdf-iframe" src="https://d3vn46qh52pv01.cloudfront.net/sample-report.pdf" style="width: 100%; height: 80vh; min-height: 600px; border: none; display: block;"></iframe>
             </div>
         </div>
     </div>
@@ -1136,6 +1146,19 @@
             const modalTitle = document.querySelector('#modal-book-slot .modal-title');
             if (modalTitle) {
                 modalTitle.style.display = 'block';
+            }
+        }
+
+        // Open sample report - mobile opens in new tab, desktop opens modal
+        function openSampleReport() {
+            const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // On mobile, open PDF directly in new tab
+                window.open('https://d3vn46qh52pv01.cloudfront.net/sample-report.pdf', '_blank');
+            } else {
+                // On desktop, open modal
+                openModal('sample-report');
             }
         }
 
