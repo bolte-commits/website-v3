@@ -126,6 +126,28 @@
             font-size: 17px;
         }
 
+        .event-location-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .access-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            width: auto;
+            white-space: nowrap;
+        }
+
         .time-slots-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -320,24 +342,18 @@
         }
 
         .change-date-link {
-            color: white;
+            color: #666;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 500;
             margin-left: 14px;
-            text-decoration: none;
+            text-decoration: underline;
             cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 6px 14px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: color 0.2s ease;
         }
 
         .change-date-link:hover {
-            color: white;
-            background: linear-gradient(135deg, #5568d3 0%, #653a91 100%);
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            color: #333;
+            text-decoration: underline;
         }
 
         .change-time-btn:hover {
@@ -551,6 +567,16 @@
                 align-items: flex-start !important;
             }
 
+            .event-info .event-location-wrapper {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 8px;
+            }
+
+            .event-info .access-pill {
+                margin-top: 0;
+            }
+
             .event-info .event-detail-date {
                 flex-direction: column;
                 align-items: flex-start !important;
@@ -604,7 +630,10 @@
             <div class="event-info" id="event-info" style="display: none;">
                 <div class="event-detail">
                     <strong>Location</strong> 
-                    <span id="event-location"></span>
+                    <div class="event-location-wrapper">
+                        <span id="event-location"></span>
+                        <span id="event-access-pill"></span>
+                    </div>
                 </div>
                 <div class="event-detail event-detail-date">
                     <strong>Date</strong> 
@@ -800,6 +829,15 @@
                 document.getElementById('event-location').innerHTML = `<a href="${event.locationUrl}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: underline;">${locationText}</a>`;
             } else {
                 document.getElementById('event-location').textContent = locationText;
+            }
+            
+            // Display access pill only for private events
+            const accessPillElement = document.getElementById('event-access-pill');
+            if (event.isPrivate) {
+                const pillText = event.accessText || 'Private event';
+                accessPillElement.innerHTML = `<div class="access-pill">${pillText}</div>`;
+            } else {
+                accessPillElement.innerHTML = '';
             }
             
             document.getElementById('event-date').textContent = event.date;
