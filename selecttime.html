@@ -43,29 +43,34 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #f0f0f0;
         }
 
         .page-title {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
-            color: #333;
-            margin-bottom: 15px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            letter-spacing: -0.5px;
         }
 
         .page-subtitle {
-            font-size: 20px;
+            font-size: 18px;
             color: #666;
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 400;
         }
 
         .event-info {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border: 1px solid #e9ecef;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .event-info h3 {
@@ -79,44 +84,93 @@
         .event-detail {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 12px;
+            margin-bottom: 14px;
             font-size: 16px;
-            color: #666;
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .event-detail:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         .event-detail strong {
-            color: #333;
+            color: #666;
+            font-weight: 500;
+            min-width: 80px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-detail span {
+            color: #000;
+        }
+
+        .date-value-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        #event-location,
+        #event-date,
+        #event-price {
+            color: #000;
+            font-weight: 700;
+            font-size: 17px;
         }
 
         .time-slots-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 14px;
+            margin-bottom: 40px;
         }
 
         .time-slot-card {
             background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
+            border: 2px solid #d0d0d0;
+            border-radius: 30px;
+            padding: 14px 12px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .time-slot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: transparent;
+            transition: background 0.25s ease;
         }
 
         .time-slot-card:hover {
             border-color: #333;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
         }
 
         .time-slot-card.selected {
-            background: #333;
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
             border-color: #333;
             color: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-slot-card.selected::before {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         }
 
         .time-slot-card.unavailable {
@@ -132,15 +186,17 @@
         }
 
         .slot-time {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 0;
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            letter-spacing: 0.3px;
         }
 
         .time-slot-card.selected .slot-time {
             color: white;
+            font-weight: 700;
         }
 
         .slot-status {
@@ -251,11 +307,11 @@
         }
 
         .change-time-btn {
-            background: transparent;
-            color: #333;
-            border: 2px solid #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: 2px solid transparent;
             padding: 8px 20px;
-            border-radius: 8px;
+            border-radius: 30px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -263,9 +319,32 @@
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
         }
 
-        .change-time-btn:hover {
-            background: #333;
+        .change-date-link {
             color: white;
+            font-size: 13px;
+            font-weight: 600;
+            margin-left: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 6px 14px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .change-date-link:hover {
+            color: white;
+            background: linear-gradient(135deg, #5568d3 0%, #653a91 100%);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .change-time-btn:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #653a91 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         /* Modal Styles */
@@ -459,7 +538,8 @@
             }
 
             .time-slots-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
             }
 
             .event-info {
@@ -471,9 +551,23 @@
                 align-items: flex-start !important;
             }
 
+            .event-info .event-detail-date {
+                flex-direction: column;
+                align-items: flex-start !important;
+            }
+
+            .event-info .date-value-wrapper {
+                gap: 8px;
+            }
+
             .event-info .change-time-btn {
                 width: 100%;
                 margin-top: 10px !important;
+            }
+
+            .event-info .change-date-link {
+                margin-left: 0;
+                margin-top: 0;
             }
 
             .personal-details-form {
@@ -508,18 +602,20 @@
 
             <!-- Event Information -->
             <div class="event-info" id="event-info" style="display: none;">
-                <h3>Appointment Details</h3>
                 <div class="event-detail">
-                    <strong>Location:</strong> <span id="event-location"></span>
+                    <strong>Location</strong> 
+                    <span id="event-location"></span>
                 </div>
-                <div class="event-detail" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                    <div>
-                        <strong>Date:</strong> <span id="event-date"></span>
-                    </div>
-                    <button type="button" class="change-time-btn" onclick="changeDate()" style="margin: 0;">Change Date</button>
+                <div class="event-detail event-detail-date">
+                    <strong>Date</strong> 
+                    <span class="date-value-wrapper">
+                        <span id="event-date"></span>
+                        <a href="#" class="change-date-link" onclick="event.preventDefault(); changeDate();">Change</a>
+                    </span>
                 </div>
                 <div class="event-detail">
-                    <strong>Price:</strong> <span id="event-price"></span>
+                    <strong>Price</strong> 
+                    <span id="event-price"></span>
                 </div>
             </div>
 
@@ -734,13 +830,8 @@
                 card.className = 'time-slot-card';
                 card.dataset.appointmentId = appointment._id;
                 
-                // Use event amount for price display
-                const priceDisplay = (eventData && eventData.amount) ? `<div class="slot-status" style="color: #333; font-weight: 600;">${formatPrice(eventData.amount)}</div>` : '';
-                
                 card.innerHTML = `
                     <div class="slot-time">${appointment.displayTime || appointment.timeSlot}</div>
-                    <div class="slot-status">Available</div>
-                    ${priceDisplay}
                 `;
                 
                 card.addEventListener('click', function() {

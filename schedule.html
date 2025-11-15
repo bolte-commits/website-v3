@@ -155,10 +155,27 @@
             font-weight: 500;
             transition: color 0.3s ease;
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            margin-bottom: 8px;
         }
 
         .location-link:hover {
             color: #000;
+        }
+
+        .access-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            width: auto;
+            white-space: nowrap;
         }
 
         .datetime-info {
@@ -200,7 +217,7 @@
             color: white;
             border: none;
             padding: 12px 30px;
-            border-radius: 10px;
+            border-radius: 30px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -331,8 +348,8 @@
             .time-text {
                 display: block;
                 font-size: 14px;
-                font-weight: 400;
-                color: #888;
+                font-weight: 600;
+                color: #333;
                 margin-top: 5px;
             }
 
@@ -398,13 +415,21 @@
                 card.className = 'schedule-card';
                 card.dataset.city = schedule.city;
                 
+                const accessPill = schedule.isPrivate && schedule.accessText 
+                    ? `<div class="access-pill">${schedule.accessText}</div>` 
+                    : '';
+                
+                const locationDisplay = schedule.area + (schedule.landmark ? `, ${schedule.landmark}` : '');
+                
                 card.innerHTML = `
                     <div class="location-info">
-                        <div class="location-name">${schedule.location}</div>
-                        <div class="location-area">${schedule.area}</div>
-                        <a href="${schedule.googleMapsUrl}" target="_blank" class="location-link">
-                            📍 View on Google Maps
-                        </a>
+                        <div class="location-name">${locationDisplay}</div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0;">
+                            <a href="${schedule.googleMapsUrl}" target="_blank" class="location-link">
+                                📍 View on Google Maps
+                            </a>
+                            ${accessPill}
+                        </div>
                     </div>
 
                     <div class="datetime-info">
@@ -480,11 +505,14 @@
                             id: event._id,
                             city: 'Bengaluru',
                             location: event.area,
-                            area: event.landmark,
+                            area: event.area,
+                            landmark: event.landmark || '',
                             googleMapsUrl: event.locationUrl,
                             date: event.date,
                             dateDisplay: event.webDisplayDate,
-                            timings: event.timings
+                            timings: event.timings,
+                            isPrivate: event.isPrivate || false,
+                            accessText: event.accessText || ''
                         };
                     });
                     
