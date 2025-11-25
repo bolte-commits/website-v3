@@ -16,7 +16,7 @@
         </nav>
 
         <!-- Mobile Menu Button -->
-        <button class="mobile-menu-btn">
+        <button class="mobile-menu-btn" type="button" aria-label="Open mobile menu">
             <span></span>
             <span></span>
             <span></span>
@@ -42,23 +42,41 @@
 </div>
 
 <script>
-    // Mobile menu functionality
-    (function() {
+    // Mobile menu functionality - run immediately and also on DOMContentLoaded
+    function initMobileMenu() {
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
         const mobileNavClose = document.querySelector('.mobile-nav-close');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
-        if (!mobileMenuBtn || !mobileNavOverlay || !mobileNavClose) return;
+        if (!mobileMenuBtn || !mobileNavOverlay || !mobileNavClose) {
+            console.warn('Mobile menu elements not found', {
+                button: !!mobileMenuBtn,
+                overlay: !!mobileNavOverlay,
+                close: !!mobileNavClose
+            });
+            return false;
+        }
 
         // Toggle mobile menu
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileNavOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Mobile menu button clicked');
+            const isActive = mobileNavOverlay.classList.contains('active');
+            if (isActive) {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                mobileNavOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         });
 
         // Close mobile menu with close button
-        mobileNavClose.addEventListener('click', function() {
+        mobileNavClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             mobileNavOverlay.classList.remove('active');
             document.body.style.overflow = '';
         });
@@ -78,7 +96,16 @@
                 document.body.style.overflow = '';
             });
         });
-    })();
+
+        return true;
+    }
+
+    // Try immediately if DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+        initMobileMenu();
+    }
 </script>
 
 <script>

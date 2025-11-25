@@ -28,39 +28,7 @@
 
     window.addEventListener('scroll', requestTick);
 
-    // Mobile menu functionality
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-    const mobileNavClose = document.querySelector('.mobile-nav-close');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-    // Toggle mobile menu
-    mobileMenuBtn.addEventListener('click', function() {
-        mobileNavOverlay.classList.toggle('active');
-        document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close mobile menu with close button
-    mobileNavClose.addEventListener('click', function() {
-        mobileNavOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Close mobile menu when clicking on overlay
-    mobileNavOverlay.addEventListener('click', function(e) {
-        if (e.target === mobileNavOverlay) {
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Close mobile menu when clicking on navigation links
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
+    // Mobile menu functionality is now handled in header.html to avoid conflicts
 
     // Progressive darkening effect on scroll
     window.addEventListener('scroll', function () {

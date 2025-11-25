@@ -12,43 +12,7 @@
     
     {% include footer.html %}
     
-    <script>
-        // Basic mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-        const mobileNavClose = document.querySelector('.mobile-nav-close');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', function() {
-                mobileNavOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileNavOverlay.classList.contains('active') ? 'hidden' : '';
-            });
-        }
-
-        if (mobileNavClose) {
-            mobileNavClose.addEventListener('click', function() {
-                mobileNavOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-
-        if (mobileNavOverlay) {
-            mobileNavOverlay.addEventListener('click', function(e) {
-                if (e.target === mobileNavOverlay) {
-                    mobileNavOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNavOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    </script>
+    <!-- Mobile menu functionality is handled in header.html -->
 </body>
 
 </html>
